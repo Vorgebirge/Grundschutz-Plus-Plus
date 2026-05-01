@@ -5,6 +5,9 @@ Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht u
 ## GSpp-Anwenderkatalog als flache json-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`
 
+## GSpp-Anwenderkatalog als control orientierte json-Datei
+Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `control_<datum>_attributes.json`
+
 ## GSpp-Anwenderkatalog als Excel-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `catalog_<datum>.xlsx`
 
