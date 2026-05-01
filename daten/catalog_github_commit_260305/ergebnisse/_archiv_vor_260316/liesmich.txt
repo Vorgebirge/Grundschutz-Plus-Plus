@@ -1,0 +1,6 @@
+# Änderungen Attribute vor 16.03.2026 -> ab 16.03.2026
+# ergebnis          -> result
+# handlungsworte    -> action_word
+# modalverb         -> modal_verb
+# präzisierung      -> result_specification
+# target_objects    -> target_object_categories
