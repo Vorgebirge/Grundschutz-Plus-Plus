@@ -1,4 +1,4 @@
-﻿#Stand 01.05.2026
+﻿#Stand 02.05.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
 from helper_functions import read_json_file, ymd2dmy
 from collections import defaultdict
@@ -185,7 +185,7 @@ CATALOG_COLUMN['anforderung_status']['is_in_sheet'] = True
 CATALOG_COLUMN['anforderung_status']['width'] = 14
 CATALOG_COLUMN['anforderung_status']['hidden'] = False
 CATALOG_COLUMN['anforderung_status']['level'] = 0
-CATALOG_COLUMN['anforderung_status']['comment'] = 'Der Reifegrad der Erfüllung der Anforderung wird in einer von fünf möglichen Stufen ausgedrückt.\n\nStufe 0: Die Anforderung ist nicht erfüllt oder der Erfüllungsstaus ist unbekannt.\n\nStufe 1: Die Erfüllung der Anforderung ist initiiert (mindestens Phase Plan)\n\nStufe 2: Stufe 1 und die Erfüllung der Anforderung ist in großen Anteilen bereits gelebte Praxis (vollständige Phase Plan und Phase Do in Umsetzung)\n\nStufe 3: Stufe 2 und mögliche noch fehlende unterstützende und formale Aspekte sind auch erfüllt (wie z. B. zu Schulung und Dokumentation; vollständige Phasen Plan und Do)\n\nStufe 4: Stufe 3 und regelmäßige Überprüfung & Korrektur der Erfüllung (Phasen Check und Act wurden mindestens einmal durchlaufen)'
+CATALOG_COLUMN['anforderung_status']['comment'] = 'Der Leitfaden zur Methodik Grundschutz++ vom März 2026: "Der Umsetzungsstatus einer Anforderung kann grundsätzlich nur „umgesetzt“ („ja“) oder „nicht umgesetzt“ („nein“) sein."\n\nIn diesem Sinn nicht Grundschutz++ konform aber für eine differenzierte Darstellung möglicherweise geeignet: Der Reifegrad der Erfüllung der Anforderung wird in einer von fünf möglichen Stufen ausgedrückt.\n\nStufe 0: Die Anforderung ist nicht erfüllt oder der Erfüllungsstaus ist unbekannt.\n\nStufe 1: Die Erfüllung der Anforderung ist initiiert (mindestens Phase Plan)\n\nStufe 2: Stufe 1 und die Erfüllung der Anforderung ist in großen Anteilen bereits gelebte Praxis (vollständige Phase Plan und Phase Do in Umsetzung)\n\nStufe 3: Stufe 2 und mögliche noch fehlende unterstützende und formale Aspekte sind auch erfüllt (wie z. B. zu Schulung und Dokumentation; vollständige Phasen Plan und Do)\n\nStufe 4: Stufe 3 und regelmäßige Überprüfung & Korrektur der Erfüllung (Phasen Check und Act wurden mindestens einmal durchlaufen)\n\n\nLeitfaden zur Methodik Grundschutz++: https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/sonstiges/Methodik_Grundschutz_PlusPlus.html'
 # CATALOG_COLUMN['anforderung_status']['comment'] = 'Status der Erfüllung der Anforderung:\n\n- ja = Anforderung ist vollständig erfüllt.\n\n- nein = Anforderung ist nicht erfüllt.\n\n- teilweise = Es wurden bereits einige (nicht alle) Maßnahmen zur Erfüllung der Anforderung umgesetzt.'
 
 CATALOG_COLUMN['massnahmen_umgesetzt']['headline'] = 'Maßnahmen\nBereits umgesetzt'
