@@ -1,4 +1,4 @@
-﻿# Stand 17.03.2026
+﻿# Stand 03.05.2026
 import re
 from helper_functions import inline_diff, kosinus_aehnlichkeit, read_json_file, replace_odd, sort_list_naturally, strings_broadly_similar, string_in_list_of_strings, teilstrings, ymd2dmy
 from collections import defaultdict, OrderedDict
@@ -48,9 +48,9 @@ report.append('# GS++ control deltas github ' + COMMIT_DATE_A + ' & ' + COMMIT_D
 report.append('## Inhalte')
 report.append('- [Entfernte Anforderungen](#entfernte-anforderungen)')
 report.append('- [Neue Anforderungen](#neue-anforderungen)')
-report.append('- [Veränderte Anforderungsattribute](#veränderte-anforderungsattribute)')
+report.append('- [Veränderte Anforderungsattribute](#veraenderte-anforderungsattribute)')
 if CA_A_OHNE_CA_B and CA_B_OHNE_CA_A: #es gibt entfernte und neue Anforderungen
-    report.append('\nZu jeder entfernten Anforderungen wird die neue Anforderung mit der höchsten [Kosinus-Ähnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) (cos-sim) genannt, wenn diese ≥ ' + str(SCHWELLE_AEHNLICHKEIT) + ' ist. Unberücksichtigt bleiben bei der cos-sim-Berechnung Interpunktion, einige [Stoppwörter](https://de.wikipedia.org/wiki/Stoppwort), Wortreihenfolge sowie Groß- und Kleinschreibung.')
+    report.append('\nZu jeder entfernten Anforderungen wird die neue Anforderung mit der höchsten [Kosinus-Aehnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) (cos-sim) genannt, wenn diese ≥ ' + str(SCHWELLE_AEHNLICHKEIT) + ' ist. Unberücksichtigt bleiben bei der cos-sim-Berechnung Interpunktion, einige [Stoppwoerter](https://de.wikipedia.org/wiki/Stoppwort), Wortreihenfolge sowie Groß- und Kleinschreibung.')
 
 # --------------- Entfernte Anforderungen --------------------------------
 report.append('## Entfernte Anforderungen')
@@ -94,7 +94,7 @@ for c_id in CA_B_OHNE_CA_A:
         report.append(CA_B[c_id]['prose'])
 
 # --------------- Übersicht Veränderte Anforderungsattribute --------------------------------    
-report.append('## Veränderte Anforderungsattribute')
+report.append('## Veraenderte Anforderungsattribute')
 report.append('[Zurück zu Inhalt](#inhalte)')
 diff_attr = defaultdict(dict)
 veraenderte_anforderungsattribute = False

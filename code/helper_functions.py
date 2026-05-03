@@ -1,4 +1,4 @@
-﻿# Stand 28.02.2026
+﻿# Stand 03.05.2026
 # Reguläre Ausdrücke https://regex101.com/)
 import difflib, hashlib, json, pickle, re, string
 from collections import defaultdict, OrderedDict
@@ -231,7 +231,7 @@ def mydiff(string_a:str) -> list:
     return wort_list_a
 '''
 
-'''
+
 def normalisiere(word: str) -> str:
     """
     Normalize for comparison:
@@ -239,7 +239,7 @@ def normalisiere(word: str) -> str:
     - strip punctuation
     """
     return re.sub(f"[{re.escape(string.punctuation)}]", "", word.lower()).strip()
-'''
+
 
 def read_json_file(pfad):
     try:
