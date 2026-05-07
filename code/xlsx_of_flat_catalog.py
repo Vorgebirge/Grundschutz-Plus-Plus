@@ -1,4 +1,4 @@
-﻿#Stand 02.05.2026
+﻿#Stand 07.05.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
 from helper_functions import read_json_file, ymd2dmy
 from collections import defaultdict
@@ -23,6 +23,8 @@ except:
     KONTAKT = ''
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_CONTROL_ATTRIBUTES']
 PATH_CATALOG_XLSX = config['orte']['path_catalog_xlsx']
+PATH_GITHUB_BSI_GSPP = config['orte']['path_github_bsi_gspp']
+PATH_GITHUB_VORGEBIRGE_GSPP = config['orte']['path_github_vorgebirge_gspp']
 try:
     PATH_LOGO = config['orte']['path_logo']
 except:
@@ -322,14 +324,18 @@ def construct_sheet_deckblatt(sheet_deckblatt):
     else:
         row = 0
     
-    cell_value = 'Stand: Erstellung Excel Datei ' + ymd2dmy(DATUM_ERSTELLUNG_XLSX) + ' aus GS++ Katalog github commit ' +  ymd2dmy(DATUM_CATALOG_GITHUB_COMMIT)
+    cell_value = 'Stand: Erstellung Excel Datei ' + ymd2dmy(DATUM_ERSTELLUNG_XLSX) + ' aus BSI GS++ Anwenderkatalog github commit ' +  ymd2dmy(DATUM_CATALOG_GITHUB_COMMIT)
     sheet_deckblatt.write_string(row,0, cell_value)
-    
-    cell_value = 'Quelle: json-Datei mit GS++ Katalog aus github : https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B'
+            
+    cell_value = 'Ort vorliegender Excel-Datei: ' + PATH_GITHUB_VORGEBIRGE_GSPP 
     sheet_deckblatt.write_string(row + 1,0, cell_value)
     
-    cell_value = 'Kontakt: ' + KONTAKT
+    cell_value = 'Ort zu Grunde liegender BSI GS++ Anwenderkatalog (json-Datei): ' + PATH_GITHUB_BSI_GSPP #https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B'
     sheet_deckblatt.write_string(row + 2,0, cell_value)
+    
+    if KONTAKT:
+        cell_value = 'Kontakt: ' + KONTAKT
+        sheet_deckblatt.write_string(row + 3,0, cell_value)
     
     
             
