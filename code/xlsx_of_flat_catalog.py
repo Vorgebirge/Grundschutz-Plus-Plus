@@ -70,7 +70,7 @@ CATALOG_COLUMN['modalverb']['level'] = 3
 CATALOG_COLUMN['modalverb']['comment'] = 'Das Modalverb einer Anforderung gibt an, welchen Pflichtcharakter sie hat, d.h. ob es sich um eine MUSS-, SOLLTE- oder KANN-Anforderung handelt. Für die Anforderungen gelten folgende Definitionen:\n\n- MUSS → verpflichtend, keine Abweichung erlaubt (entspricht „MUST“1).\n\n- SOLLTE → in der Regel verpflichtend, Abweichung in begründeten Ausnahmefällen möglich (entspricht „SHOULD“).\n\n- KANN → optional, je nach Situation sinnvoll, aber nicht notwendig (entspricht „MAY“).'
 
 CATALOG_COLUMN['alt_identifier']['headline'] = 'Anforderung\nUUID'
-CATALOG_COLUMN['alt_identifier']['is_in_sheet'] = True
+CATALOG_COLUMN['alt_identifier']['is_in_sheet'] = False
 CATALOG_COLUMN['alt_identifier']['width'] = 40
 CATALOG_COLUMN['alt_identifier']['hidden'] = True
 CATALOG_COLUMN['alt_identifier']['level'] = 3
