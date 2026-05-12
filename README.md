@@ -1,6 +1,6 @@
 ﻿# Grundschutz++ (GSpp) - elementare Hilfsmittel
 
-Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert (via commits) in GitHub die GSpp-Anwenderkataloge als [OSCAL](https://pages.nist.gov/OSCAL/learn/)-Datei im JSON-Format: [grundschutz++-catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B) 
+Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert (via commits) in GitHub die GSpp-Anwenderkataloge als [OSCAL](https://pages.nist.gov/OSCAL/learn/)-Datei im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [grundschutz++-catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B) 
 
 ## GSpp-Anwenderkatalog als flache json-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`
