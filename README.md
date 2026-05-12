@@ -2,7 +2,12 @@
 
 Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert (via commits) in GitHub die GSpp-Anwenderkataloge als [OSCAL](https://pages.nist.gov/OSCAL/learn/)-Datei im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [grundschutz++-catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B) 
 
-BSI-Materialien zu GSpp: [Grundschutz in der Informationssicherheit](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/isms_node.html), [Stand der Technik (SdT)](https://www.bsi.bund.de/dok/Stand-der-Technik), [OSCAL](https://www.bsi.bund.de/dok/oscal), [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
+BSI-Materialien zu GSpp: 
+- [Grundschutz in der Informationssicherheit](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/isms_node.html)    
+- [Leitfaden - Methodik Grundschutz++](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/sonstiges/Methodik_Grundschutz_PlusPlus.pdf)   
+- [Stand der Technik (SdT)](https://www.bsi.bund.de/dok/Stand-der-Technik)   
+- [OSCAL](https://www.bsi.bund.de/dok/oscal)
+- [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
 
 ## GSpp-Anwenderkatalog als flache json-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`
