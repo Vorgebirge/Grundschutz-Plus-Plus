@@ -50,6 +50,10 @@ for component in COMPONENT:
         implementation = dict()
         if locator[-1] == 'control-id':
             control_uuid = mydict_flattened[locator] 
+            
+            if (locator_of_uuid := locator[:-1] + ('uuid',)) in mydict_flattened:
+                implementation['uuid'] = mydict_flattened[locator_of_uuid]
+            
             implementation['control_alt-identifier'] = control_uuid[1:]
             implementation['source'] = COMPONENT[component]['source']
             implementation['commit_source'] = ymd2dmy(COMPONENT[component]['commit'])
