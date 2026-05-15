@@ -1,4 +1,4 @@
-﻿# Stand 03.05.2026
+﻿# Stand 15.05.2026
 # Reguläre Ausdrücke https://regex101.com/)
 import difflib, hashlib, json, pickle, re, string
 from collections import defaultdict, OrderedDict
@@ -349,7 +349,8 @@ def teilstrings(mystr):
         mylist.append(entferne_eol(mystr[ende:len(mystr)]).strip()) 
     return mylist
 
-
+def today(format = "%y%m%d"):
+    return datetime.today().strftime(format)
 
 def visualize(data, indent=0, selectors=[]):     
     """Gibt eine verschachtelte Datenstruktur als Baum aus."""

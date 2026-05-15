@@ -1,9 +1,9 @@
-# Stand: 14.05.2026
+# Stand: 15.05.2026
 from flatten_catalog import locators_and_their_items
-from helper_functions import read_json_file, write_json_file, ymd2dmy
+from helper_functions import read_json_file, sort_dict_naturally, today, write_json_file, ymd2dmy
 from collections import defaultdict
 from configparser import ConfigParser
-from datetime import datetime
+#from datetime import datetime
 
 config = ConfigParser()
 config.read('config.ini')
@@ -30,9 +30,17 @@ COMPONENT['wlan']['commit'] = config['orte']['commit_wlan']
 COMPONENT['wlan']['source'] = config['orte']['source_wlan']
 COMPONENT['wlan']['path'] = config['orte']['path_wlan']
 
-PATH_IMPLEMENTATIONS = config['orte']['path_implementations'] + datetime.today().strftime("%y%m%d") + '.json'
+PATH_CONTROL_ATTRIBUTES = config['orte']['path_control_attributes']
+PATH_IMPLEMENTATIONS = config['orte']['path_implementations'] + today() + '.json'
 
 dict_implementations = defaultdict(list)
+
+CONTROL_ATTRIBUTES = read_json_file(PATH_CONTROL_ATTRIBUTES)
+
+map_uuid_control_id = dict()
+for control_id in CONTROL_ATTRIBUTES:    
+    map_uuid_control_id['_' + CONTROL_ATTRIBUTES[control_id]['alt-identifier']] = control_id
+
 
 for component in COMPONENT:    
     mydict = read_json_file(COMPONENT[component]['path'])
@@ -41,17 +49,28 @@ for component in COMPONENT:
     for locator in mydict_flattened:        
         implementation = dict()
         if locator[-1] == 'control-id':
-            control_id = mydict_flattened[locator] 
+            control_uuid = mydict_flattened[locator] 
+            implementation['control_alt-identifier'] = control_uuid[1:]
             implementation['source'] = COMPONENT[component]['source']
-            implementation['commit'] = ymd2dmy(COMPONENT[component]['commit'])
-            
+            implementation['commit_source'] = ymd2dmy(COMPONENT[component]['commit'])
+            implementation['excel_row'] = 0
+                        
             if (locator_of_description := locator[:-1] + ('description',)) in mydict_flattened:
                 implementation['description'] = mydict_flattened[locator_of_description]
                                 
             if (locator_of_remarks := locator[:-1] + ('remarks',)) in mydict_flattened:
                 implementation['remarks'] = mydict_flattened[locator_of_remarks]
-        
+            
+            control_id = map_uuid_control_id[control_uuid]
             dict_implementations[control_id].append(implementation) 
+            #dict_implementations[control_uuid].append(implementation) 
+dict_implementations = sort_dict_naturally(dict_implementations)
+
+excel_row = 1
+for control_id in dict_implementations:
+    for implementation in dict_implementations[control_id]:
+        implementation['excel_row'] = excel_row        
+        excel_row += 1                 
 
 write_json_file(dict_implementations, PATH_IMPLEMENTATIONS)
             
