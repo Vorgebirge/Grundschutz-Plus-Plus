@@ -8,7 +8,7 @@ BSI-Materialien im Kontext GSpp:
 - [Mindeststandards Bund](https://www.bsi.bund.de/dok/MST)
 - [Leitfaden - Methodik Grundschutz++](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/sonstiges/Methodik_Grundschutz_PlusPlus.pdf)   
 - [Stand der Technik (SdT)](https://www.bsi.bund.de/dok/Stand-der-Technik)   
-- [OSCAL](https://www.bsi.bund.de/dok/oscal)
+- [OSCAL](https://www.bsi.bund.de/dok/oscal) und [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
 - [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
 
 ## GSpp-Anwenderkatalog als flache json-Datei
