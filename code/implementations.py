@@ -31,7 +31,8 @@ COMPONENT['wlan']['source'] = config['orte']['source_wlan']
 COMPONENT['wlan']['path'] = config['orte']['path_wlan']
 
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_control_attributes']
-PATH_IMPLEMENTATIONS = config['orte']['path_implementations'] + today() + '.json'
+#PATH_IMPLEMENTATIONS = config['orte']['path_implementations'] + today() + '.json'
+PATH_IMPLEMENTATIONS = config['orte']['path_implementations']
 
 dict_implementations = defaultdict(list)
 
@@ -70,7 +71,7 @@ for component in COMPONENT:
             #dict_implementations[control_uuid].append(implementation) 
 dict_implementations = sort_dict_naturally(dict_implementations)
 
-excel_row = 1
+excel_row = 2
 for control_id in dict_implementations:
     for implementation in dict_implementations[control_id]:
         implementation['excel_row'] = excel_row        

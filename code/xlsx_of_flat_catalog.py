@@ -1,6 +1,6 @@
-﻿#Stand 07.05.2026
+﻿#Stand 15.05.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
-from helper_functions import read_json_file, ymd2dmy
+from helper_functions import read_json_file, today, ymd2dmy
 from collections import defaultdict
 from configparser import ConfigParser
 
@@ -23,6 +23,7 @@ except:
     KONTAKT = ''
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_CONTROL_ATTRIBUTES']
 PATH_CATALOG_XLSX = config['orte']['path_catalog_xlsx']
+PATH_IMPLEMENTATIONS = config['orte']['path_implementations']
 PATH_GITHUB_BSI_GSPP = config['orte']['path_github_bsi_gspp']
 PATH_GITHUB_VORGEBIRGE_GSPP = config['orte']['path_github_vorgebirge_gspp']
 try:
@@ -31,8 +32,10 @@ except:
     PATH_LOGO = ''
 
 CONTROL_ATTRIBUTES = read_json_file(PATH_CONTROL_ATTRIBUTES)
+IMPLEMENTATIONS = read_json_file(PATH_IMPLEMENTATIONS)
 
 CATALOG_COLUMN = defaultdict(dict)
+IMPLEMENTATION_COLUMN = defaultdict(dict)
 
 CATALOG_COLUMN['praktik']['headline'] = 'Praktik'
 CATALOG_COLUMN['praktik']['is_in_sheet'] = True
@@ -103,6 +106,13 @@ CATALOG_COLUMN['text']['width'] = 40
 CATALOG_COLUMN['text']['hidden'] = False
 CATALOG_COLUMN['text']['level'] = 0
 CATALOG_COLUMN['text']['comment'] = 'Anforderungen (Controls): Anforderungen sind die zentralen Sicherheitsregeln und werden in OSCAL durch control-Elemente dargestellt. Sie beschreiben Zielzustände oder Grundprinzipien, die erreicht sein müssen, wenn die Anforderung als erfüllt gelten soll. Anforderungen werden durch ihren Titel und den dazugehörigen Anforderungstext beschrieben. Zu einer Anforderung können verschiedene Metadaten zugeordnet sein, z.B. Tags oder Verweise auf andere Anforderungen. Im Grundschutz++ folgt der Text der Anforderungen zudem einem bestimmten Format, der Satzschablone.\n\n{Parameter} zeigen Gestaltungsentscheidungen innerhalb einer Anforderung auf. Das ermöglicht es Katalogautoren und Anwendern auf einen Blick zu sehen wo steuernde Entscheidungen zu treffen sind. Bei einem Audit können die für den Parameter gesetzten Werte automatisiert geprüft werden. Parameter ermöglichen es außerdem Autoren, Anforderungen an spezifischere Kontexte anzupassen. Beispielsweise kann ein Parameter die maximale Anzahl von Fehlversuchen bei der Anmeldung definieren. Verwendet der Anwender hier einen Wert von 10, so kann er für alle Kataloge, die einen Wert von 10 erlauben, eine automatische Dokumentenprüfung bestehen. Diese strukturierte Darstellung unterstützt sowohl die menschliche Lesbarkeit als auch die maschinelle Verarbeitung von Sicherheitsanforderungen und fördert die Wiederverwendbarkeit und Vergleichbarkeit von Sicherheitsanforderungen und -prüfungen. In xlsx-Dokumenten sind Parameter an {geschweiften Klammern} innerhalb des Anforderungstextes zu erkennen.'
+
+CATALOG_COLUMN['implementierung']['headline'] = 'Anforderung\nImplementierung?'
+CATALOG_COLUMN['implementierung']['is_in_sheet'] = True
+CATALOG_COLUMN['implementierung']['width'] = 20
+CATALOG_COLUMN['implementierung']['hidden'] = False
+CATALOG_COLUMN['implementierung']['level'] = 2
+CATALOG_COLUMN['implementierung']['comment'] = '-'
 
 CATALOG_COLUMN['praezisierung']['headline'] = 'Anforderung\nPräzisierung'
 CATALOG_COLUMN['praezisierung']['is_in_sheet'] = True
@@ -211,6 +221,63 @@ CATALOG_COLUMN['anmerkungen']['hidden'] = False
 CATALOG_COLUMN['anmerkungen']['level'] = 0
 CATALOG_COLUMN['anmerkungen']['comment'] = 'Freitextfeld für Anmerkungen wie z.B. zu:\n\n-Spezifizierung der Anforderung\n\n- Fristen der Umsetzung geplanter Maßnahmen\n\n- Verantwortliche der Umsetzung geplanter Maßnahmen'
 
+IMPLEMENTATION_COLUMN['anforderung_id']['headline'] = 'Anforderung\nID'
+IMPLEMENTATION_COLUMN['anforderung_id']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['anforderung_id']['width'] = 14
+IMPLEMENTATION_COLUMN['anforderung_id']['hidden'] = False
+IMPLEMENTATION_COLUMN['anforderung_id']['level'] = 0
+IMPLEMENTATION_COLUMN['anforderung_id']['comment'] = 'ID: Eindeutiger Identifikator der Anforderung innerhalb der Praktik und des Themas im Format {Kürzel der Praktik}.{Nummerierung des Themas}.{Nummerierung der Anforderung}. Die ID ergibt sich also aus der Stellung der Anforderung innerhalb des Dokumentes.'
+
+IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['headline'] = 'Anforderung\nTitel'
+IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['width'] = 30
+IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['hidden'] = False
+IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['level'] = 0
+IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['comment'] = 'Titel: Titel der einzelnen Anforderung. Der Titel beschreibt eine Anforderung kurz und prägnant, so dass sie ohne Blick auf den vollständigen Anforderungsinhalt wiederzuerkennen ist. Titel sind nicht normativ.'
+
+IMPLEMENTATION_COLUMN['text']['headline'] = 'Anforderung\nText & {Parameter}'
+IMPLEMENTATION_COLUMN['text']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['text']['width'] = 40
+IMPLEMENTATION_COLUMN['text']['hidden'] = False
+IMPLEMENTATION_COLUMN['text']['level'] = 0
+IMPLEMENTATION_COLUMN['text']['comment'] = 'Anforderungen (Controls): Anforderungen sind die zentralen Sicherheitsregeln und werden in OSCAL durch control-Elemente dargestellt. Sie beschreiben Zielzustände oder Grundprinzipien, die erreicht sein müssen, wenn die Anforderung als erfüllt gelten soll. Anforderungen werden durch ihren Titel und den dazugehörigen Anforderungstext beschrieben. Zu einer Anforderung können verschiedene Metadaten zugeordnet sein, z.B. Tags oder Verweise auf andere Anforderungen. Im Grundschutz++ folgt der Text der Anforderungen zudem einem bestimmten Format, der Satzschablone.\n\n{Parameter} zeigen Gestaltungsentscheidungen innerhalb einer Anforderung auf. Das ermöglicht es Katalogautoren und Anwendern auf einen Blick zu sehen wo steuernde Entscheidungen zu treffen sind. Bei einem Audit können die für den Parameter gesetzten Werte automatisiert geprüft werden. Parameter ermöglichen es außerdem Autoren, Anforderungen an spezifischere Kontexte anzupassen. Beispielsweise kann ein Parameter die maximale Anzahl von Fehlversuchen bei der Anmeldung definieren. Verwendet der Anwender hier einen Wert von 10, so kann er für alle Kataloge, die einen Wert von 10 erlauben, eine automatische Dokumentenprüfung bestehen. Diese strukturierte Darstellung unterstützt sowohl die menschliche Lesbarkeit als auch die maschinelle Verarbeitung von Sicherheitsanforderungen und fördert die Wiederverwendbarkeit und Vergleichbarkeit von Sicherheitsanforderungen und -prüfungen. In xlsx-Dokumenten sind Parameter an {geschweiften Klammern} innerhalb des Anforderungstextes zu erkennen.'
+
+IMPLEMENTATION_COLUMN['implementierung_description']['headline'] = 'Implementierung\nDarstellung'
+IMPLEMENTATION_COLUMN['implementierung_description']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['implementierung_description']['width'] = 50
+IMPLEMENTATION_COLUMN['implementierung_description']['hidden'] = False
+IMPLEMENTATION_COLUMN['implementierung_description']['level'] = 0
+IMPLEMENTATION_COLUMN['implementierung_description']['comment'] = 'Implementierung beinhaltet die Anteile description und remarks der Komponentendefinition zu einer Anforderung (sofern vorhanden).\n\nIn den Worten des BSI: Eine OSCAL-Komponentendefinition enthält eine Sammlung von Komponenten. Jede Komponente in einer Komponentendefinition beschreibt, wie eine bestimmte Implementierung einer Hardware, Software, eines Dienstes, einer Richtlinie, eines Prozesses oder einer Prozedur bestimmte Vorschriften aus einem oder mehreren OSCAL-Katalogen oder -Profilen unterstützen oder implementieren kann.\n\nDurch die Veröffentlichung eines Komponentensatzes in einer Komponentendefinition können Produkt- und Serviceanbieter, Richtlinien- und Prozessverantwortliche und andere Personen Informationen über die Implementierung von Anforderungen für ein von ihnen verwaltetes Zielobjekt austauschen. So können Lösungsbeschreibungen für das Thema in System-Sicherheitspläne (SSP) der Institution importiert werden. Diese Informationen können dann bei der technischen oder organisatorischen Implementierung verwendet werden. So muss sich nicht jede Institution die Lösungen "aus den Fingern saugen", die sie zur Umsetzung von Vorschriften einsetzen möchte, sondern kann auf Konzepte und Vorlagen aufbauen.\n\nEs ist wichtig zu beachten, dass Komponentendefinitionen keine tatsächlichen Implementierungen sind; vielmehr beschreiben Komponentendefinitionen eine Implementierung, die innerhalb eines Informationssystems eingesetzt werden kann. Beispielsweise könnte eine Komponente zur Transportverschlüsselung die Information "SSH über TLS 1.3 wird eingesetzt" enthalten. Somit dienen Komponentendefinitionen als Referenzen mit Inhalten, die (z. B. im SSP OSCAL-Modell) zur Entwicklung umfassender und konsistenter Implementierungen (wieder-)verwendet werden können. Sie ersetzen aber nicht das Handeln der für die Informationssicherheit verantwortlichen Stelle.\n\nQuelle: https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Implementierungsbeschreibungen/Komponenten'
+
+IMPLEMENTATION_COLUMN['implementierung_remarks']['headline'] = 'Implementierung\nAnmerkungen'
+IMPLEMENTATION_COLUMN['implementierung_remarks']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['implementierung_remarks']['width'] = 50
+IMPLEMENTATION_COLUMN['implementierung_remarks']['hidden'] = False
+IMPLEMENTATION_COLUMN['implementierung_remarks']['level'] = 0
+IMPLEMENTATION_COLUMN['implementierung_remarks']['comment'] = '-'
+
+IMPLEMENTATION_COLUMN['implementierung_uuid']['headline'] = 'Implementierung\nuuid'
+IMPLEMENTATION_COLUMN['implementierung_uuid']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['implementierung_uuid']['width'] = 20
+IMPLEMENTATION_COLUMN['implementierung_uuid']['hidden'] = True
+IMPLEMENTATION_COLUMN['implementierung_uuid']['level'] = 1
+IMPLEMENTATION_COLUMN['implementierung_uuid']['comment'] = '-'
+
+IMPLEMENTATION_COLUMN['implementierung_source']['headline'] = 'Implementierung\nQuelle'
+IMPLEMENTATION_COLUMN['implementierung_source']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['implementierung_source']['width'] = 30
+IMPLEMENTATION_COLUMN['implementierung_source']['hidden'] = True
+IMPLEMENTATION_COLUMN['implementierung_source']['level'] = 1
+IMPLEMENTATION_COLUMN['implementierung_source']['comment'] = '-'
+
+IMPLEMENTATION_COLUMN['implementierung_commit_source']['headline'] = 'Implementierung\nCommit'
+IMPLEMENTATION_COLUMN['implementierung_commit_source']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['implementierung_commit_source']['width'] = 18
+IMPLEMENTATION_COLUMN['implementierung_commit_source']['hidden'] = True
+IMPLEMENTATION_COLUMN['implementierung_commit_source']['level'] = 1
+IMPLEMENTATION_COLUMN['implementierung_commit_source']['comment'] = '-'
+
+
 def control_text_with_parameter(control_id: str) -> str:
     result = CONTROL_ATTRIBUTES[control_id].get('prose', '')
     if CONTROL_ATTRIBUTES[control_id].get('params', ''):        
@@ -238,6 +305,11 @@ def anforderung_status(control_id: str) -> str:
 def anforderung_titel_ohne_id(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['title']
 
+def anforderung_titel_und_text(control_id: str) -> str:    
+    ergebnis = CONTROL_ATTRIBUTES[control_id]['title']
+    ergebnis += '\n\n' + control_text_with_parameter(control_id)    
+    return ergebnis
+
 def anmerkungen(control_id: str) -> str:
     return ''    
 
@@ -255,6 +327,33 @@ def guidance(control_id: str) -> str:
 
 def handlung(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['action_word']
+
+def implementierung(control_id: str) -> str:    
+    if (control_id in IMPLEMENTATIONS):        
+        return 'ja'
+    else:
+        return 'nein'
+    
+
+def implementierung_commit_source(control_id: str) -> str:
+    global counter    
+    return IMPLEMENTATIONS[control_id][counter].get('commit_source', '-')
+
+def implementierung_description(control_id: str) -> str:
+    global counter    
+    return IMPLEMENTATIONS[control_id][counter].get('description', '-')
+    
+def implementierung_remarks(control_id: str) -> str:
+    global counter    
+    return IMPLEMENTATIONS[control_id][counter].get('remarks', '-')
+
+def implementierung_source(control_id: str) -> str:
+    global counter    
+    return IMPLEMENTATIONS[control_id][counter].get('source', '-')
+
+def implementierung_uuid(control_id: str) -> str:
+    global counter    
+    return IMPLEMENTATIONS[control_id][counter].get('uuid', '-')
 
 def massnahmen_geplant(control_id: str) -> str:
     return ''
@@ -295,25 +394,25 @@ def verwandte(control_id: str) -> str:
 def zielobjekte(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['target_object_categories']
 
-def construct_sheet_catalog_rows(workbook, sheet_catalog):    
+def construct_sheet_rows(workbook, sheet_catalog, column_defintions):    
     header_format = workbook.add_format(HEADER_FORMAT)
            
     column = 0
-    for key in CATALOG_COLUMN.keys():
-        if not CATALOG_COLUMN[key]['is_in_sheet']: continue
+    for key in column_defintions.keys():
+        if not column_defintions[key]['is_in_sheet']: continue
         
         #setze die breite der spalten
-        width  = CATALOG_COLUMN[key]['width']
-        hidden  = CATALOG_COLUMN[key]['hidden']
-        level = CATALOG_COLUMN[key]['level']              
+        width  = column_defintions[key]['width']
+        hidden  = column_defintions[key]['hidden']
+        level = column_defintions[key]['level']              
         sheet_catalog.set_column(column, column, width, None, {'level': level,'hidden': hidden})            
         
         #schreibe Kopzzeile
         sheet_catalog.set_row(0, 30) 
-        sheet_catalog.write_string(0, column, CATALOG_COLUMN[key]['headline'],header_format)
+        sheet_catalog.write_string(0, column, column_defintions[key]['headline'],header_format)
         
         #schreibe Kommentare    
-        sheet_catalog.write_comment(0, column, CATALOG_COLUMN[key]['comment'], KOMMENTAR_GROESSE)
+        sheet_catalog.write_comment(0, column, column_defintions[key]['comment'], KOMMENTAR_GROESSE)
         
         column +=1
 
@@ -324,7 +423,7 @@ def construct_sheet_deckblatt(sheet_deckblatt):
     else:
         row = 0
     
-    cell_value = 'Stand: Erstellung Excel Datei ' + ymd2dmy(DATUM_ERSTELLUNG_XLSX) + ' aus BSI GS++ Anwenderkatalog github commit ' +  ymd2dmy(DATUM_CATALOG_GITHUB_COMMIT)
+    cell_value = 'Stand: Erstellung Excel Datei ' + ymd2dmy(today()) + ' aus BSI GS++ Anwenderkatalog github commit ' +  ymd2dmy(DATUM_CATALOG_GITHUB_COMMIT)
     sheet_deckblatt.write_string(row,0, cell_value)
             
     cell_value = 'Ort vorliegender Excel-Datei: ' + PATH_GITHUB_VORGEBIRGE_GSPP 
@@ -339,17 +438,17 @@ def construct_sheet_deckblatt(sheet_deckblatt):
     
     
             
-def construct_sheet_catalog_row(workbook, sheet_catalog, row, control_id):            
+def construct_sheet_row(workbook, sheet_catalog, column_defintions, row, control_id):            
     # Lege Format der Zeile fest     
     cell_format =  workbook.add_format(CELL_FORMAT)
     
     # Trage Spalteninhalte in Zellen ein
     column, row_height = 0, 0
-    for key in CATALOG_COLUMN.keys():
-        if not CATALOG_COLUMN[key]['is_in_sheet']: continue
+    for key in column_defintions.keys():
+        if not column_defintions[key]['is_in_sheet']: continue
         try:
             cell_value = globals()[key](control_id)            
-            row_height = max([row_height, math.ceil(len(cell_value) / CATALOG_COLUMN[key]['width'])])
+            row_height = max([row_height, math.ceil(len(cell_value) / column_defintions[key]['width'])])
         except:
             cell_value = ''
         sheet_catalog.write_string(row, column, cell_value, cell_format)
@@ -366,6 +465,7 @@ def set_sheet_catalog_autofilter(rows, sheet_catalog):
     sheet_catalog.autofilter(0,0,rows - 1,columns - 1) 
 
 def main():     
+    global counter
     # Öffne xlsx-datei         
     workbook = xlsxwriter.Workbook(PATH_CATALOG_XLSX)
         
@@ -373,24 +473,44 @@ def main():
     sheet_deckblatt = workbook.add_worksheet("Deckblatt")    
     sheet_catalog = workbook.add_worksheet('GS++ Catalog github ' + ymd2dmy(DATUM_CATALOG_GITHUB_COMMIT))
     sheet_catalog.freeze_panes(1,0) 
+    sheet_implementation = workbook.add_worksheet('Implementierungen')
+    sheet_implementation.freeze_panes(1,0)
     
     # Gestalte Deckblatt
     construct_sheet_deckblatt(sheet_deckblatt)
         
     #Gestalte Spalten im Tabellenblatt mit den controls
-    construct_sheet_catalog_rows(workbook, sheet_catalog)    
+    construct_sheet_rows(workbook, sheet_catalog, CATALOG_COLUMN)    
     
+    #Gestalte Spalten im Tabellenblatt mit den Implementierungen
+    construct_sheet_rows(workbook, sheet_implementation, IMPLEMENTATION_COLUMN)    
+        
     #gestalte Zeilen im Tabellenblatt mit den controls
     row = 0
     for control_id in CONTROL_ATTRIBUTES.keys():
         row += 1        
-        construct_sheet_catalog_row(workbook, sheet_catalog, row, control_id)
-            
+        construct_sheet_row(workbook, sheet_catalog, CATALOG_COLUMN, row, control_id)           
     # setze in jeder Spalte Autofilter
     set_sheet_catalog_autofilter(row, sheet_catalog)  
+    
+    #gestalte Zeilen im Tabellenblatt mit den Implementierungen
+    row = 0
+    for control_id in CONTROL_ATTRIBUTES.keys():        
+        if control_id in IMPLEMENTATIONS:        
+            counter = 0
+            for implementation in IMPLEMENTATIONS[control_id]:
+                row += 1                        
+                construct_sheet_row(workbook, sheet_implementation, IMPLEMENTATION_COLUMN, row, control_id)           
+                counter += 1
+                
+    # setze in jeder Spalte Autofilter
+    set_sheet_catalog_autofilter(row, sheet_implementation)  
+    
     
     # Schließe Datei
     workbook.close()
 
+
 if __name__ == "__main__":
+    counter = 0
     main()
