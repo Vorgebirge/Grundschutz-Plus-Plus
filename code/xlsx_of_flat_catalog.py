@@ -23,8 +23,10 @@ except:
     KONTAKT = ''
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_CONTROL_ATTRIBUTES']
 PATH_CATALOG_XLSX = config['orte']['path_catalog_xlsx']
+#PATH_CATALOG_XLSX = config['orte']['path_spielwiese_xlsx']
 PATH_IMPLEMENTATIONS = config['orte']['path_implementations']
-PATH_GITHUB_BSI_GSPP = config['orte']['path_github_bsi_gspp']
+PATH_GITHUB_BSI_GSPP_CATALOG = config['orte']['path_github_bsi_gspp_catalog']
+PATH_GITHUB_BSI_GSPP_IMPLEMENTIERUNGEN = config['orte']['path_github_bsi_gspp_implementierungen']
 PATH_GITHUB_VORGEBIRGE_GSPP = config['orte']['path_github_vorgebirge_gspp']
 try:
     PATH_LOGO = config['orte']['path_logo']
@@ -329,31 +331,28 @@ def handlung(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['action_word']
 
 def implementierung(control_id: str) -> str:    
-    if (control_id in IMPLEMENTATIONS):        
-        return 'ja'
-    else:
-        return 'nein'
+    return ''
     
 
 def implementierung_commit_source(control_id: str) -> str:
-    global counter    
-    return IMPLEMENTATIONS[control_id][counter].get('commit_source', '-')
+    global list_index    
+    return IMPLEMENTATIONS[control_id][list_index].get('commit_source', '-')
 
 def implementierung_description(control_id: str) -> str:
-    global counter    
-    return IMPLEMENTATIONS[control_id][counter].get('description', '-')
+    global list_index    
+    return IMPLEMENTATIONS[control_id][list_index].get('description', '-')
     
 def implementierung_remarks(control_id: str) -> str:
-    global counter    
-    return IMPLEMENTATIONS[control_id][counter].get('remarks', '-')
+    global list_index    
+    return IMPLEMENTATIONS[control_id][list_index].get('remarks', '-')
 
 def implementierung_source(control_id: str) -> str:
-    global counter    
-    return IMPLEMENTATIONS[control_id][counter].get('source', '-')
+    global list_index    
+    return IMPLEMENTATIONS[control_id][list_index].get('source', '-')
 
 def implementierung_uuid(control_id: str) -> str:
-    global counter    
-    return IMPLEMENTATIONS[control_id][counter].get('uuid', '-')
+    global list_index    
+    return IMPLEMENTATIONS[control_id][list_index].get('uuid', '-')
 
 def massnahmen_geplant(control_id: str) -> str:
     return ''
@@ -425,20 +424,23 @@ def construct_sheet_deckblatt(sheet_deckblatt):
     
     cell_value = 'Stand: Erstellung Excel Datei ' + ymd2dmy(today()) + ' aus BSI GS++ Anwenderkatalog github commit ' +  ymd2dmy(DATUM_CATALOG_GITHUB_COMMIT)
     sheet_deckblatt.write_string(row,0, cell_value)
-            
-    cell_value = 'Ort vorliegender Excel-Datei: ' + PATH_GITHUB_VORGEBIRGE_GSPP 
-    sheet_deckblatt.write_string(row + 1,0, cell_value)
+          
+    sheet_deckblatt.write_string(row + 2,0, 'Vorliegende Excel-Datei:')
+    sheet_deckblatt.write_url(row + 3,0, PATH_GITHUB_VORGEBIRGE_GSPP)
     
-    cell_value = 'Ort zu Grunde liegender BSI GS++ Anwenderkatalog (json-Datei): ' + PATH_GITHUB_BSI_GSPP #https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B'
-    sheet_deckblatt.write_string(row + 2,0, cell_value)
+    sheet_deckblatt.write_string(row + 5,0, 'Zu Grunde liegender BSI GS++ Anwenderkatalog')
+    sheet_deckblatt.write_url(row + 6,0, PATH_GITHUB_BSI_GSPP_CATALOG)
+    
+    sheet_deckblatt.write_string(row + 8,0, 'Zu Grunde liegende BSI GS++ Implementierungsbeschreibungen')
+    sheet_deckblatt.write_url(row + 9,0, PATH_GITHUB_BSI_GSPP_IMPLEMENTIERUNGEN)
     
     if KONTAKT:
         cell_value = 'Kontakt: ' + KONTAKT
-        sheet_deckblatt.write_string(row + 3,0, cell_value)
+        sheet_deckblatt.write_string(row + 11,0, cell_value)
     
     
             
-def construct_sheet_row(workbook, sheet_catalog, column_defintions, row, control_id):            
+def construct_sheet_row(workbook, sheet, column_defintions, row, control_id):            
     # Lege Format der Zeile fest     
     cell_format =  workbook.add_format(CELL_FORMAT)
     
@@ -451,21 +453,30 @@ def construct_sheet_row(workbook, sheet_catalog, column_defintions, row, control
             row_height = max([row_height, math.ceil(len(cell_value) / column_defintions[key]['width'])])
         except:
             cell_value = ''
-        sheet_catalog.write_string(row, column, cell_value, cell_format)
+        sheet.write_string(row, column, cell_value, cell_format)
         column += 1
             
     # Lege Zeilenhöhe fest
-    sheet_catalog.set_row(row, row_height*15)
-
-def set_sheet_catalog_autofilter(rows, sheet_catalog):      
+    sheet.set_row(row, row_height*15)
+'''
+def set_sheet_autofilter(rows, sheet_catalog):      
     columns = 0
     for key in CATALOG_COLUMN.keys():        
         if not CATALOG_COLUMN[key]['is_in_sheet']: continue    
         columns += 1    
     sheet_catalog.autofilter(0,0,rows - 1,columns - 1) 
+'''
+
+def set_sheet_autofilter(rows, sheet, column_defintions):      
+    columns = 0
+    for key in column_defintions.keys():        
+        if not column_defintions[key]['is_in_sheet']: continue    
+        columns += 1    
+    sheet.autofilter(0,0,rows - 1,columns - 1) 
+
 
 def main():     
-    global counter
+    global list_index
     # Öffne xlsx-datei         
     workbook = xlsxwriter.Workbook(PATH_CATALOG_XLSX)
         
@@ -491,26 +502,52 @@ def main():
         row += 1        
         construct_sheet_row(workbook, sheet_catalog, CATALOG_COLUMN, row, control_id)           
     # setze in jeder Spalte Autofilter
-    set_sheet_catalog_autofilter(row, sheet_catalog)  
+    set_sheet_autofilter(row, sheet_catalog, CATALOG_COLUMN)  
     
     #gestalte Zeilen im Tabellenblatt mit den Implementierungen
     row = 0
     for control_id in CONTROL_ATTRIBUTES.keys():        
         if control_id in IMPLEMENTATIONS:        
-            counter = 0
+            list_index = 0
             for implementation in IMPLEMENTATIONS[control_id]:
                 row += 1                        
                 construct_sheet_row(workbook, sheet_implementation, IMPLEMENTATION_COLUMN, row, control_id)           
-                counter += 1
-                
+                list_index += 1                
     # setze in jeder Spalte Autofilter
-    set_sheet_catalog_autofilter(row, sheet_implementation)  
+    set_sheet_autofilter(row, sheet_implementation, IMPLEMENTATION_COLUMN)  
     
+    #----------------------------------------------------------------------------------
+    # setze Links im Tabellenblatt mit den controls in der Spalte 'implementierung'
+    # Ermittle Spaltennummer zu 'implementierung' 
+    impl_col = 0
+    for column in CATALOG_COLUMN:
+        if column == 'implementierung': 
+            break
+        if CATALOG_COLUMN[column]['is_in_sheet']:
+            impl_col += 1
+    # Schreibe Links in Spalte 'implementierung'
+    cell_format =  workbook.add_format(CELL_FORMAT)
+    row = 1
+    for control_id in CONTROL_ATTRIBUTES.keys():
+        if control_id in IMPLEMENTATIONS:
+            #cell_value = str(IMPLEMENTATIONS[control_id][0]['excel_row'])
+            if (anzahl_implementierungen := len(IMPLEMENTATIONS[control_id])) == 2:
+                suffix = ' f.'
+            elif anzahl_implementierungen > 2:
+                suffix = ' ff.'
+            else:
+                suffix = ''
+            destination = 'internal:Implementierungen!A' + str(IMPLEMENTATIONS[control_id][0]['excel_row']) 
+            string = '→Impl. Zeile ' + str(IMPLEMENTATIONS[control_id][0]['excel_row']) + suffix
+            sheet_catalog.write_url(row, impl_col, destination, cell_format, string)
+            #Implementierungen
+        row +=1
+    #----------------------------------------------------------------------------------    
     
     # Schließe Datei
     workbook.close()
 
 
 if __name__ == "__main__":
-    counter = 0
+    #list_index = 0
     main()

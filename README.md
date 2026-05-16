@@ -20,6 +20,8 @@ Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `control_<
 ## GSpp-Anwenderkatalog als Excel-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `catalog_<datum>.xlsx`
 
+Integration der BSI-Implementierungsbeschreibungen (ab Anwenderkatalog commit 20.04.26)
+
 ## Änderungen zwischen zwei GSpp-Anwenderkatalog-commits
 Im Ordner `daten/diff_reports/` die Datei `diff-report-gs++-<datum a>-<datum b>.md` im Markdown-Format und mit den gleichen Inhalten auch im PDF-Format.
 
