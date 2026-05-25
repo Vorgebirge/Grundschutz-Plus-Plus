@@ -1,13 +1,16 @@
-﻿# Stand 16.03.2026
+﻿# Stand 25.05.2026
 import re
 from helper_functions import read_json_file, sort_list_naturally, write_json_file
 from collections import defaultdict
-from configparser import ConfigParser
+from configparser import ConfigParser, ExtendedInterpolation
 
-config = ConfigParser()
+config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
 
-CONTROL_ATTRIBUTES_DICT = dict(([key, config['control_attributes'][key]]) for key in config['control_attributes'])
+#CONTROL_ATTRIBUTES_DICT = dict(([key, config['control_attributes'][key]]) for key in config['control_attributes'])
+keys = sort_list_naturally(list((set(config['control_attributes']) - set(config['DEFAULT']))))
+CONTROL_ATTRIBUTES_DICT = dict(([key, config['control_attributes'][key]]) for key in keys)
+
 CONTROL_ATTRIBUTES = CONTROL_ATTRIBUTES_DICT.keys()
 PRAKTIK_TYPES_DICT = dict(([key.upper(), config['praktik_types'][key]]) for key in config['praktik_types'])
 
@@ -159,7 +162,7 @@ def get_attribute_of_control(control_id: str, attribute = ''):
         return get_single_attribute_of_control(control_id, attribute)
     elif not attribute:
         dict_attributes = defaultdict(str)
-        for attribute in CONTROL_ATTRIBUTES:
+        for attribute in CONTROL_ATTRIBUTES:            
             dict_attributes[attribute] = get_single_attribute_of_control(control_id, attribute)
         return dict_attributes    
     

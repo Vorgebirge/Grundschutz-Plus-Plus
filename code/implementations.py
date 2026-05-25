@@ -1,34 +1,17 @@
-# Stand: 15.05.2026
+# Stand: 25.05.2026
 from flatten_catalog import locators_and_their_items
 from helper_functions import read_json_file, sort_dict_naturally, today, write_json_file, ymd2dmy
 from collections import defaultdict
-from configparser import ConfigParser
-#from datetime import datetime
+from configparser import ConfigParser, ExtendedInterpolation
 
-config = ConfigParser()
+config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
 
+KOMPONENTEN = [str.strip() for str in config['implementierungen']['komponenten'].split(',') if str.strip()]
 COMPONENT = defaultdict(dict)
-
-COMPONENT['aws_iam']['commit'] = config['orte']['commit_aws_iam']
-COMPONENT['aws_iam']['source'] = config['orte']['source_aws_iam']
-COMPONENT['aws_iam']['path'] = config['orte']['path_aws_iam']
-
-COMPONENT['aws_security_hub']['commit'] = config['orte']['commit_aws_security_hub']
-COMPONENT['aws_security_hub']['source'] = config['orte']['source_aws_security_hub']
-COMPONENT['aws_security_hub']['path'] = config['orte']['path_aws_security_hub']
-
-COMPONENT['netzarchitektur']['commit'] = config['orte']['commit_netzarchitektur']
-COMPONENT['netzarchitektur']['source'] = config['orte']['source_netzarchitektur']
-COMPONENT['netzarchitektur']['path'] = config['orte']['path_netzarchitektur']
-
-COMPONENT['passwortrichtlinie']['commit'] = config['orte']['commit_passwortrichtlinie']
-COMPONENT['passwortrichtlinie']['source'] = config['orte']['source_passwortrichtlinie']
-COMPONENT['passwortrichtlinie']['path'] = config['orte']['path_passwortrichtlinie']
-
-COMPONENT['wlan']['commit'] = config['orte']['commit_wlan']
-COMPONENT['wlan']['source'] = config['orte']['source_wlan']
-COMPONENT['wlan']['path'] = config['orte']['path_wlan']
+for komponente in KOMPONENTEN:
+    for attribut in ('name', 'commit', 'source', 'path'):
+        COMPONENT[komponente][attribut] = config[komponente][attribut]
 
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_control_attributes']
 #PATH_IMPLEMENTATIONS = config['orte']['path_implementations'] + today() + '.json'

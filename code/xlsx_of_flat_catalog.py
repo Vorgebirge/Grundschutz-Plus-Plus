@@ -1,8 +1,8 @@
-﻿#Stand 23.05.2026
+﻿#Stand 25.05.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
 from helper_functions import read_json_file, today, ymd2dmy
 from collections import defaultdict
-from configparser import ConfigParser
+from configparser import ConfigParser, ExtendedInterpolation
 
 # Regulaere Ausdruecke, https://regex101.com/
 RE_PREFIX_PARAMETER = r'{{\s*insert\s*:\s*param,\s*'
@@ -13,12 +13,13 @@ HEADER_FORMAT = {"text_wrap":True, "align":"left", "valign":"top", "bold":True, 
 CELL_FORMAT = {"text_wrap":True, "align":"left", "valign":"top", "border":1}
 KOMMENTAR_GROESSE = {'width': 400, 'height': 300}
 
-config = ConfigParser()
+config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
-DATUM_ERSTELLUNG_XLSX = config['daten']['datum_erstellung_xlsx']
-DATUM_CATALOG_GITHUB_COMMIT = config['orte']['commit']
+
+DATUM_CATALOG_GITHUB_COMMIT = config['DEFAULT']['commit']
+
 try:
-    KONTAKT = config['daten']['kontakt']
+    KONTAKT = config['DEFAULT']['kontakt']
 except:
     KONTAKT = ''
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_CONTROL_ATTRIBUTES']

@@ -1,4 +1,4 @@
-﻿# Stand: 16.03.2026
+﻿# Stand: 25.05.2026
 # Änderungen Attribute vor 16.03.2026 -> ab 16.03.2026
 # ergebnis          -> result
 # handlungsworte    -> action_word
@@ -8,9 +8,9 @@
 
 from helper_functions import read_json_file, sort_dict_naturally, write_json_file
 from collections import defaultdict
-from configparser import ConfigParser
+from configparser import ConfigParser, ExtendedInterpolation
 
-config = ConfigParser()
+config = ConfigParser(interpolation = ExtendedInterpolation()
 config.read('config.ini')
 
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_control_attributes']

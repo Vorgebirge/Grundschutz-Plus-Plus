@@ -1,9 +1,9 @@
-﻿# Stand 25.04.2026
+﻿# Stand 25.05.2026
 from flatten_catalog import locators_and_their_items
 from helper_functions import read_json_file, sort_list_naturally, visualize
-from configparser import ConfigParser
+from configparser import ConfigParser, ExtendedInterpolation
 
-config = ConfigParser()
+config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
 
 PATH_CATALOG_A = config['orte']['path_catalog_a']

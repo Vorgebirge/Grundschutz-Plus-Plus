@@ -1,14 +1,14 @@
-﻿# Stand 03.05.2026
+﻿# Stand 25.05.2026
 import re
 from helper_functions import inline_diff, kosinus_aehnlichkeit, read_json_file, replace_odd, sort_list_naturally, strings_broadly_similar, string_in_list_of_strings, teilstrings, ymd2dmy
 from collections import defaultdict, OrderedDict
-from configparser import ConfigParser
+from configparser import ConfigParser, ExtendedInterpolation
 from itertools import product
 
 # Regulaere Ausdruecke, https://regex101.com/
 # Markdown https://www.markdownguide.org
 
-config = ConfigParser()
+config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
 
 CONTROL_ATTRIBUTES_DICT_OSCAL = dict(([key, config['control_attributes'][key]]) for key in config['control_attributes'])
@@ -20,9 +20,9 @@ PATH_DIFF_REPORT = config['orte']['path_diff_report']
 
 CA_A = read_json_file(PATH_CONTROL_ATTRIBUTES_A)
 CA_B = read_json_file(PATH_CONTROL_ATTRIBUTES_B)
-COMMIT_A = config['orte']['COMMIT_A']
+COMMIT_A = config['DEFAULT']['commit_a']
 COMMIT_DATE_A = ymd2dmy(COMMIT_A)
-COMMIT_B = config['orte']['COMMIT_B']
+COMMIT_B = config['DEFAULT']['commit_b']
 COMMIT_DATE_B = ymd2dmy(COMMIT_B)
 RE_PREFIX_PARAMETER = r'{{\s*insert\s*:\s*param,\s*'
 RE_SUFFIX_PARAMETER = r'\s*}}'
