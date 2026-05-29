@@ -1,4 +1,4 @@
-# Stand: 25.05.2026
+# Stand: 29.05.2026
 from flatten_catalog import locators_and_their_items
 from helper_functions import read_json_file, sort_dict_naturally, today, write_json_file, ymd2dmy
 from collections import defaultdict
@@ -14,8 +14,7 @@ for komponente in KOMPONENTEN:
         COMPONENT[komponente][attribut] = config[komponente][attribut]
 
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_control_attributes']
-#PATH_IMPLEMENTATIONS = config['orte']['path_implementations'] + today() + '.json'
-PATH_IMPLEMENTATIONS = config['orte']['path_implementations']
+PATH_IMPLEMENTATIONS = config['orte']['path_catalog_implementations']
 
 dict_implementations = defaultdict(list)
 

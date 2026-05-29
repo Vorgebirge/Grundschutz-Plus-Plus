@@ -1,4 +1,4 @@
-﻿#Stand 25.05.2026
+﻿#Stand 29.05.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
 from helper_functions import read_json_file, today, ymd2dmy
 from collections import defaultdict
@@ -24,7 +24,7 @@ except:
     KONTAKT = ''
 PATH_CONTROL_ATTRIBUTES = config['orte']['path_CONTROL_ATTRIBUTES']
 PATH_CATALOG_XLSX = config['orte']['path_catalog_xlsx']
-PATH_IMPLEMENTATIONS = config['orte']['path_implementations']
+PATH_IMPLEMENTATIONS = config['orte']['path_catalog_implementations']
 PATH_GITHUB_BSI_GSPP_CATALOG = config['orte']['path_github_bsi_gspp_catalog']
 PATH_GITHUB_BSI_GSPP_IMPLEMENTIERUNGEN = config['orte']['path_github_bsi_gspp_implementierungen']
 PATH_GITHUB_VORGEBIRGE_GSPP = config['orte']['path_github_vorgebirge_gspp']
@@ -83,7 +83,7 @@ CATALOG_COLUMN['alt_identifier']['cell_value_type'] = 'string'
 CATALOG_COLUMN['alt_identifier']['headline'] = 'Anforderung\nUUID'
 CATALOG_COLUMN['alt_identifier']['is_in_sheet'] = False
 CATALOG_COLUMN['alt_identifier']['width'] = 40
-CATALOG_COLUMN['alt_identifier']['hidden'] = True
+CATALOG_COLUMN['alt_identifier']['hidden'] = False
 CATALOG_COLUMN['alt_identifier']['level'] = 3
 CATALOG_COLUMN['alt_identifier']['comment'] = 'UUID: Über alle Kataloge und Katalogversionen hinweg eindeutige Identifikationsnummer der Anforderung. Diese folgt der Bedeutung der Anforderung, bleibt also auch bei bedeutungserhaltenden Umformulierungen oder Verschiebungen von Anforderungen gleich. Andererseits wird sie ersetzt, wenn sich die Bedeutung der Anforderung wesentlich verändert, selbst wenn ihre Stellung in der Struktur bleibt.'
 
