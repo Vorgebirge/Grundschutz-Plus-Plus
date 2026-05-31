@@ -11,6 +11,12 @@ BSI-Materialien im Kontext GSpp:
 - [OSCAL](https://www.bsi.bund.de/dok/oscal) und [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
 - [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
 
+## Aktueller GSpp-Anwenderkatalog als Excel-Datei und Diffs
+
+Aktueller GSpp-Anwenderkatalog und Implementierungsbeschreibungen als Excel-Datei: `Grundschutz++-catalog.xlsx` 
+
+Unterschiede zum vorigen GSpp-Anwenderkatalog: `Diff_Report_Grundschutz++-catalog.md` und `Diff_Report_Grundschutz++-catalog.pdf`
+
 ## GSpp-Anwenderkatalog als flache json-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`
 
