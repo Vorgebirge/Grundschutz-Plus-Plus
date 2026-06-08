@@ -15,7 +15,7 @@ BSI-Materialien im Kontext GSpp:
 
 Aktueller GSpp-Anwenderkatalog und Implementierungsbeschreibungen als Excel-Datei: `Grundschutz++-catalog.xlsx` 
 
-Unterschiede zum vorigen GSpp-Anwenderkatalog: `Diff_Report_Grundschutz++-catalog.md` und `Diff_Report_Grundschutz++-catalog.pdf`
+Unterschiede zum vorigen GSpp-Anwenderkatalog: `Diff_Report_Grundschutz++-catalog.md` und `Diff_Report_Grundschutz++-catalog.pdf` Zu Details siehe unten unter *Unterschiede zwischen zwei GSpp-Anwenderkatalog-commits*
 
 ## GSpp-Anwenderkatalog als flache json-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`
@@ -28,12 +28,20 @@ Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `catalog_<
 
 Integration der BSI-Implementierungsbeschreibungen (ab Anwenderkatalog commit 20.04.26)
 
-## Änderungen zwischen zwei GSpp-Anwenderkatalog-commits
+## Unterschiede zwischen zwei GSpp-Anwenderkatalog-commits
 Im Ordner `daten/diff_reports/` die Datei `diff-report-gs++-<datum a>-<datum b>.md` im Markdown-Format und mit den gleichen Inhalten auch im PDF-Format.
 
-Mit Änderungen ist gemeint:
-- Enfernte Anforderungen
-- Neue Anforderungen
-- Wenn es entfernte und neue Anforderungen geben sollte, mögliche Ähnlichkeiten zwischen beiden
-- Veränderte Anforderungsattribute als Übersicht und im Detail 
+- Anforderungen-IDs in commit A, die es in commit B nicht mehr gibt
+   - Auch Nennung der commit B Anforderungen UUID, die identisch zu den entfernten commit A Anforderungen UUID sind
+   - Auch Nennung der commit B Anforderungen, die den entfernten
+     commit A Anforderungen inhaltlich ählich sind (wenn das Maß [Kosinus-Ähnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) > 0,5)
+   
+   Dies sind Indikatoren, dass die Inhalte zu entfernten commit A Anforderungen-IDs in commit B Anforderungen weiter vorliegen.
+- Anforderungen-IDs in commit B, die es in commit A noch nicht gegeben hat  
+   - Auch Nennung der commit A Anforderungen UUID, die identisch zu den neuen commit B Anforderungen UUID sind
+   - Auch Nennung der commit A Anforderungen, die den neuen
+     commit B Anforderungen inhaltlich ähnlich sind (wenn das Maß  Kosinus-Ähnlichkeit > 0,5)
+    
+    Dies sind Indikatoren, dass die Inhalte zu neuen commit B Anforderungen-IDs bereits in A Anforderungen vorlagen.
+- Veränderte Anforderungsattribute als Übersicht und im Detail. Beim oft inhaltlich umfangreichen Attribut `guidance` werden entfernte und ergänzte Textanteile hervorgehoben. 
 
