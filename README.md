@@ -31,17 +31,17 @@ Integration der BSI-Implementierungsbeschreibungen (ab Anwenderkatalog commit 20
 ## Unterschiede zwischen zwei GSpp-Anwenderkatalog-commits
 Im Ordner `daten/diff_reports/` die Datei `diff-report-gs++-<datum a>-<datum b>.md` im Markdown-Format und mit den gleichen Inhalten auch im PDF-Format.
 
-- Anforderungen-IDs in commit A, die es in commit B nicht mehr gibt
+- **Entfernte Anforderungen-IDs**: Anforderungen-IDs in commit A, die es in commit B nicht mehr gibt
    - Auch Nennung der commit B Anforderungen UUID, die identisch zu den entfernten commit A Anforderungen UUID sind
    - Auch Nennung der commit B Anforderungen, die den entfernten
      commit A Anforderungen inhaltlich ählich sind (wenn das Maß [Kosinus-Ähnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) > 0,5)
    
    Dies sind Indikatoren, dass die Inhalte zu entfernten commit A Anforderungen-IDs in commit B Anforderungen weiter vorliegen.
-- Anforderungen-IDs in commit B, die es in commit A noch nicht gegeben hat  
+- **Neue Anforderungen-IDs**: Anforderungen-IDs in commit B, die es in commit A noch nicht gegeben hat  
    - Auch Nennung der commit A Anforderungen UUID, die identisch zu den neuen commit B Anforderungen UUID sind
    - Auch Nennung der commit A Anforderungen, die den neuen
      commit B Anforderungen inhaltlich ähnlich sind (wenn das Maß  Kosinus-Ähnlichkeit > 0,5)
     
     Dies sind Indikatoren, dass die Inhalte zu neuen commit B Anforderungen-IDs bereits in A Anforderungen vorlagen.
-- Veränderte Anforderungsattribute als Übersicht und im Detail. Beim oft inhaltlich umfangreichen Attribut `guidance` werden entfernte und ergänzte Textanteile hervorgehoben. 
+- **Veränderte Anforderungsattribute** als Übersicht und im Detail. Beim oft inhaltlich umfangreichen Attribut `guidance / Hinweise` werden entfernte und ergänzte Textanteile hervorgehoben. 
 
