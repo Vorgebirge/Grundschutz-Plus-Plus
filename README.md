@@ -48,6 +48,7 @@ BSI-Materialien im Kontext GSpp
 - [Mindeststandards Bund](https://www.bsi.bund.de/dok/MST)
 - [OSCAL](https://www.bsi.bund.de/dok/oscal)
 - [Stand der Technik (SdT)](https://www.bsi.bund.de/dok/Stand-der-Technik)   
+- [Weg in die Basis-Absicherung (WiBA)](https://www.bsi.bund.de/dok/WIBA)
 
 - GitHub
   - BSI-Bund [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
