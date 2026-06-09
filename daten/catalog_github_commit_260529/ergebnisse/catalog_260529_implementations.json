@@ -1107,13 +1107,23 @@
             "description": "Wo Schutzbedarf und Betriebsmodell dies erfordern, wird die Freigabe oder Aktivierung des Notfallzugangs an ein Vier-Augen- oder Dual-Anforderung-Verfahren gebunden, etwa über getrennte Freigabe- und Nutzungsrollen."
         }
     ],
+    "BER.3.15": [
+        {
+            "uuid": "b720c083-1b3a-4dbe-8e34-31bd6c9a64fe",
+            "control_alt-identifier": "78e70d76-b423-4707-a3c4-27f416fa7d14",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 114,
+            "description": "Gruppenkonten sind untersagt. Zugangskonten werden personengebunden vergeben und nicht gemeinsam durch mehrere Personen genutzt."
+        }
+    ],
     "BER.3.20": [
         {
             "uuid": "ad40c45a-23e4-4fda-80d1-763fdf992eed",
             "control_alt-identifier": "403fac1f-a78a-4548-858e-a06168253dea",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 114,
+            "excel_row": 115,
             "description": "Maschinenidentitäten verwenden Instanzprofile, Task-Rollen, Diensterollen oder andere kurzlebige Token-Mechanismen statt statischer IAM-Benutzer-Keys. Wo technische Altverfahren vorübergehend Langzeitschlüssel benötigen, wird deren Eigentümer, Zweck, Rotationsverfahren und Abschaltplan dokumentiert."
         },
         {
@@ -1121,7 +1131,7 @@
             "control_alt-identifier": "403fac1f-a78a-4548-858e-a06168253dea",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 115,
+            "excel_row": 116,
             "description": "Wo technische Ausnahmen für Maschinenidentitäten vorübergehend Langzeit-Anmeldedaten erfordern, werden Rotation, Eigentümer, zulässige Dienste, Aufbewahrungsort und Monitoring formal festgelegt. Zielbild bleibt der Ersatz durch Rollen oder automatisch verwaltete Secrets."
         }
     ],
@@ -1131,7 +1141,7 @@
             "control_alt-identifier": "abdd8f32-ec02-491a-a39b-7b0b25a597ca",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 116,
+            "excel_row": 117,
             "description": "Es wird ein dokumentierter Notfallzugang vorgehalten, entweder als dedizierte Notfall-Rolle mit Minimalrechten oder als zentral verwalteter Notfallpfad im Management- oder Root-Kontext. Die Nutzung ist nur für klar definierte Ausfall- und Wiederherstellungsszenarien zulässig."
         }
     ],
@@ -1141,7 +1151,7 @@
             "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 117,
+            "excel_row": 118,
             "description": "Policies enthalten nur benötigte Aktionen und nur die betroffenen Ressourcen. Platzhalter für Aktionen oder Ressourcen werden vermieden, sofern die jeweilige AWS-API nicht zwingend eine ungebundene Ressource erfordert. Zusätzliche Condition-Keys wie Tags, aws:PrinzipalOrgID, aws:RequestedRegion oder weitere kontextbezogene Schlüssel werden dort eingesetzt, wo der Anfragekontext stabil und fachlich geeignet ist."
         },
         {
@@ -1149,7 +1159,7 @@
             "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 118,
+            "excel_row": 119,
             "description": "Jede Vertrauensrichtlinie benennt die zulässigen Prinzipale so eng wie möglich. Unzulässige Platzhalter im Prinzipal werden vermieden; stattdessen werden konkrete Konten, Rollen, föderierte Provider oder organisatorische Grenzen angegeben. Für Drittparteien werden zusätzliche Bedingungen wie sts:ExternalId verwendet; für organisationsinterne Nutzung werden nach Möglichkeit AWS-Organizations-Bedingungen eingesetzt."
         },
         {
@@ -1157,7 +1167,7 @@
             "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 119,
+            "excel_row": 120,
             "description": "iam:PassRole wird ausschließlich für explizit freigegebene Zielrollen erlaubt. Ergänzend werden Bedingungen wie Rollenpfade, Namensmuster, Tags oder dienstspezifische Einschränkungen genutzt, sodass kein unerwartetes Durchreichen anderer Rollen möglich ist. Hochprivilegierte IAM-Aktionen wie CreateRole, UpdateAssumeRolePolicy, PutRolePolicy, AttachRolePolicy, CreatePolicyVersion oder SetDefaultPolicyVersion sind auf einen kleinen Administratorenkreis oder Pipeline-Prinzipale beschränkt."
         },
         {
@@ -1165,7 +1175,7 @@
             "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 120,
+            "excel_row": 121,
             "description": "Für delegiert erzeugte oder per Pipeline bereitgestellte Rollen wird eine zentrale Boundary-Policy als Pflichtvorgabe hinterlegt. Die Boundary enthält mindestens Verbote für hochriskante IAM-Aktionen, unerwünschte Platzhalter und nicht freigegebene Services. Vor produktiver Nutzung wird geprüft, dass die Boundary gesetzt ist und die effektiven Rechte die definierte Maximalgrenze nicht überschreiten."
         },
         {
@@ -1173,7 +1183,7 @@
             "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 121,
+            "excel_row": 122,
             "description": "Zusätzliche Conditions wie aws:RequestedRegion, definierte Quell-IP-Bereiche, bekannte VPC-Endpunkte, Sitzungs-Tags oder andere stabile Kontextmerkmale werden für Rollen mit erhöhtem Missbrauchspotenzial eingesetzt, wenn der jeweilige Zugriffspfad einen verlässlichen Anfragekontext liefert."
         },
         {
@@ -1181,7 +1191,7 @@
             "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 122,
+            "excel_row": 123,
             "description": "Berechtigungen für Security Hub werden nach dem Prinzip der geringsten Berechtigungen beschränkt."
         }
     ],
@@ -1191,7 +1201,7 @@
             "control_alt-identifier": "a9aa521b-e610-40ae-80d0-f1dd3b4ec47f",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 123,
+            "excel_row": 124,
             "description": "Menschen erhalten Zugriff bevorzugt über föderierte Anmeldung und rollenbasierte Berechtigungen, z. B. über IAM Identity Center oder externe IdPs. Neue Berechtigungen werden als Rollen modelliert; direkte Einzelkonten mit dauerhaftem API-Schlüssel werden nicht als Standard bereitgestellt."
         },
         {
@@ -1199,7 +1209,7 @@
             "control_alt-identifier": "a9aa521b-e610-40ae-80d0-f1dd3b4ec47f",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 124,
+            "excel_row": 125,
             "description": "Rollen werden nach klaren fachlichen Verwendungszwecken getrennt, z. B. Betriebsrolle, Deployment-Rolle, Audit-Rolle oder Notfallrolle. Jede Rolle erhält eine eigene Vertrauensrichtlinie und eine eigenständige Berechtigungsgrenze statt eines gemeinsam genutzten Sammelzugangs."
         },
         {
@@ -1207,7 +1217,7 @@
             "control_alt-identifier": "a9aa521b-e610-40ae-80d0-f1dd3b4ec47f",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 125,
+            "excel_row": 126,
             "description": "Security-Hub-Berechtigungen werden rollenbasiert statt direkt an Einzelkonten vergeben."
         }
     ],
@@ -1217,7 +1227,7 @@
             "control_alt-identifier": "e549f464-b2fb-42a1-83b9-21bd3bb0f3cf",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 126,
+            "excel_row": 127,
             "description": "Für besonders kritische Rollen wird die maximale Sitzungsdauer auf das minimal fachlich vertretbare Maß gesetzt, typischerweise 1 Stunde oder weniger, sofern der Zugriffspfad dies unterstützt. Wo technisch möglich, werden zusätzlich Sitzungs-Policies eingesetzt, um den Umfang einer konkreten Sitzung gegenüber der Grundrolle weiter zu reduzieren."
         },
         {
@@ -1225,7 +1235,7 @@
             "control_alt-identifier": "e549f464-b2fb-42a1-83b9-21bd3bb0f3cf",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 127,
+            "excel_row": 128,
             "description": "Privilegierte Security-Hub-Berechtigungen werden nach Möglichkeit nur just-in-time und zeitlich begrenzt aktiviert."
         }
     ],
@@ -1235,7 +1245,7 @@
             "control_alt-identifier": "4123f246-95b2-4785-9714-17a5e68462c5",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 128,
+            "excel_row": 129,
             "description": "Vergebene Zugangsdaten und die ihnen zugeordneten Berechtigungen werden regelmäßig und anlassbezogen auf Erforderlichkeit geprüft. Dazu gehört insbesondere, ob ein IAM-Benutzer, ein Zugriffsschlüssel oder ein dienstspezifisches Anmeldedaten überhaupt noch fachlich benötigt wird."
         },
         {
@@ -1243,7 +1253,7 @@
             "control_alt-identifier": "4123f246-95b2-4785-9714-17a5e68462c5",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 129,
+            "excel_row": 130,
             "description": "Berechtigungen werden mindestens regelmäßig und zusätzlich nach wesentlichen Änderungen überprüft. Die Überprüfung umfasst Rollen, Policies, Zugriffsschlüssel, ungenutzte Services bzw. Aktionen, externe Zugriffe und kontenübergreifende Freigaben."
         }
     ],
@@ -1253,81 +1263,48 @@
             "control_alt-identifier": "4e815b01-7a59-4e8c-bbcc-e4998f342e68",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 130,
-            "description": "Dokumentierte Soll-Berechtigungen werden mit der tatsächlichen technischen Vergabe abgeglichen. Dazu werden IAM Access Analyzer Befunde, Last-Accessed-Informationen, Anmeldedatenberichte und stichprobenartige oder automatisierte Policy-Prüfungen herangezogen."
-        }
-    ],
-    "BER.5.5": [
-        {
-            "uuid": "bf39ba76-bff1-4aae-a732-32c2b149046a",
-            "control_alt-identifier": "bf5b5f6a-f525-45fc-b5a5-62379b3e6b2f",
-            "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
             "excel_row": 131,
-            "description": "Die Institution hat in den zentralen Verzeichnisdiensten eine Passworthistorie implementiert, die sicherstellt, dass die letzten zwölf verwendeten Passwörter nicht erneut vergeben werden können. Die Passwortregeln werden systemseitig durch das jeweilige Betriebssystem und zentrale Authentifizierungsdienste erzwungen. Für Systeme ohne native Unterstützung wird die Passwortprüfung über ein zentrales Identity-Management-System (IDM) mit entsprechender Schnittstellenkontrolle durchgeführt, sodass die Wiederverwendung von Passwörtern institutionseinheitlich verhindert wird.",
-            "remarks": "Zur Umsetzung der Anforderung kann eine Institution verschiedene Ansätze verfolgen, abhängig vom Sicherheitsniveau und der vorhandenen Systemlandschaft. Eine einfache, aber wirksame Lösung besteht in der Aktivierung einer lokalen Passworthistorie innerhalb des Betriebssystems oder Verzeichnisdienstes, die eine definierte Anzahl zuvor genutzter Kennwörter sperrt. Für höhere Sicherheitsniveaus kann eine zentrale Authentifizierungsplattform eingesetzt werden, die Passwort-Hashwerte gegen bekannte Wiederholungen prüft und dabei auch Prüfungen gegen kompromittierte Kennwörter (z. B. aus Leckdatenbanken) ermöglicht."
-        }
-    ],
-    "BER.5.6": [
-        {
-            "uuid": "b1126a53-5430-4209-ae54-e2f656d262ec",
-            "control_alt-identifier": "383f3a5e-d627-46aa-960f-4e8c5c9c9592",
-            "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 132,
-            "description": "Bei der Eingabe eines neuen Passworts wird das Kandidaten‑Passwort vor der Speicherung gegen Sperrlisten (Deny‑Lists) einfacher bzw. öffentlich bekannter Passwörter geprüft. Die Prüfung erfolgt entweder lokal gegen gepflegte Listen oder datenschutzfreundlich über einen Remote‑Abgleich mit k‑Anonymität (z. B. Hash‑Präfixe). Das vollständige Passwort wird dabei weder gespeichert noch übertragen. Nur wenn kein Treffer gefunden wird, wird das Passwort akzeptiert; andernfalls erhalten Nutzende eine verständliche Fehlermeldung mit der Aufforderung, ein stärkeres Passwort zu wählen.",
-            "remarks": "Zur Umsetzung kann eine Institution auf etablierte Mechanismen zur Passwortvalidierung zurückgreifen, die beim Setzen oder Ändern eines Kennworts automatisch gegen Sperrlisten bekannter schwacher/kompromittierter Passwörter prüfen. Zweckmäßige Ausgestaltung:\n* Datenbasis: Kombination aus lokalen „Deny‑Lists“ (inkl. typischer Muster) und einem Abgleich mit öffentlichen Datenbanken kompromittierter Passwörter (z. B. Have I Been Pwned) über k‑Anonymität (Hash‑Präfixe).\n* Muster abdecken: Sequenzen (123456, abcdef), Tastatur‑Walks (qwertz, asdfgh), Wiederholungen (aaaaaa), Jahreszahlen/Monate, häufige Substitutionen (P@ssw0rd), organisationstypische Begriffe und Dienstnamen.\n* Vollständige Passwörter niemals speichern oder übertragen; Remote‑Abgleiche nur TLS‑geschützt und mit Hash‑Präfixen; minimal erforderliche Protokollierung ohne Geheimnisse. Fallback auf lokale Listen, falls externe Dienste nicht erreichbar sind (kein Blockieren von Passwortänderungen allein wegen Zeitüberschreitung).\n* Betrieb: Regelmäßige, nachvollziehbar dokumentierte Aktualisierung der Listen (z. B. monatlich oder bei großen Leaks); definierte Verantwortlichkeiten; automatisierte Update‑Jobs mit Monitoring und Alarmierung bei Fehlern.\n* Benutzererlebnis: Sofortiges, neutrales Feedback im UI (z. B. „Dieses Passwort ist unsicher/kompromittiert“), ohne verbotene Bestandteile offenzulegen; Hinweise auf Passphrasen und Passwortmanager."
-        }
-    ],
-    "BER.5.7": [
-        {
-            "uuid": "91209a21-ca54-4f41-a4a0-cc8550fd4814",
-            "control_alt-identifier": "7057a1f6-0804-49ac-9d7f-289ecc71fa33",
-            "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 133,
-            "description": "Die Regelungen für die Passwortkonstruktion basieren auf einem Stufenmodell, das Sicherheit und Benutzerfreundlichkeit in Abhängigkeit von anderen kompensierenden Kontrollen wie Multi-Faktor-Authentifizierung (MFA) und Hardware-Sicherheit abwägt.\n\n### Stufe 1: Hohe Standardsicherheit\nDies ist die Standardregelung für alle institutionellen Zugangskonten, es sei denn, die spezifischen Bedingungen einer anderen Stufe sind erfüllt.\n**Mindestlänge:** Passwörter sind mindestens 20 Zeichen lang.\n**Komplexität:** Passwörter enthalten Zeichen aus mindestens zwei der folgenden vier Zeichensätzen: Großbuchstaben (A-Z), Kleinbuchstaben (a-z), Ziffern (0-9) oder Sonderzeichen. Systeme und Anwendungen sind so konfiguriert, dass sie mindestens zwei der aufgeführten Zeichensätze akzeptieren.\n**Allgemeine Regeln:** Passwörter dürfen kein Wörterbucheintrag, kein bekanntes kompromittiertes Passwort oder eine gebräuchliche Passphrase sein. Den Benutzern wird die Verwendung von Passphrasen (z. B. \"Korrekt!Pferd-Batterie.Klammer\") empfohlen, da diese sowohl lang als auch einprägsam sind. Mit Ausnahme des Zugangs zu Endgeräten sind Nutzenden verpfichtet, Passwörter ausschließlich durch die Generierung im Passwortmanager der Institution zu wählen, sodass für unterschiedliche Zugänge neue, zufällig generierte und komplexe Kennwörter erstellt werden.\n\n### Stufe 2: MFA-geschützter Zugriff\nDiese reduzierten Anforderungen gelten nur für Zugangskonten, die beide der folgenden Bedingungen erfüllen:\n(1) Das Zugangskonto ist durch eine genehmigte Multi-Faktor-Authentifizierungsmethode geschützt, wie z. B. eine TOTP-Authenticator-App oder einen FIDO2/WebAuthn-Hardware-Schlüssel.\n(2) Das Zugangskonto ist so konfiguriert, dass das es nach maximal 10 fehlgeschlagenen Authentifizierungsversuchen gesperrt wird.\n**Mindestlänge**: Passwörter sind mindestens 12 Zeichen lang.\n**Komplexität**: Passwörter enthalten Zeichen aus mindestens dem alphabetischen Zeichensatz (a-z, A-Z). Die Verwendung zusätzlicher Zeichensätze wird dringend empfohlen.\n\n### Stufe 3: Lokaler Zugriff auf Mobilgeräte\nDiese Anforderungen gelten speziell für die lokale Authentifizierung auf von der Institution verwalteten mobilen Geräten (z. B. Smartphones, Tablets), die mit einem Hardware-Sicherheitschip zur verschlüsselten und manipulationssicheren Speicherung von Schlüsseldaten ausgestattet sind.\n**Format**: Eine PIN (Persönliche Identifikationsnummer) mit mindestens 8 Ziffern ist erforderlich.\n**Komplexität**: Es gibt keine zusätzlichen Anforderungen an den Zeichensatz. Alphanumerische Passcodes werden empfohlen, sofern sie unterstützt und praktikabel sind.\n**Hardware-Schutz**: Die PIN/der Passcode ist durch die Hardware-Sicherheitsfunktionen des Geräts geschützt, indem das Geheimnis in einem isolierten, verschlüsselten Bereich gespeichert ist, auf den selbst von einem kompromittierten Betriebssystem aus kein Zugriff möglich ist.\n**Gerätekonfiguration**: Das Gerät ist über das Mobile Device Management (MDM) so konfiguriert, dass nach 10 aufeinanderfolgenden fehlgeschlagenen Passcode-Eingaben alle Daten auf dem Gerät gelöscht werden.",
-            "remarks": "Vorschläge für eine benutzerfreundliche und sichere Implementierung in Oberflächen und Backends:\n* Maximale akzeptierte Länge: mindestens 64 Zeichen.\n* Copy & Paste in das Passwortfeld erlauben (Zwischenablage nicht blockieren).\n* Kein Abschneiden (trunking) von Passwörtern (Eingaben vollständig verarbeiten und speichern/prüfen).\n* aufklärende Hinweise im Anmeldeprozess zu integrieren, die Nutzende beim Erstellen starker Passwörter unterstützen und die Kriterien klar benennen. \n* Keine Passwort‑Hinweise (Hint‑Felder) anbieten, die Rückschlüsse auf das konkrete Passwort geben (z.B. \"Wie hieß ihr erstes Haustier?\")\n* Eine Passwortstärke‑Anzeige (Strength Meter) zur Rückmeldung bereitstellen.\n\nAuch adaptive Verfahren können helfen: Systeme und Anwendungen können eine höhere Passwortqualität verlangen, wenn Benutzer auf besonders sensible Anwendungen zugreifen oder aus unüblichen Netzwerken kommen. So kann die Vorgabe praxisnah umgesetzt werden, ohne dass sie allein durch rigide Regeln zur Belastung für die Nutzer wird."
-        }
-    ],
-    "BER.5.8": [
-        {
-            "uuid": "aec1f0ad-4f9e-4621-be5f-67e517e29646",
-            "control_alt-identifier": "12ab3443-67a1-4ecd-9177-d9547f62d27e",
-            "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 134,
-            "description": "Die Systeme und Anwendungen der Institution sind so konfiguriert, dass Zugangskonten für Nutzende keinen regelmäßigen Passwortwechsel erfordern. Falls Zugangsdaten möglicherweise kompromittiert sind (z.B. falls ihnen jemand über die Schulter gesehen hat bei der Eingabe oder die Zugangsdaten im Internet öffentlich bekannt geworden sind) so melden Sie sich bitte umgehend beim Helpdesk, um einen Passwortwechsel anzustoßen."
+            "description": "Dokumentierte Soll-Berechtigungen werden mit der tatsächlichen technischen Vergabe abgeglichen. Dazu werden IAM Access Analyzer Befunde, Last-Accessed-Informationen, Anmeldedatenberichte und stichprobenartige oder automatisierte Policy-Prüfungen herangezogen."
         }
     ],
     "BER.6.1": [
         {
-            "uuid": "ddab2122-d16d-428c-bf4a-febc82ecaa58",
+            "uuid": "ab7c74e3-9674-4524-98bb-ca791ef38d51",
             "control_alt-identifier": "c1cfa733-340c-497d-a3b6-8480d78e1278",
             "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 135,
-            "description": "Falls Sie eine Ausnahmegenehmigung haben, mit der Sie zur Nutzung EINES Zugangskontos gemeinsam mit anderen Personen berechtigt sind, ist es ihre Pflicht jeden Wechsel in der Zuständigkeit (also einen Aufgabenwechsel, Kündigung oder längere Abwesenheiten wie Elternzeit) beim Helpdesk zu melden. Für das Gruppenkonto wird dann unverzüglich ein neues Passwort erstellt, welches allen für das Zugangskonto berechtigten Personen mitgeteilt wird."
+            "commit_source": "08.06.26",
+            "excel_row": 132,
+            "description": "Alle Endgeräte von Nutzenden werden über die zentrale Endgeräteverwaltung automatisch mit einem offline nutzbaren, quelloffenen Passwortmanager provisioniert. Der Passwortmanager speichert Zugangsdaten ausschließlich in einer lokal verschlüsselten Passwortdatenbankdatei. Die Passwortdatenbankdatei wird im persönlichen synchronisierten Dateibereich der nutzenden Person abgelegt und über die zentrale Dateimanagement- und Synchronisationsplattform der Institution zwischen den freigegebenen Endgeräten synchronisiert. Die Synchronisation verwendet die vorhandenen Mechanismen für Benutzerzuordnung, Dateiversionierung, Konflikterkennung und Wiederherstellung früherer Dateistände. Der Zugriff auf die Passwortdatenbank wird durch ein Master-Passwort oder ein gleichwertiges Freigabeverfahren mit zusätzlichem Authentisierungsfaktor geschützt."
         }
     ],
     "BER.6.2": [
         {
-            "uuid": "e529d538-2aaa-4725-b818-73489c4eadb9",
+            "uuid": "7fbf9c43-1bec-4f5e-8e8e-b6803e965791",
             "control_alt-identifier": "7e0edf55-22d6-42d8-973f-d3f8635a0913",
             "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 136,
-            "description": "Der von der Institution bereitgestellte Passwort-Manager ist der einzig genehmigte Ort zur Speicherung von Anmeldeinformationen. Dieses Werkzeug ermöglicht die Verwendung von langen, zufälligen und einzigartigen Passwörtern für jeden Dienst und erhöht die Sicherheit erheblich. Nutzende sind dafür verantwortlich, ihr Master-Passwort für den Passwort-Manager mit der gleichen Sorgfalt zu schützen wie ihre primären Anmeldeinformationen für die Institution. Die Verwendung nicht genehmigter Passwort-Manager für institutionelle Anmeldedaten stellt einen Verstoß gegen diese Richtlinie dar."
+            "commit_source": "08.06.26",
+            "excel_row": 133,
+            "description": "Systeme und Anwendungen werden vor produktiver Nutzung gegen vorkonfigurierte Authentisierungsmittel geprüft. Herstellerseitige Standardkonten, Default-Passwörter, vorinstallierte Schlüssel, Zertifikate, Hardware-Token und vergleichbare Zugangsmittel werden deaktiviert oder ersetzt, bevor das System oder die Anwendung produktiv genutzt wird."
         }
     ],
     "BER.6.3": [
         {
-            "uuid": "120c8f78-e2c1-450b-bba5-61cb61b8f570",
+            "uuid": "f8dedc4a-fb3b-4015-a3f6-f8360c906059",
             "control_alt-identifier": "4483f020-da27-44af-ae23-edf7d676d72f",
             "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 137,
-            "description": "Um ein Konto zu entsperren oder ein Passwort zurückzusetzen, wird zunächst die Identität des Nutzenden erneut verifiziert.\n\n**Self-Service (Standardbenutzer):** Nutzende sind verpflichtet, sich für das Self-Service-Portal zur Passwortzurücksetzung (SSPR) der Institution zu registrieren. Die Wiederherstellung über SSPR erfordert die erfolgreiche Verifizierung durch mindestens zwei vorab registrierte, hochsichere Authentifizierungsmethoden (z. B. ein Code von einem Hardware-Token in Kombination mit einer biometrischen Verifizierung).\n\n* **Helpdesk-gestützt (Hohe Sicherheit):** Für privilegierte Konten oder in Situationen, in denen Self-Service nicht möglich ist, kontaktieren Nutzende den IT-Helpdesk. Die Identität der anfragenden Person wird dann von zwei autorisierten internen Personen gleichzeitig überprüft (z. B. dem direkten Vorgesetzten und einem Mitglied des IT-Sicherheitsteams)."
+            "commit_source": "08.06.26",
+            "excel_row": 134,
+            "description": "Eine Authentifizierung nur anhand biometrischer Merkmale wird in den betroffenen Systemen deaktiviert. Biometrische Merkmale werden nur zur lokalen Freigabe eines geeigneten Authentisierungsmittels verwendet, wenn zusätzlich ein kryptographischer FIDO2/WebAuthn-Nachweis gegenüber dem zentralen Identitätsprovider erfolgt."
+        }
+    ],
+    "BER.6.4": [
+        {
+            "uuid": "824cd7a1-0107-4933-818b-46ad271b13e0",
+            "control_alt-identifier": "2b9ddd3e-5233-46f5-abca-1793b89e2809",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 135,
+            "description": "Für Anwendungen an externen Netzanschlüssen wird im zentralen Identitätsprovider eine Passkey- beziehungsweise FIDO2-basierte Authentifizierung aktiviert. Nutzende registrieren ein geeignetes Hardware- oder Plattform-Authentisierungsmittel. Bei der Anmeldung signiert dieses Authentisierungsmittel eine origin-gebundene kryptographische Challenge, sodass Phishing-Seiten, abgegriffene Passwörter oder einfache Einmalcodes nicht für einen erfolgreichen Zugriff ausreichen."
         }
     ],
     "BER.6.5": [
@@ -1336,7 +1313,7 @@
             "control_alt-identifier": "55b70084-f446-42af-908b-0f514a72f380",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 138,
+            "excel_row": 136,
             "description": "Für alle Zugänge mit weitreichenden Berechtigungen wird MFA verpflichtend umgesetzt. In der AWS Management Console wird für den Root-Benutzer unter 'Security credentials' mindestens ein starker zweiter Faktor registriert; für Administrierende werden privilegierte Rollen nur nach erfolgreicher MFA oder gleichwertiger föderierter MFA freigegeben."
         },
         {
@@ -1344,7 +1321,7 @@
             "control_alt-identifier": "55b70084-f446-42af-908b-0f514a72f380",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 139,
+            "excel_row": 137,
             "description": "Der Notfallzugang ist mit starker MFA abgesichert, bevorzugt hardwarebasiert oder phishing-resistent. Die Sitzungsdauer wird so kurz wie möglich gehalten; jede Nutzung wird sofort alarmiert und im Nachgang überprüft."
         },
         {
@@ -1352,8 +1329,56 @@
             "control_alt-identifier": "55b70084-f446-42af-908b-0f514a72f380",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 140,
+            "excel_row": 138,
             "description": "Weitreichende Security-Hub-Berechtigungen werden mit Mehr-Faktor-Authentisierung abgesichert."
+        },
+        {
+            "uuid": "20581ea4-3376-4c47-9617-f059dc2766d1",
+            "control_alt-identifier": "55b70084-f446-42af-908b-0f514a72f380",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 139,
+            "description": "Für Zugänge mit weitreichenden Berechtigungen wird im zentralen Identitätsprovider ein zusätzlicher FIDO2-/Passkey-Faktor verpflichtend aktiviert. Administrative und vergleichbar privilegierte Zugänge können dadurch nicht allein mit einem Passwort verwendet werden; der Zugriff wird erst nach erfolgreicher kryptographischer Challenge-Response-Prüfung freigegeben."
+        }
+    ],
+    "BER.6.6": [
+        {
+            "uuid": "bf39ba76-bff1-4aae-a732-32c2b149046a",
+            "control_alt-identifier": "d7c76736-0c1d-4693-92d5-894a8b740204",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 140,
+            "description": "Zentrale Authentifizierungsdienste, Anwendungen und verwaltete Endgeräte blockieren die Wiederverwendung von Passwörtern automatisch. Beim Setzen oder Ändern eines Passworts wird der Kandidat mit der Passwort-Historie des betroffenen Zugangskontos verglichen. Für lokale administrative Zugangsdaten werden eindeutige, systemindividuelle Geheimnisse verwendet, sodass keine Wiederverwendung über mehrere Systeme hinweg entsteht."
+        }
+    ],
+    "BER.6.7": [
+        {
+            "uuid": "b1126a53-5430-4209-ae54-e2f656d262ec",
+            "control_alt-identifier": "f0722999-f8c4-4c75-810b-94d7563dd698",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 141,
+            "description": "Beim Setzen oder Ändern eines Passworts wird das Kandidatenpasswort vor der Speicherung automatisch gegen Sperrlisten trivialer, leicht erratbarer und öffentlich bekannter kompromittierter Passwörter geprüft. Die Prüfung erfolgt über eine institutionell gehostete Prüfdienstinstanz mit Leak-Datenbank und k-Anonymity-Abfrage; das vollständige Passwort wird nicht übertragen. Wird der Kandidat als unsicher erkannt, wird er nicht gespeichert und die nutzende Person wird zur Eingabe eines anderen Passworts aufgefordert."
+        }
+    ],
+    "BER.6.8": [
+        {
+            "uuid": "91209a21-ca54-4f41-a4a0-cc8550fd4814",
+            "control_alt-identifier": "af5ba77a-8d77-4a4f-8842-23ba9dedb829",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 142,
+            "description": "## 3. Kriterien für die Qualität von Passwörtern\nDiese Regelung enthält das Stufenmodell der Institution für die Qualität von Passwörtern. Es legt Mindestlängen, Zeichensatzanforderungen, kompensierende Kontrollen und die besondere Behandlung lokaler Mobilgerätezugänge fest.\n\nDie Regelungen für die Passwortkonstruktion basieren auf einem Stufenmodell, das Sicherheit und Benutzerfreundlichkeit in Abhängigkeit von anderen kompensierenden Kontrollen wie Multi-Faktor-Authentifizierung (MFA) und Hardware-Sicherheit abwägt.\n\n### Stufe 1: Hohe Standardsicherheit\nDies ist die Standardregelung für alle institutionellen Zugangskonten, es sei denn, die spezifischen Bedingungen einer anderen Stufe sind erfüllt.\n**Mindestlänge:** Passwörter sind mindestens 20 Zeichen lang.\n**Komplexität:** Passwörter enthalten Zeichen aus mindestens zwei der folgenden vier Zeichensätzen: Großbuchstaben (A-Z), Kleinbuchstaben (a-z), Ziffern (0-9) oder Sonderzeichen. Systeme und Anwendungen sind so konfiguriert, dass sie mindestens zwei der aufgeführten Zeichensätze akzeptieren.\n**Allgemeine Regeln:** Passwörter dürfen kein Wörterbucheintrag, kein bekanntes kompromittiertes Passwort oder eine gebräuchliche Passphrase sein. Die Verwendung von Passphrasen ist zulässig, wenn sie die festgelegten Qualitätskriterien erfüllen. Mit Ausnahme des Zugangs zu Endgeräten werden Passwörter ausschließlich durch die Generierung im Passwortmanager der Institution gewählt, sodass für unterschiedliche Zugänge neue, zufällig generierte und komplexe Kennwörter erstellt werden.\n\n### Stufe 2: MFA-geschützter Zugriff\nDiese reduzierten Anforderungen gelten nur für Zugangskonten, die beide der folgenden Bedingungen erfüllen:\n(1) Das Zugangskonto ist durch eine genehmigte Multi-Faktor-Authentifizierungsmethode geschützt, wie z. B. eine TOTP-Authenticator-App oder einen FIDO2/WebAuthn-Hardware-Schlüssel.\n(2) Das Zugangskonto ist so konfiguriert, dass es nach maximal 10 fehlgeschlagenen Authentifizierungsversuchen gesperrt wird.\n**Mindestlänge:** Passwörter sind mindestens 12 Zeichen lang.\n**Komplexität:** Passwörter enthalten Zeichen aus mindestens dem alphabetischen Zeichensatz (a-z, A-Z). Die Verwendung zusätzlicher Zeichensätze ist zulässig.\n\n### Stufe 3: Lokaler Zugriff auf Mobilgeräte\nDiese Anforderungen gelten für die lokale Authentifizierung auf von der Institution verwalteten mobilen Geräten, die mit einem Hardware-Sicherheitschip zur verschlüsselten und manipulationssicheren Speicherung von Schlüsseldaten ausgestattet sind.\n**Format:** Eine PIN mit mindestens 8 Ziffern ist erforderlich.\n**Komplexität:** Es gibt keine zusätzlichen Anforderungen an den Zeichensatz. Alphanumerische Passcodes sind zulässig, sofern sie unterstützt und praktikabel sind.\n**Hardware-Schutz:** Die PIN oder der Passcode ist durch die Hardware-Sicherheitsfunktionen des Geräts geschützt, indem das Geheimnis in einem isolierten, verschlüsselten Bereich gespeichert ist, auf den selbst von einem kompromittierten Betriebssystem aus kein Zugriff möglich ist.\n**Gerätekonfiguration:** Das Gerät ist über das Mobile Device Management (MDM) so konfiguriert, dass nach 10 aufeinanderfolgenden fehlgeschlagenen Passcode-Eingaben alle Daten auf dem Gerät gelöscht werden.\n"
+        }
+    ],
+    "BER.6.9": [
+        {
+            "uuid": "aec1f0ad-4f9e-4621-be5f-67e517e29646",
+            "control_alt-identifier": "4de1c314-e6b3-4b70-bc73-54cdafca7ae9",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 143,
+            "description": "## 5. Anlassbezogene Passwortwechsel\nDiese Regelung legt fest, dass Passwörter nicht in festen Zeitabständen gewechselt werden. Ein Passwortwechsel wird ausschließlich anlassbezogen durchgeführt, insbesondere bei Verdacht auf Kompromittierung, nach festgestellter Weitergabe an unbefugte Dritte, bei einschlägigen Treffern in Leak-Datenbanken, nach Phishing-Vorfällen oder bei technischen Indikatoren für einen möglichen Missbrauch des Zugangs. Der Verdacht wird über den festgelegten Meldeweg der Institution gemeldet; anschließend wird der Passwortwechsel für die betroffenen Zugangskonten veranlasst."
         }
     ],
     "BER.6.10": [
@@ -1362,8 +1387,16 @@
             "control_alt-identifier": "4785649d-561d-4757-9421-4d0db14ee4df",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 141,
+            "excel_row": 144,
             "description": "Anmeldedatenberichte, Last-Used-Informationen, IAM Access Analyzer und ergänzende API-Abfragen werden als automatisierter Mechanismus genutzt, um kompromittierte, ungenutzte oder überalterte Zugangsdaten frühzeitig zu erkennen. Aus Befunde folgen definierte Maßnahmen wie Deaktivierung, Rotation, Löschung oder Incident-Eskalation."
+        },
+        {
+            "uuid": "a37b001a-b7be-4ed4-a7f4-376998a39174",
+            "control_alt-identifier": "4785649d-561d-4757-9421-4d0db14ee4df",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 145,
+            "description": "Ein Credential-Leak-Monitoring-Dienst überwacht institutionelle Zugangsdaten auf Hinweise aus bekannten Datenabflüssen. Die Institution betreibt hierfür eine interne Spiegelung eines öffentlichen Breach- und Passwort-Hash-Korpus. Ein geplanter Download-Prozess aktualisiert die Hashbereiche regelmäßig und speichert sie in einem internen Prüfdienst. Anwendungen, zentrale Authentifizierungsdienste und Monitoringprozesse fragen den internen Prüfdienst über k-Anonymity-Hashpräfixe ab, sodass vollständige Passwortwerte und vollständige Passwort-Hashes nicht an externe Stellen übertragen werden. Treffer werden an die zuständige Stelle gemeldet und lösen den anlassbezogenen Wechsel der betroffenen Zugangsdaten sowie die Behandlung des Sicherheitsereignisses aus."
         }
     ],
     "DET.1.1.1": [
@@ -1372,7 +1405,7 @@
             "control_alt-identifier": "609e4af3-91aa-47e9-a293-a6d4ec446ae2",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 142,
+            "excel_row": 146,
             "description": "Die Institution hat WLAN-Architektur- und Sicherheitsvorgaben verbindlich im ISMS dokumentiert und mit Referenzen auf TR-02102, RADIUS/PKI-Prozesse und Monitoring-Anbindungen hinterlegt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher."
         }
@@ -1383,7 +1416,7 @@
             "control_alt-identifier": "e77e84bc-da99-4a39-97da-41393c6422ac",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 143,
+            "excel_row": 147,
             "description": "Die Institution hat Planung, Betrieb, Schlüssel- und Zertifikatsverwaltung, Change-Management und Monitoring des WLAN in einer RACI-Matrix eindeutig zugewiesen und Vertretungs- sowie Vier-Augen-Prinzip verbindlich festgelegt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Trennen Sie Management‑Netze strikt vom Nutzdatenverkehr. Erlauben Sie Verwaltungszugänge nur aus dedizierten Admin‑Netzen oder über OOB‑Wege, verwenden Sie SNMPv3/SSH/HTTPS mit starken Cipher‑Suiten und deaktivieren Sie unsichere Protokolle. Logging und Konfigurations‑Versionierung erleichtern die Nachvollziehbarkeit."
         }
@@ -1394,7 +1427,7 @@
             "control_alt-identifier": "cd662f68-72c0-4de0-8969-2be2da7049de",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 144,
+            "excel_row": 148,
             "description": "Die Institution hat WLAN-Nutzungs- und Sicherheitsregeln für Mitarbeitende, Gäste und BYOD verbindlich kommuniziert, Änderungen aktiv angekündigt und die Kenntnisnahme sicherheitsrelevanter Vorgaben nachweisbar eingefordert.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1405,7 +1438,7 @@
             "control_alt-identifier": "9801627a-0646-41fe-81d8-945e7b58da50",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 145,
+            "excel_row": 149,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies, Kanal- und Leistungspläne sowie die Funkausleuchtung regelmäßig überprüft und Abweichungen beziehungsweise Findings risikobasiert im Change-Prozess abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1416,7 +1449,7 @@
             "control_alt-identifier": "d1646dc3-5cdb-44a5-999a-d41785bdd34b",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 146,
+            "excel_row": 150,
             "description": "Für Findings aus Security Hub existiert ein geregeltes Melde- und Routingverfahren mit klaren Kriterien, Zielsystemen und Zuständigkeiten."
         }
     ],
@@ -1426,7 +1459,7 @@
             "control_alt-identifier": "c961b1c8-2f6a-4e6d-9126-e2005c44f728",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 147,
+            "excel_row": 151,
             "description": "Die Institution hat WLAN-Nutzungs- und Sicherheitsregeln für Mitarbeitende, Gäste und BYOD verbindlich kommuniziert, Änderungen aktiv angekündigt und die Kenntnisnahme sicherheitsrelevanter Vorgaben nachweisbar eingefordert.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1437,7 +1470,7 @@
             "control_alt-identifier": "1af88c3b-a13c-4d74-a099-f230c9f71f55",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 148,
+            "excel_row": 152,
             "description": "Falls ein SOC zuständig ist, werden Erkennung, Erstbeurteilung und initiale Behandlung passender Findings an das SOC bzw. eine äquivalente Betriebsfunktion angebunden."
         },
         {
@@ -1445,7 +1478,7 @@
             "control_alt-identifier": "1af88c3b-a13c-4d74-a099-f230c9f71f55",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 149,
+            "excel_row": 153,
             "description": "Die Institution hat Planung, Betrieb, Schlüssel- und Zertifikatsverwaltung, Change-Management und Monitoring des WLAN in einer RACI-Matrix eindeutig zugewiesen und Vertretungs- sowie Vier-Augen-Prinzip verbindlich festgelegt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Trennen Sie Management‑Netze strikt vom Nutzdatenverkehr. Erlauben Sie Verwaltungszugänge nur aus dedizierten Admin‑Netzen oder über OOB‑Wege, verwenden Sie SNMPv3/SSH/HTTPS mit starken Cipher‑Suiten und deaktivieren Sie unsichere Protokolle. Logging und Konfigurations‑Versionierung erleichtern die Nachvollziehbarkeit."
         }
@@ -1456,7 +1489,7 @@
             "control_alt-identifier": "dc58d353-86e1-4070-9f86-b7f0e0f93305",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 150,
+            "excel_row": 154,
             "description": "Sicherheitsrelevante IAM-Ereignisse werden in allen relevanten Konten und Regionen fortlaufend protokolliert. Die Protokolle werden in ein zentrales, gegen nachträgliche Manipulation geschütztes Ziel ausgeleitet; nach Möglichkeit sind Log-File-Validation und weitere Integritätsschutzmechanismen aktiviert."
         },
         {
@@ -1464,7 +1497,7 @@
             "control_alt-identifier": "dc58d353-86e1-4070-9f86-b7f0e0f93305",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 151,
+            "excel_row": 155,
             "description": "Sicherheitsrelevante Security-Hub-Ereignisse werden mindestens für eine definierte Frist protokolliert."
         },
         {
@@ -1472,7 +1505,7 @@
             "control_alt-identifier": "dc58d353-86e1-4070-9f86-b7f0e0f93305",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 152,
+            "excel_row": 156,
             "description": "Fehler, Throttling und andere sicherheitsrelevante Betriebsereignisse in eigenen Zusatzintegrationen werden protokolliert."
         },
         {
@@ -1480,7 +1513,7 @@
             "control_alt-identifier": "dc58d353-86e1-4070-9f86-b7f0e0f93305",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 153,
+            "excel_row": 157,
             "description": "Die Institution hat WLAN-Sicherheitsereignisse sowie Authentifizierungs- und Autorisierungsereignisse manipulationsgeschützt zentral an das SIEM weitergeleitet, zeitkorreliert ausgewertet und Aufbewahrung sowie Integrität der Protokolle sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Für ein belastbares Authentisierungs- und Verschlüsselungskonzept empfiehlt sich WPA3‑Enterprise mit 802.1X (bevorzugt EAP‑TLS) und verpflichtendem Protected Management Frames (PMF). Hinterlegen Sie Zertifikate über eine interne PKI, prüfen Sie OCSP/CRL und deaktivieren Sie Übergangsmodi (WPA2‑PSK‑Fallback, TKIP). Achten Sie auf konsistente Cipher‑Suiten, schalten Sie WPS ab und testen Sie die Supplicant‑Profile auf allen relevanten Betriebssystemen. Für IoT‑Szenarien ohne 802.1X bieten sich isolierte SSIDs mit Multi‑PSK/OWE und strengen Egress‑Regeln an. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1491,7 +1524,7 @@
             "control_alt-identifier": "c25354d3-ed8f-4bac-ad0c-f0641d1b7f84",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 154,
+            "excel_row": 158,
             "description": "CloudTrail protokolliert erfolgreiche und fehlgeschlagene Authentifizierungen, insbesondere Root-Konsolenanmeldungen, fehlgeschlagene MFA-Eingaben und privilegierte Anmeldeereignisse. Darauf aufbauend werden CloudWatch-/SIEM-Alarme mit kurzer Reaktionszeit eingerichtet."
         },
         {
@@ -1499,7 +1532,7 @@
             "control_alt-identifier": "c25354d3-ed8f-4bac-ad0c-f0641d1b7f84",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 155,
+            "excel_row": 159,
             "description": "Authentifizierungen bei Erfolg und Fehlschlag werden erfasst und alarmierbar gemacht. Das schließt ConsoleLogin, Root-Anmeldungen, fehlgeschlagene MFA und auffällige Anmeldeereignisse ein."
         }
     ],
@@ -1509,7 +1542,7 @@
             "control_alt-identifier": "e7d500ff-393c-4c14-baed-c87b676efe5c",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 156,
+            "excel_row": 160,
             "description": "Privilegierte Ereignisse wie CreateRole, UpdateAssumeRolePolicy, AttachRolePolicy, PutRolePolicy, CreatePolicyVersion, SetDefaultPolicyVersion, PassRole, CreateAccessKey oder root-bezogene Aktionen werden mit erhöhter Priorität ausgewertet."
         },
         {
@@ -1517,7 +1550,7 @@
             "control_alt-identifier": "e7d500ff-393c-4c14-baed-c87b676efe5c",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 157,
+            "excel_row": 161,
             "description": "Privilegierte oder sicherheitskritische Ereignisse an Security Hub werden besonders überwacht."
         }
     ],
@@ -1527,7 +1560,7 @@
             "control_alt-identifier": "681494bd-8d1d-4b34-84f6-abab2f4ea751",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 158,
+            "excel_row": 162,
             "description": "Cloud-Ereignisse aus AWS werden in das institutionsweite Audit-Log bzw. SIEM integriert, damit Cloud-seitige Missbrauchsszenarien nicht isoliert außerhalb der zentralen Detektion verbleiben."
         },
         {
@@ -1535,7 +1568,7 @@
             "control_alt-identifier": "681494bd-8d1d-4b34-84f6-abab2f4ea751",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 159,
+            "excel_row": 163,
             "description": "Cloud-Ereignisse aus Security Hub werden in das institutionsweite Audit-Log bzw. SIEM integriert."
         }
     ],
@@ -1545,7 +1578,7 @@
             "control_alt-identifier": "fa239d57-3934-4664-bc2d-53aca634eaef",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 160,
+            "excel_row": 164,
             "description": "Die Institution hat produktive, Gäste- und IoT-SSIDs separaten VLANs zugeordnet und Ost-West-Verkehr per Firewall-Policies sowie DNS- und Web-Filtern auf notwendige Ziele begrenzt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher."
         }
@@ -1556,7 +1589,7 @@
             "control_alt-identifier": "558dc6ab-ba8e-47bb-ba24-ddf09be49ec0",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 161,
+            "excel_row": 165,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies, Kanal- und Leistungspläne sowie die Funkausleuchtung regelmäßig überprüft und Abweichungen beziehungsweise Findings risikobasiert im Change-Prozess abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1567,7 +1600,7 @@
             "control_alt-identifier": "1cd947a7-70a2-41c9-b3fd-90f3ef75838c",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 162,
+            "excel_row": 166,
             "description": "Die Institution hat eine versionierte WLAN-Sicherheitsdokumentation im ISMS gepflegt, die SSID-/VLAN-Konzept, Rollen und Verantwortlichkeiten, Schlüssel- und Zertifikatslebenszyklen, Gastzugang, Mindestkryptographie sowie relevante RADIUS-, PKI- und Monitoring-Anbindungen nachvollziehbar beschreibt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Gegen TCP‑basierte DoS‑Varianten helfen SYN‑Cookies bzw. SYN‑Proxy, Embryonic‑Connection‑Limits und das Verwerfen ungültiger Flag‑Kombinationen. Deaktivieren Sie unnötige Portweiterleitungen und UPnP, beschränken Sie eingehende Verwaltungsschnittstellen konsequent und validieren Sie State‑Tables unter Last. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher. Gästezugänge gehören in getrennte SSIDs/VLANs mit aktivierter Client‑Isolation und restriktiven Egress‑Regeln. Ein Captive‑Portal kann rechtliche Hinweise und Nutzungsbedingungen abbilden; beschränken Sie dabei Zugriffe auf interne Ressourcen konsequent und begrenzen Sie die Bandbreite, um Produktivdienste zu schützen."
         }
@@ -1578,7 +1611,7 @@
             "control_alt-identifier": "33c4b36a-263c-4380-9cc4-ab89c3995c22",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 163,
+            "excel_row": 167,
             "description": "Die Institution hat WIDS/WIPS-Funktionen des WLAN-Controllers für Rogue-AP- und Rogue-Client-Erkennung, Deauthentication-Angriffe und Interferenzen aktiviert, Alarme zentral korreliert und die Bearbeitung über definierte Betriebsprozesse sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1589,7 +1622,7 @@
             "control_alt-identifier": "c31c5572-5982-4840-8dc3-ada7052bbb6a",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 164,
+            "excel_row": 168,
             "description": "Die Institution hat WIDS/WIPS-Funktionen des WLAN-Controllers für Rogue-AP- und Rogue-Client-Erkennung, Deauthentication-Angriffe und Interferenzen aktiviert, Alarme zentral korreliert und die Bearbeitung über definierte Betriebsprozesse sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1600,7 +1633,7 @@
             "control_alt-identifier": "a71bbf22-4b3a-41d0-8ec8-6de7a9790040",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 165,
+            "excel_row": 169,
             "description": "Die Institution hat WIDS/WIPS-Funktionen des WLAN-Controllers für Rogue-AP- und Rogue-Client-Erkennung, Deauthentication-Angriffe und Interferenzen aktiviert, Alarme zentral korreliert und die Bearbeitung über definierte Betriebsprozesse sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1611,7 +1644,7 @@
             "control_alt-identifier": "e6cf2c48-c49f-4c10-9cca-252d903b0979",
             "source": "Netzarchitektur-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 166,
+            "excel_row": 170,
             "description": "Die Institution hat kontinuierliche Funk-Anomalieerkennung mit WIPS-Signaturen/Spektrumanalyse betrieben und Alarme im SIEM korreliert.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Die Netzabdeckung prüfen Sie zweckmäßig mit einer Kombination aus passiven und aktiven Surveys je Band (2,4/5/6 GHz). Zielwerte liegen erfahrungsgemäß bei RSSI ≥ −67 dBm (Daten) bzw. ≥ −65 dBm (Voice) und SNR ≥ 25–30 dB. Dokumentieren Sie Heatmaps pro Nutzungszone, messen Sie Durchsatz und Latenz an repräsentativen Punkten und analysieren Sie die Kanalbelegung inklusive Spektrumanalyse. Passen Sie Kanalbreiten und Sendeleistungen so an, dass Co‑Channel‑Interferenzen minimiert und stabile Roaming‑Zellen erhalten bleiben. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         },
@@ -1620,7 +1653,7 @@
             "control_alt-identifier": "e6cf2c48-c49f-4c10-9cca-252d903b0979",
             "source": "Netzarchitektur-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 167,
+            "excel_row": 171,
             "description": "Die Institution betreibt ein zentrales Monitoring für Netze und Perimeter, das Logdaten, Metriken und Alarme korreliert und sicherstellt, dass auffällige Ereignisse zeitnah analysiert und behandelt werden.",
             "remarks": "Beispiele sind ausgehende Netzverbindungen zu als bösartig bekannten oder gänzlich unbekannten DNS-Domains oder IP-Adressen, Anzeichen für DNS-Tunneling (ungewöhnlich lange Subdomains oder Spitzenwerte für TXT-Mengen), ungewöhnlich hohes Datenvolumen zu Cloud-Speicherlösungen, sowie unautorisierte Portscans oder Brute Force Angriffe auf Fernwartungsschnittstellen wie RDP oder SSH sein. Hierdurch können Verbindungen zu Angreiferservern (C2 Beacons), die Ausbreitung von Angriffen über das Netz, oder Datenabflüsse erkannt werden."
         },
@@ -1629,7 +1662,7 @@
             "control_alt-identifier": "e6cf2c48-c49f-4c10-9cca-252d903b0979",
             "source": "Netzarchitektur-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 168,
+            "excel_row": 172,
             "description": "Die Institution hat wIDS/WIPS-Funktionen des WLAN-Controllers für Rogue-AP/-Client-Erkennung, Deauth-Angriffe und Interferenzen aktiviert und Alarme in Tickets überführt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         },
@@ -1638,7 +1671,7 @@
             "control_alt-identifier": "e6cf2c48-c49f-4c10-9cca-252d903b0979",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 169,
+            "excel_row": 173,
             "description": "Die Institution hat WIDS/WIPS-Funktionen des WLAN-Controllers für Rogue-AP- und Rogue-Client-Erkennung, Deauthentication-Angriffe und Interferenzen aktiviert, Alarme zentral korreliert und die Bearbeitung über definierte Betriebsprozesse sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1649,7 +1682,7 @@
             "control_alt-identifier": "1fc84b56-0931-439d-9b5a-4642926e0d04",
             "source": "Netzarchitektur-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 170,
+            "excel_row": 174,
             "description": "Authentifizierungsversuche an externen Schnittstellen werden zentral protokolliert und auf Anomalien wie Häufung, Fehlversuche oder ungewöhnliche Herkunft geprüft, um Angriffe frühzeitig zu erkennen.",
             "remarks": "Ohne solche Überprüfungen könnte ein Angreifer unbemerkt wiederholt Zugangsdaten erraten (Brute-Force- oder Wörterbuchangriffe) oder unautorisierte Geräte an Schnittstellen wie VPN-Gateways, Firewalls oder externen Modems anbinden. Auch ein unbemerktes Einschleusen von Schadsoftware über offene Remote-Desktop- oder SSH-Verbindungen könnte langfristig unentdeckt bleiben. Eine kontinuierliche Auswertung von Anmeldeversuchen kann dagegen Auffälligkeiten wie ungewöhnlich viele Fehlversuche, Anmeldungen aus geografisch atypischen Regionen oder Verbindungsaufbau außerhalb üblicher Betriebszeiten aufzeigen und so eine wirksame Schutzwirkung entfalten. Als Frist können Intervalle wie \"täglich\", \"wöchentlich\" oder \"in Echtzeit\" je nach Kritikalität des Anschlusses angemessen sein. Verbindungen sind hier unautorisiert, wenn Anzeichen vorliegen, dass sie von unautorisierten Personen oder von unautorisierten Systemen stammen. Die Überprüfung kann manuell oder durch automatische Analyse von Logdateien erfolgen. Empfehlenswert ist eine kontinuierliche Überwachung. Dabei kann z.B. nach ungewöhnlichen vielen fehlgeschlagenen Anmeldungen, veralteten Berechtigungen, Einwahlen von Adminaccounts, ungewöhnlichen Einwahlorten/IP-Adressbereichen/User Agents oder Uhrzeiten gesucht werden. Als Reaktion kommen z.B. Sperren betroffener Adressbereiche, die Abschaltung angegriffener Schnittstellen oder stärkere Authentifizierungsmechanismen wie Mehr-Faktor-Authentifizierung in Betracht."
         }
@@ -1660,7 +1693,7 @@
             "control_alt-identifier": "a9af82d7-44b8-412c-b8a0-becbda9b1da9",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 171,
+            "excel_row": 175,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies, Kanal- und Leistungspläne sowie die Funkausleuchtung regelmäßig überprüft und Abweichungen beziehungsweise Findings risikobasiert im Change-Prozess abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1671,7 +1704,7 @@
             "control_alt-identifier": "f7550d0a-cf51-4586-a4e8-0c3831a10a79",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 172,
+            "excel_row": 176,
             "description": "Die Institution hat eine versionierte WLAN-Sicherheitsdokumentation im ISMS gepflegt, die SSID-/VLAN-Konzept, Rollen und Verantwortlichkeiten, Schlüssel- und Zertifikatslebenszyklen, Gastzugang, Mindestkryptographie sowie relevante RADIUS-, PKI- und Monitoring-Anbindungen nachvollziehbar beschreibt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Gegen TCP‑basierte DoS‑Varianten helfen SYN‑Cookies bzw. SYN‑Proxy, Embryonic‑Connection‑Limits und das Verwerfen ungültiger Flag‑Kombinationen. Deaktivieren Sie unnötige Portweiterleitungen und UPnP, beschränken Sie eingehende Verwaltungsschnittstellen konsequent und validieren Sie State‑Tables unter Last. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher. Gästezugänge gehören in getrennte SSIDs/VLANs mit aktivierter Client‑Isolation und restriktiven Egress‑Regeln. Ein Captive‑Portal kann rechtliche Hinweise und Nutzungsbedingungen abbilden; beschränken Sie dabei Zugriffe auf interne Ressourcen konsequent und begrenzen Sie die Bandbreite, um Produktivdienste zu schützen."
         }
@@ -1682,7 +1715,7 @@
             "control_alt-identifier": "d19ef635-5438-4b4e-b75b-479764f39069",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 173,
+            "excel_row": 177,
             "description": "Die Institution hat rollenbasierte Zugriffsrechte für SSIDs und VLANs zentral definiert und deren technische Durchsetzung über RADIUS-Policies sowie Controller-ACLs sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher."
         }
@@ -1693,7 +1726,7 @@
             "control_alt-identifier": "1221903d-e402-49b0-a7ac-763a11683a4b",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 174,
+            "excel_row": 178,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikats- und CRL-Ketten, Funkausleuchtung sowie Angriffssimulationen nach Plan geprüft und festgestellte Findings risikobasiert abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Die Netzabdeckung prüfen Sie zweckmäßig mit einer Kombination aus passiven und aktiven Surveys je Band (2,4/5/6 GHz). Zielwerte liegen erfahrungsgemäß bei RSSI ≥ −67 dBm (Daten) bzw. ≥ −65 dBm (Voice) und SNR ≥ 25–30 dB. Dokumentieren Sie Heatmaps pro Nutzungszone, messen Sie Durchsatz und Latenz an repräsentativen Punkten und analysieren Sie die Kanalbelegung inklusive Spektrumanalyse. Passen Sie Kanalbreiten und Sendeleistungen so an, dass Co‑Channel‑Interferenzen minimiert und stabile Roaming‑Zellen erhalten bleiben."
         }
@@ -1704,7 +1737,7 @@
             "control_alt-identifier": "f64131d9-e0cd-4c01-937a-ea93d7a92371",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 175,
+            "excel_row": 179,
             "description": "Die Institution hat WLAN-Sicherheitsfunktionen wie 802.1X, Zertifikatsketten, PMF und Gastzugänge regelmäßig getestet, Ergebnisse dokumentiert und die Erkenntnisse in den Betriebs- und Change-Prozess zurückgeführt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Für ein belastbares Authentisierungs- und Verschlüsselungskonzept empfiehlt sich WPA3‑Enterprise mit 802.1X (bevorzugt EAP‑TLS) und verpflichtendem Protected Management Frames (PMF). Hinterlegen Sie Zertifikate über eine interne PKI, prüfen Sie OCSP/CRL und deaktivieren Sie Übergangsmodi (WPA2‑PSK‑Fallback, TKIP). Achten Sie auf konsistente Cipher‑Suiten, schalten Sie WPS ab und testen Sie die Supplicant‑Profile auf allen relevanten Betriebssystemen. Für IoT‑Szenarien ohne 802.1X bieten sich isolierte SSIDs mit Multi‑PSK/OWE und strengen Egress‑Regeln an. WLAN‑exponierte Webdienste wie Captive‑/Guest‑Portale gehören in eine DMZ mit strikt segmentierenden Firewalls. Nutzen Sie einen Reverse‑Proxy bzw. eine WAF für TLS‑Terminierung, HSTS und Eingangsvalidierung, halten Sie Zertifikate aktuell und beschränken Sie Rückwege in interne Netze auf das notwendige Minimum. Protokollieren Sie Anmelde‑ und Fehlerereignisse nachvollziehbar und verbinden Sie das Monitoring mit Alarmierungsprozessen. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher. Gästezugänge gehören in getrennte SSIDs/VLANs mit aktivierter Client‑Isolation und restriktiven Egress‑Regeln. Ein Captive‑Portal kann rechtliche Hinweise und Nutzungsbedingungen abbilden; beschränken Sie dabei Zugriffe auf interne Ressourcen konsequent und begrenzen Sie die Bandbreite, um Produktivdienste zu schützen."
         }
@@ -1715,7 +1748,7 @@
             "control_alt-identifier": "622f98fa-a211-4c1e-b655-5e9dd6c0d507",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 176,
+            "excel_row": 180,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikats- und CRL-Ketten, Funkausleuchtung sowie Angriffssimulationen nach Plan geprüft und festgestellte Findings risikobasiert abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Die Netzabdeckung prüfen Sie zweckmäßig mit einer Kombination aus passiven und aktiven Surveys je Band (2,4/5/6 GHz). Zielwerte liegen erfahrungsgemäß bei RSSI ≥ −67 dBm (Daten) bzw. ≥ −65 dBm (Voice) und SNR ≥ 25–30 dB. Dokumentieren Sie Heatmaps pro Nutzungszone, messen Sie Durchsatz und Latenz an repräsentativen Punkten und analysieren Sie die Kanalbelegung inklusive Spektrumanalyse. Passen Sie Kanalbreiten und Sendeleistungen so an, dass Co‑Channel‑Interferenzen minimiert und stabile Roaming‑Zellen erhalten bleiben."
         }
@@ -1726,7 +1759,7 @@
             "control_alt-identifier": "ea34243d-adc3-4208-ab4e-25247aa8c009",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 177,
+            "excel_row": 181,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikats- und CRL-Ketten, Funkausleuchtung sowie Angriffssimulationen nach Plan geprüft und festgestellte Findings risikobasiert abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Die Netzabdeckung prüfen Sie zweckmäßig mit einer Kombination aus passiven und aktiven Surveys je Band (2,4/5/6 GHz). Zielwerte liegen erfahrungsgemäß bei RSSI ≥ −67 dBm (Daten) bzw. ≥ −65 dBm (Voice) und SNR ≥ 25–30 dB. Dokumentieren Sie Heatmaps pro Nutzungszone, messen Sie Durchsatz und Latenz an repräsentativen Punkten und analysieren Sie die Kanalbelegung inklusive Spektrumanalyse. Passen Sie Kanalbreiten und Sendeleistungen so an, dass Co‑Channel‑Interferenzen minimiert und stabile Roaming‑Zellen erhalten bleiben."
         }
@@ -1737,7 +1770,7 @@
             "control_alt-identifier": "ff549367-0992-4b06-a2c0-246915632cb1",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 178,
+            "excel_row": 182,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikats- und CRL-Ketten, Funkausleuchtung sowie Angriffssimulationen nach Plan geprüft und festgestellte Findings risikobasiert abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Die Netzabdeckung prüfen Sie zweckmäßig mit einer Kombination aus passiven und aktiven Surveys je Band (2,4/5/6 GHz). Zielwerte liegen erfahrungsgemäß bei RSSI ≥ −67 dBm (Daten) bzw. ≥ −65 dBm (Voice) und SNR ≥ 25–30 dB. Dokumentieren Sie Heatmaps pro Nutzungszone, messen Sie Durchsatz und Latenz an repräsentativen Punkten und analysieren Sie die Kanalbelegung inklusive Spektrumanalyse. Passen Sie Kanalbreiten und Sendeleistungen so an, dass Co‑Channel‑Interferenzen minimiert und stabile Roaming‑Zellen erhalten bleiben."
         }
@@ -1748,7 +1781,7 @@
             "control_alt-identifier": "8f64e735-9870-4a8d-8b7b-220b93baddba",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 179,
+            "excel_row": 183,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikats- und CRL-Ketten, Funkausleuchtung sowie Angriffssimulationen nach Plan geprüft und festgestellte Findings risikobasiert abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Die Netzabdeckung prüfen Sie zweckmäßig mit einer Kombination aus passiven und aktiven Surveys je Band (2,4/5/6 GHz). Zielwerte liegen erfahrungsgemäß bei RSSI ≥ −67 dBm (Daten) bzw. ≥ −65 dBm (Voice) und SNR ≥ 25–30 dB. Dokumentieren Sie Heatmaps pro Nutzungszone, messen Sie Durchsatz und Latenz an repräsentativen Punkten und analysieren Sie die Kanalbelegung inklusive Spektrumanalyse. Passen Sie Kanalbreiten und Sendeleistungen so an, dass Co‑Channel‑Interferenzen minimiert und stabile Roaming‑Zellen erhalten bleiben."
         }
@@ -1759,7 +1792,7 @@
             "control_alt-identifier": "2134a13a-50a6-44b7-8df1-3ce041ef376a",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 180,
+            "excel_row": 184,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies sowie Kanal-/Leistungspläne vierteljährlich überprüft und Abweichungen per Change behoben.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1770,7 +1803,7 @@
             "control_alt-identifier": "42bf3e91-d270-4a79-8ae9-a22918f94ad7",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 181,
+            "excel_row": 185,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies sowie Kanal-/Leistungspläne vierteljährlich überprüft und Abweichungen per Change behoben.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1781,7 +1814,7 @@
             "control_alt-identifier": "c179bae3-7990-4308-b42b-53297a581402",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 182,
+            "excel_row": 186,
             "description": "Die Institution hat WIDS/WIPS-Funktionen des WLAN-Controllers für Rogue-AP- und Rogue-Client-Erkennung, Deauthentication-Angriffe und Interferenzen aktiviert, Alarme zentral korreliert und die Bearbeitung über definierte Betriebsprozesse sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1792,7 +1825,7 @@
             "control_alt-identifier": "cb35b6b0-15c3-488f-8759-ad66fe4883fa",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 183,
+            "excel_row": 187,
             "description": "Die Institution hat WLAN-Nutzungs- und Sicherheitsregeln für Mitarbeitende, Gäste und BYOD verbindlich kommuniziert, Änderungen aktiv angekündigt und die Kenntnisnahme sicherheitsrelevanter Vorgaben nachweisbar eingefordert.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1803,7 +1836,7 @@
             "control_alt-identifier": "aeb9f98e-0aad-44c1-8ab1-2f7276e387de",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 184,
+            "excel_row": 188,
             "description": "Die Institution hat verbindliche Mindeststandards und Policies für Planung, Betrieb und Absicherung des WLAN verabschiedet und deren Anwendung in den zuständigen Betriebs- und Freigabeprozessen verankert.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1814,7 +1847,7 @@
             "control_alt-identifier": "681afb8d-1864-4d86-9e69-3ecd9c14fbb8",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 185,
+            "excel_row": 189,
             "description": "Die Institution hat rollenbasierte Zugriffsrechte für SSIDs/VLANs definiert und per RADIUS-Policies sowie Controller-ACLs technisch durchgesetzt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher."
         }
@@ -1825,7 +1858,7 @@
             "control_alt-identifier": "92f55893-595b-4d3d-80eb-ef8e7b5ed1cb",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 186,
+            "excel_row": 190,
             "description": "Die Institution hat WLAN-Sicherheitsereignisse sowie Authentifizierungs- und Autorisierungsereignisse manipulationsgeschützt zentral an das SIEM weitergeleitet, zeitkorreliert ausgewertet und Aufbewahrung sowie Integrität der Protokolle sichergestellt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Für ein belastbares Authentisierungs- und Verschlüsselungskonzept empfiehlt sich WPA3‑Enterprise mit 802.1X (bevorzugt EAP‑TLS) und verpflichtendem Protected Management Frames (PMF). Hinterlegen Sie Zertifikate über eine interne PKI, prüfen Sie OCSP/CRL und deaktivieren Sie Übergangsmodi (WPA2‑PSK‑Fallback, TKIP). Achten Sie auf konsistente Cipher‑Suiten, schalten Sie WPS ab und testen Sie die Supplicant‑Profile auf allen relevanten Betriebssystemen. Für IoT‑Szenarien ohne 802.1X bieten sich isolierte SSIDs mit Multi‑PSK/OWE und strengen Egress‑Regeln an. Ein aktives WIDS/WIPS überwacht die Funkumgebung auf Rogue‑APs, Deauth‑/Disassoc‑Angriffe und störende Quellen. Pflegen Sie eine genehmigte AP‑Liste, definieren Sie sinnvolle Schwellwerte, automatisieren Sie Alarm‑zu‑Ticket‑Prozesse und führen Sie regelmäßige Tuning‑Zyklen durch, um Fehlalarme zu minimieren."
         }
@@ -1836,7 +1869,7 @@
             "control_alt-identifier": "f45e08b7-8f42-469a-aa22-63b93daba60e",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 187,
+            "excel_row": 191,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies, Kanal- und Leistungspläne sowie die Funkausleuchtung regelmäßig überprüft und Abweichungen beziehungsweise Findings risikobasiert im Change-Prozess abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1847,7 +1880,7 @@
             "control_alt-identifier": "02e94d9c-cd23-4cb4-a6ef-7ccd7efb0869",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 188,
+            "excel_row": 192,
             "description": "Die Institution hat eine versionierte WLAN-Sicherheitsdokumentation im ISMS gepflegt, die SSID-/VLAN-Konzept, Rollen und Verantwortlichkeiten, Schlüssel- und Zertifikatslebenszyklen, Gastzugang, Mindestkryptographie sowie relevante RADIUS-, PKI- und Monitoring-Anbindungen nachvollziehbar beschreibt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Gegen TCP‑basierte DoS‑Varianten helfen SYN‑Cookies bzw. SYN‑Proxy, Embryonic‑Connection‑Limits und das Verwerfen ungültiger Flag‑Kombinationen. Deaktivieren Sie unnötige Portweiterleitungen und UPnP, beschränken Sie eingehende Verwaltungsschnittstellen konsequent und validieren Sie State‑Tables unter Last. Ein vollständiger WLAN‑Netzplan umfasst SSIDs samt Verwendungszweck, VLAN‑IDs/Subnetze, AP‑Standorte, Kanal‑/Leistungs‑Profile, Controller‑/RADIUS‑/PKI‑Anbindungen, Segment‑ und Vertrauensgrenzen sowie externe Übergabepunkte. Versionieren Sie diese Artefakte im ISMS und stellen Sie Änderungs‑ und Freigabeprozesse sicher. Gästezugänge gehören in getrennte SSIDs/VLANs mit aktivierter Client‑Isolation und restriktiven Egress‑Regeln. Ein Captive‑Portal kann rechtliche Hinweise und Nutzungsbedingungen abbilden; beschränken Sie dabei Zugriffe auf interne Ressourcen konsequent und begrenzen Sie die Bandbreite, um Produktivdienste zu schützen."
         }
@@ -1858,7 +1891,7 @@
             "control_alt-identifier": "0ec29d00-cea9-4337-8f83-b680453b21b2",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 189,
+            "excel_row": 193,
             "description": "Die Institution hat WLAN-Konfigurationen, Zertifikate, RADIUS-Policies, Kanal- und Leistungspläne sowie die Funkausleuchtung regelmäßig überprüft und Abweichungen beziehungsweise Findings risikobasiert im Change-Prozess abgearbeitet.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1869,7 +1902,7 @@
             "control_alt-identifier": "5e302b5d-0a5b-4821-8d46-1e2f7fc40c3f",
             "source": "WLAN-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 190,
+            "excel_row": 194,
             "description": "Die Institution hat WLAN-Sicherheitsfunktionen regelmäßig angreiferzentriert getestet und Wiederanlaufszenarien geübt.",
             "remarks": "Die Maßnahme reduziert das Angriffsrisiko im WLAN-Bereich nachhaltig, erhöht die Resilienz gegen Fehlkonfigurationen und unterstützt Nachweis- und Compliance-Anforderungen im Betrieb. Die beschriebenen Schritte lassen sich in standardisierten Change- und Betriebsprozessen verankern. Dokumentieren Sie Annahmen, Abhängigkeiten und Schnittstellen zu angrenzenden Kontrollen (Identitäts‑, Segmentierungs‑, Monitoring‑ und Betriebsprozesse). Validieren Sie die Umsetzung mit einem Testplan, halten Sie Ergebnisse nachvollziehbar fest und planen Sie regelmäßige Überprüfungen ein, um Konfigurationsdrift zu vermeiden."
         }
@@ -1880,8 +1913,18 @@
             "control_alt-identifier": "4b2b03f6-103d-4435-9edc-27cd961e2361",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 191,
+            "excel_row": 195,
             "description": "Die Verfahrensweise für Aktivierung, zentrale Verwaltung, Onboarding neuer Konten, Ziel-Regionen und Zuständigkeiten wird dokumentiert und verbindlich festgelegt."
+        }
+    ],
+    "KONF.11.3": [
+        {
+            "uuid": "120c8f78-e2c1-450b-bba5-61cb61b8f570",
+            "control_alt-identifier": "7d8e0d79-751c-4afe-bbe5-124004f01577",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 196,
+            "description": "## 6. Entsperr- und Wiederherstellungsverfahren\nDieses Verfahren legt alternative Authentifizierungswege für das Entsperren eines Kontos oder das Zurücksetzen eines Passworts fest. Für das Entsperren eines Kontos oder das Zurücksetzen eines Passworts wird ein alternatives Authentifizierungsverfahren verwendet, das ein vergleichbares Vertrauensniveau wie der Primärzugang erreicht.\n\n**Self-Service:** Die Wiederherstellung über das Self-Service-Portal der Institution erfordert die erfolgreiche Verifikation mit mindestens zwei vorab registrierten Authentifizierungsmethoden.\n\n**Helpdesk-gestützt:** Für privilegierte Konten oder in Situationen, in denen Self-Service nicht möglich ist, wird die Identität der anfragenden Person durch zwei autorisierte interne Stellen geprüft, z. B. durch die fachliche Führungskraft und eine zuständige Stelle des IT-Sicherheits- oder Identitätsmanagements."
         }
     ],
     "PERF.2.1": [
@@ -1890,7 +1933,7 @@
             "control_alt-identifier": "9bb16672-4394-4ce9-bd14-12a080233f7a",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 192,
+            "excel_row": 197,
             "description": "Die Aktivierung und Parametrisierung von Standards und Controls wird an Verpflichtungen, Geltungsbereich und Compliance-Ziele der Institution ausgerichtet und regelmäßig überprüft."
         }
     ],
@@ -1900,7 +1943,7 @@
             "control_alt-identifier": "3111f074-e762-4bf0-b0b4-3d548e27cef5",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 193,
+            "excel_row": 198,
             "description": "Berichte berücksichtigen sowohl Erfolge als auch Probleme, etwa persistente High-Findings, Ausfälle von Integrationen oder überfällige Bearbeitungen."
         }
     ],
@@ -1910,7 +1953,7 @@
             "control_alt-identifier": "c6ecb13d-2c6a-495d-89fd-8d9e699b3ff9",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 194,
+            "excel_row": 199,
             "description": "Aus Dashboards und Auswertungen werden priorisierte Maßnahmenvorschläge mit realistischem Umsetzungsaufwand abgeleitet."
         }
     ],
@@ -1920,7 +1963,7 @@
             "control_alt-identifier": "5d8dccb2-5fea-43c1-a804-0b49f481a1ca",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 195,
+            "excel_row": 200,
             "description": "Die Institutionsleitung wird regelmäßig über den Stand der Security-Hub-basierten Sicherheitslage informiert."
         }
     ],
@@ -1930,7 +1973,7 @@
             "control_alt-identifier": "17e221bd-3b74-453a-ad4e-e2cb346b6af5",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 196,
+            "excel_row": 201,
             "description": "Für die institutionsweite Überwachung der Informationssicherheit wird Security Hub als zentrales Monitoring- und Aggregationswerkzeug organisationsweit eingeführt und technisch konsistent betrieben."
         },
         {
@@ -1938,7 +1981,7 @@
             "control_alt-identifier": "17e221bd-3b74-453a-ad4e-e2cb346b6af5",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 197,
+            "excel_row": 202,
             "description": "Dashboards und Insights sind Teil eines effektiven Monitoring-Ansatzes und nicht bloß ad-hoc genutzte Einzelansichten."
         },
         {
@@ -1946,7 +1989,7 @@
             "control_alt-identifier": "17e221bd-3b74-453a-ad4e-e2cb346b6af5",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 198,
+            "excel_row": 203,
             "description": "Eigene technische Monitoring- oder Exportmechanismen für Security Hub werden robust und betrieblich beherrschbar umgesetzt."
         }
     ],
@@ -1956,7 +1999,7 @@
             "control_alt-identifier": "3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 199,
+            "excel_row": 204,
             "description": "Sicherheitsvorfälle und sicherheitsrelevante Befunde werden zentral statt fragmentiert überwacht; Findings aus Mitgliedskonten und verknüpften Regionen laufen in einem gemeinsamen Lagebild zusammen."
         },
         {
@@ -1964,7 +2007,7 @@
             "control_alt-identifier": "3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 200,
+            "excel_row": 205,
             "description": "Die Institution stellt sicher, dass relevante Sicherheitsvorfälle und Fehlkonfigurationen in Security Hub tatsächlich ankommen und nicht durch fehlende Integrationen unsichtbar bleiben."
         },
         {
@@ -1972,7 +2015,7 @@
             "control_alt-identifier": "3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 201,
+            "excel_row": 206,
             "description": "Sicherheitsvorfälle werden nicht nur angezeigt, sondern in überwachbare und bearbeitbare Reaktionspfade überführt."
         }
     ],
@@ -1982,7 +2025,7 @@
             "control_alt-identifier": "4f185314-4f6f-4539-b14e-d230c84ecd4d",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 202,
+            "excel_row": 207,
             "description": "Schwachstellen- und Kontroll-Findings werden nur dann verlässlich überwacht, wenn die technischen Voraussetzungen wie AWS Config in allen erforderlichen Regionen aktiv sind."
         }
     ],
@@ -1992,7 +2035,7 @@
             "control_alt-identifier": "4599c41b-8c08-46cc-a88d-3a2ab141994c",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 203,
+            "excel_row": 208,
             "description": "Neue oder geänderte Bedrohungslagen können nur angemessen erkannt werden, wenn neue relevante Findings-Quellen und Produktintegrationen bewertet und bei Bedarf eingebunden werden."
         }
     ],
@@ -2002,7 +2045,7 @@
             "control_alt-identifier": "1d6e2d9d-a9b9-46cb-9079-a2587c90c661",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 204,
+            "excel_row": 209,
             "description": "Aktive Controls, Deaktivierungen, Ausnahmen und Parameterwerte werden regelmäßig auf Aktualität und weitere Eignung überprüft."
         }
     ],
@@ -2012,7 +2055,7 @@
             "control_alt-identifier": "988a898a-f7c3-4e6c-9746-8b20e2e85ecd",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 205,
+            "excel_row": 210,
             "description": "Für IAM-Alarme existiert ein kurzes Triage- und Erstreaktions-Runbook. Es enthält mindestens Priorisierung, Sofortmaßnahmen, Rücknahme kritischer Änderungen, Sicherung relevanter Logs und die Eskalationswege an Betrieb, SOC und forensische Stellen."
         },
         {
@@ -2020,7 +2063,7 @@
             "control_alt-identifier": "988a898a-f7c3-4e6c-9746-8b20e2e85ecd",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 206,
+            "excel_row": 211,
             "description": "Security-Hub-Meldungen erhalten eine strukturierte Triage mit Priorisierung und definierten Sofortmaßnahmen."
         }
     ],
@@ -2030,30 +2073,78 @@
             "control_alt-identifier": "3c124fd5-bd24-4864-a931-b3a226177f2e",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 207,
+            "excel_row": 212,
             "description": "Für ausgewählte Finding-Klassen können automatische Erstreaktionen ausgelöst werden."
+        }
+    ],
+    "SENS.4.1": [
+        {
+            "uuid": "88f48fb9-8d91-47a8-83dc-1a061d9061d3",
+            "control_alt-identifier": "fbdb73ce-38c5-466f-84a3-218a7d73eda9",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 213,
+            "description": "## 2. Umgang mit personengebundenen Authentisierungsmitteln\nPersonengebundene Authentisierungsmittel werden ausschließlich durch die berechtigte Person verwendet, geschützt aufbewahrt und nicht an andere Personen weitergegeben. Zugangsdaten werden bei der Eingabe vor Einsichtnahme durch Dritte geschützt. Verdachtsfälle auf Kompromittierung, ungewöhnliche Login-Masken oder Aufforderungen zur Eingabe von Zugangsdaten außerhalb der vorgesehenen Systeme werden unverzüglich an den festgelegten Meldeweg der Institution gemeldet. Biometrische Merkmale werden als fälschbar behandelt; eine ausschließlich biometrische Authentifizierung wird nicht als alleinige Absicherung akzeptiert. Passwörter werden ausschließlich im Einklang mit dem festgelegten Stufenmodell zur Passwortqualität gewählt."
+        }
+    ],
+    "SENS.4.1.1": [
+        {
+            "uuid": "28e8a0ef-d68f-4c6e-b823-0b415d5fe584",
+            "control_alt-identifier": "78719bfb-2d5c-492f-ba02-fc10a0bdf361",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 214,
+            "description": "Zugangsdaten werden bei der Eingabe vor Einsichtnahme durch Dritte geschützt."
+        }
+    ],
+    "SENS.4.1.2": [
+        {
+            "uuid": "ddab2122-d16d-428c-bf4a-febc82ecaa58",
+            "control_alt-identifier": "0573247f-65f3-4768-9d27-6c9c0f42c6cd",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 215,
+            "description": "Die Weitergabe oder Wiederverwendung von Passwörtern für andere Zugangskonten, Systeme, Dienste oder Anwendungen ist untersagt."
         }
     ],
     "SENS.4.1.3": [
         {
-            "uuid": "88f48fb9-8d91-47a8-83dc-1a061d9061d3",
+            "uuid": "d575d0b2-2426-4545-a6b6-02dc010a3641",
             "control_alt-identifier": "48c3a712-943d-403e-8e04-cfc11d92a387",
             "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 208,
-            "description": "Alle Nutzenden sind verpflichtet, Passwörter ausschließlich im Einklang mit den festgeschriebenen Regelungen zur Passwortkomplexität zu wählen.",
-            "remarks": "Bei der Umsetzung dieser Anforderung ist es sinnvoll, zwischen verschiedenen Reifegraden der Sensibilisierung zu unterscheiden. In einer grundlegenden Ausprägung kann eine Institution einfache, verständliche Schulungsmaterialien oder E-Learning-Einheiten einsetzen, die anschaulich erklären, wie starke Passwörter aufgebaut sind und warum Wiederverwendung riskant ist. In einer erweiterten Variante können simulierte Passwortprüfungen oder Quizformate eingesetzt werden, die das Erlernte interaktiv festigen. Hochsichere Institutionen können ergänzend automatisierte Analysen von Passwortstärke in Authentifizierungsprozessen vorsehen, gekoppelt mit kontextsensitiven Hinweisen und der Empfehlung zur Nutzung von Passwortmanagern oder Passphrasen. Zweckmäßig ist auch, die Sensibilisierung mit realitätsnahen Beispielen – etwa aus bekannten Datenleaks – zu verknüpfen, um den Bezug zur eigenen IT-Sicherheitslage zu verdeutlichen.\nFür die effektive Umsetzung dieser Anforderung ist es zielführend, wenn Sensibilisierungsinhalte leicht zugänglich und praxisorientiert sind – beispielsweise über kurze Videoformate oder kompakte Intranetartikel. Hilfreich sind positive Formulierungen wie „Ein starkes Passwort schützt Ihre Daten besser als jede Firewall“, statt abschreckender oder rein technischer Darstellungen. Ein typisches Negativbeispiel wäre, ausschließlich auf formale Passwortregeln (etwa „mindestens acht Zeichen, Sonderzeichen erforderlich“) hinzuweisen, ohne den Hintergrund zu erläutern – dies führt häufig zu passwortschwachen Mustern wie „Passwort!1“. Zweckmäßig kann es sein, bei Passwortwechseln kurze Reminder einzublenden, die gute Passphrasen erläutern („Vier zufällige Wörter ergeben meist ein sicheres Passwort“) oder durch Infografiken anschaulich zeigen, wie Angriffe auf schwache Passwörter ablaufen. Auch die Integration der Sensibilisierung in bestehende Kommunikationskanäle – z. B. interne Newsletter oder Awareness-Tage – kann die Wirksamkeit deutlich erhöhen."
+            "commit_source": "08.06.26",
+            "excel_row": 216,
+            "description": "Passwörter werden ausschließlich im Einklang mit dem festgelegten Stufenmodell zur Passwortqualität gewählt."
         }
     ],
-    "SENS.5.5": [
+    "SENS.4.1.4": [
         {
-            "uuid": "ab7c74e3-9674-4524-98bb-ca791ef38d51",
-            "control_alt-identifier": "7aed1f72-5233-44dd-8531-b23337c89691",
+            "uuid": "e529d538-2aaa-4725-b818-73489c4eadb9",
+            "control_alt-identifier": "7734048a-d797-49f0-87e6-f9c08ce5f5e7",
             "source": "Passwortrichtlinie-component_definition.json",
-            "commit_source": "20.04.26",
-            "excel_row": 209,
-            "description": "Für diese Datenkategorie ist eine Löschfrist von [Entscheidung: 7 Tagen bis 10 Jahren] festgelegt. Alle Nutzenden sind verpflichtet, Daten dieser Kategorie bei Fristablauf unverzüglich zu löschen. Bei der Löschung sind die Regelungen und Verfahren zum sicheren Löschen von Daten zu beachten.",
-            "remarks": "Zielführend ist es hier, verbindliche Aufbewahrungs- und Löschfristen für alle Datenkategorien zu definieren und diese in den entsprechenden Geschäftsprozessen sowie im Verzeichnis der Verarbeitungstätigkeiten zu dokumentieren. Diese Festlegungen können dann über Löschfunktionen im Betriebssystem, Datenbanksystem oder Dokumentenmanagementsystem technisch automatisiert werden. Ergänzend kann die Löschung manuell anhand festgelegter Termine in den Fachabteilungen durchgeführt und dokumentiert werden. Dabei kann das Prinzip der Erforderlichkeit als Leitlinie dienen – Daten werden nur so lange gespeichert, wie sie für den festgelegten Zweck benötigt werden oder gesetzliche Vorgaben dies vorsehen. Mögliche Werte für die Frist sind beispielsweise „7 Tage“ für operative Logdaten, „3 Jahre“ für vertraglich relevante Unterlagen oder „10 Jahre“ für steuerrechtliche Nachweise. Für Umgebungen mit mittlerem Schutzniveau kann eine rollenbasierte Freigabe zur Löschung vorgesehen werden, bei der Fachverantwortliche die Löschung nach Ablauf der Frist prüfen und bestätigen. Hochsichere Institutionen – etwa aus kritischen Infrastrukturen oder Forschung – können Löschprozesse mit kryptografisch verifizierbaren Löschprotokollen, manipulationssicheren Audit-Trails und automatisierten Archivierungs-Workflows kombinieren. Wird Verschlüsselung eingesetzt, kann die gezielte Vernichtung von Schlüsseln als ergänzende Löschmethode genutzt werden, sofern nachvollziehbar dokumentiert ist, dass dadurch kein Zugriff auf die Daten mehr möglich bleibt. Auf diese Weise lassen sich sowohl rechtliche Grundsätze zur Löschung (etwa aus dem Datenschutz) als auch Nachweispflichten aus anderen Rechtsgebieten konsistent abbilden.\nFür die Umsetzung bieten sich verschiedene technische und prozessuale Maßnahmen an. Eine konsistente Steuerung kann erreicht werden, wenn Daten bereits bei der Erfassung mit einem Metadatenfeld zur Aufbewahrungsfrist versehen sind, das systemweit vererbt oder automatisch aus der Datenkategorie abgeleitet wird. Ein häufiges Problem besteht darin, dass Daten in Backups unbemerkt über die zulässige Frist hinaus bestehen bleiben; daher ist es sinnvoll, Löschroutinen so auszugestalten, dass sowohl produktive Systeme als auch Sicherungskopien erfasst werden. Eine praktikable Lösung besteht darin, Backup-Zyklen so zu planen, dass Daten nach Ablauf ihrer Frist automatisch überschrieben werden oder differenzielle Sicherungen regelmäßig konsolidiert werden."
+            "commit_source": "08.06.26",
+            "excel_row": 217,
+            "description": "## 4. Nutzung des institutionellen Passwortmanagers\nDer von der Institution bereitgestellte Passwortmanager ist der einzige genehmigte Ort zur Speicherung institutioneller Passwörter. Passwörter werden nicht außerhalb dieses Passwortmanagers gespeichert oder aufgeschrieben, insbesondere nicht in unverschlüsselten Dateien, Notizen, Browser-Passwortspeichern oder programmierbaren Eingabegeräten. Das Master-Passwort und die Freigabemechanismen des Passwortmanagers werden mit derselben Sorgfalt geschützt wie andere primäre Authentisierungsmittel der Institution. Nicht mehr benötigte gespeicherte Zugangsdaten werden aus dem Passwortmanager entfernt."
+        }
+    ],
+    "SENS.4.1.5": [
+        {
+            "uuid": "c5210793-07a9-4818-9084-e73146f5ed07",
+            "control_alt-identifier": "9065b5b9-cf47-40c1-9238-0f3e2f912fb9",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 218,
+            "description": "Biometrische Merkmale werden als fälschbar behandelt; eine ausschließlich biometrische Authentifizierung wird nicht als alleinige Absicherung akzeptiert."
+        }
+    ],
+    "SENS.4.1.6": [
+        {
+            "uuid": "32e2698e-3695-4560-b307-70ec5646844c",
+            "control_alt-identifier": "b25f3f5e-0738-4794-b130-cc9a1e29084f",
+            "source": "Passwortrichtlinie-component_definition.json",
+            "commit_source": "08.06.26",
+            "excel_row": 219,
+            "description": "Personengebundene Authentisierungsmittel werden ausschließlich durch die berechtigte Person verwendet, geschützt aufbewahrt und nicht an andere Personen weitergegeben."
         }
     ],
     "TEST.2.1": [
@@ -2062,7 +2153,7 @@
             "control_alt-identifier": "4fb97f16-4d41-49cb-99fe-ff623b2a2874",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 210,
+            "excel_row": 220,
             "description": "Vorlagen für Rollen, Vertrauensrichtlinien und Berechtigungspolicies werden versioniert in einer nachvollziehbaren Historie geführt. Jede wesentliche Änderung enthält Autor, Freigabe, Änderungsgrund und Bezug zur Sicherheitsanforderung."
         }
     ],
@@ -2072,7 +2163,7 @@
             "control_alt-identifier": "2edf4a68-0d86-4da9-ada4-9939c2508f2c",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 211,
+            "excel_row": 221,
             "description": "Vor Freigabe einer neuen oder geänderten Policy wird die Einhaltung der Sicherheitsanforderungen getestet. Dazu gehören mindestens Policy-Validation mit IAM Access Analyzer, eine repräsentative Simulation oder ein Access Preview sowie Negativtests für unerwünschte Aktionen."
         },
         {
@@ -2080,7 +2171,7 @@
             "control_alt-identifier": "2edf4a68-0d86-4da9-ada4-9939c2508f2c",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 212,
+            "excel_row": 222,
             "description": "Vor wesentlichen Änderungen an der Security-Hub-Konfiguration werden Sicherheitstests und Konsistenzprüfungen durchgeführt."
         },
         {
@@ -2088,7 +2179,7 @@
             "control_alt-identifier": "2edf4a68-0d86-4da9-ada4-9939c2508f2c",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 213,
+            "excel_row": 223,
             "description": "Vor wesentlichen Änderungen an eigenen Export- oder Pollingmechanismen werden Last- und Fehlerszenarien getestet."
         }
     ],
@@ -2098,7 +2189,7 @@
             "control_alt-identifier": "b7a747d3-cb11-46ce-8d0c-c57cc31d5ad5",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 214,
+            "excel_row": 224,
             "description": "Die Ergebnisse der Policy-Simulation und -Validierung werden revisionsfähig dokumentiert, einschließlich Testfall, getesteter Identität oder Rolle, erwarteter Entscheidung und tatsächlichem Ergebnis."
         },
         {
@@ -2106,7 +2197,7 @@
             "control_alt-identifier": "b7a747d3-cb11-46ce-8d0c-c57cc31d5ad5",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 215,
+            "excel_row": 225,
             "description": "Vorlagenänderungen werden mit den Ergebnissen technischer Prüfungen dokumentiert, z. B. Policy-Validation, Simulationsläufen, Access-Analyzer-Erkenntnissen oder Drift-Vergleichen gegen produktive Artefakte."
         },
         {
@@ -2114,7 +2205,7 @@
             "control_alt-identifier": "b7a747d3-cb11-46ce-8d0c-c57cc31d5ad5",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 216,
+            "excel_row": 226,
             "description": "Prüfschritte, Ergebnisse und Korrekturen zu Änderungen an Security Hub werden dokumentiert."
         }
     ],
@@ -2124,7 +2215,7 @@
             "control_alt-identifier": "1aa8319f-93fb-4236-991a-d799ab69e0c2",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 217,
+            "excel_row": 227,
             "description": "Die Autorisierung einer kritisch eingestuften Rollenänderung ist an das Kriterium gebunden, dass die vorgeschriebene Permission Boundary vorhanden, korrekt referenziert und fachlich geprüft ist."
         },
         {
@@ -2132,7 +2223,7 @@
             "control_alt-identifier": "1aa8319f-93fb-4236-991a-d799ab69e0c2",
             "source": "aws_iam-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 218,
+            "excel_row": 228,
             "description": "Kritische Änderungen an Rollen und Policies werden nur nach Code-Überprüfung, sicherheitlicher Bewertung und formaler Autorisierung freigegeben. Produktive Artefakte werden regelmäßig mit den autorisierten Vorlagen abgeglichen."
         },
         {
@@ -2140,7 +2231,7 @@
             "control_alt-identifier": "1aa8319f-93fb-4236-991a-d799ab69e0c2",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 219,
+            "excel_row": 229,
             "description": "Kritische Änderungen an Standards, Control-Parametern und Ausnahme- oder Suppressionsregeln dürfen nur autorisiert erfolgen."
         },
         {
@@ -2148,7 +2239,7 @@
             "control_alt-identifier": "1aa8319f-93fb-4236-991a-d799ab69e0c2",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 220,
+            "excel_row": 230,
             "description": "Kritische Änderungen an der Security-Hub-Konfiguration werden autorisiert."
         }
     ],
@@ -2158,7 +2249,7 @@
             "control_alt-identifier": "a0cd7536-0e8f-4658-99d4-c04f93dad878",
             "source": "aws_security_hub-component_definition.json",
             "commit_source": "20.04.26",
-            "excel_row": 221,
+            "excel_row": 231,
             "description": "Die Freigabe kritischer Änderungen erfolgt durch eine von der Implementierung unabhängige Person."
         }
     ]
