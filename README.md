@@ -1,15 +1,9 @@
 ﻿# Grundschutz++ (GSpp) - elementare Hilfsmittel
 
-Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert sukzessive (via commits) in GitHub die GSpp-Anwenderkataloge als OSCAL-Datei ([NIST](https://pages.nist.gov/OSCAL/learn/), [OSCAL Foundation](https://oscalfoundation.org/)) im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [grundschutz++-catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B) 
+Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert sukzessive (via commits) in GitHub die GSpp-Anwenderkataloge als OSCAL-Datei ([NIST](https://pages.nist.gov/OSCAL/learn/), [OSCAL Foundation](https://oscalfoundation.org/)) im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [grundschutz++-catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B).
 
-BSI-Materialien im Kontext GSpp: 
-- [Grundschutz in der Informationssicherheit](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/isms_node.html)
-- [Grundschutz++](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/Grundschutz-Plus-Plus/grundschutz-plus-plus_node.html) mit Meilensteinplan
-- [Mindeststandards Bund](https://www.bsi.bund.de/dok/MST)
-- [Leitfaden - Methodik Grundschutz++](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/sonstiges/Methodik_Grundschutz_PlusPlus.pdf)   
-- [Stand der Technik (SdT)](https://www.bsi.bund.de/dok/Stand-der-Technik)   
-- [OSCAL](https://www.bsi.bund.de/dok/oscal) und [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
-- [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
+Die Beschäftigung mit Grundschutz++ motiviert nachfolgende elementare Hilfsmittel.
+
 
 ## Aktueller GSpp-Anwenderkatalog als Excel-Datei und Diffs
 
@@ -45,3 +39,24 @@ Im Ordner `daten/diff_reports/` die Datei `diff-report-gs++-<datum a>-<datum b>.
     Dies sind Indikatoren dafür, dass die Inhalte der neuen commit B Anforderungen-IDs bereits in commit A Anforderungen vorlagen.
 - **Veränderte Anforderungsattribute** als Übersicht und im Detail. Beim oft inhaltlich umfangreichen Attribut `guidance / Hinweise` werden entfernte und ergänzte Textanteile hervorgehoben. 
 
+## Link-Sammlung
+BSI-Materialien im Kontext GSpp 
+- [Grundschutz in der Informationssicherheit](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/isms_node.html)
+- [Grundschutz++](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/Grundschutz-Plus-Plus/grundschutz-plus-plus_node.html) mit Meilensteinplan
+- [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
+- [Leitfaden - Methodik Grundschutz++](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/sonstiges/Methodik_Grundschutz_PlusPlus.pdf)   
+- [Mindeststandards Bund](https://www.bsi.bund.de/dok/MST)
+- [OSCAL](https://www.bsi.bund.de/dok/oscal)
+- [Stand der Technik (SdT)](https://www.bsi.bund.de/dok/Stand-der-Technik)   
+
+- GitHub
+  - BSI-Bund [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
+  - BSI-Bund [Stand der Technik Bibliothek](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main)
+
+Und sonst
+- [BSI Community für Stand der Technik mit Grundschutz++](https://www.bsicommunity.de/index.html)
+- NIST [OSCAL Leraning Resources](https://pages.nist.gov/OSCAL/learn/)
+- [OSCAL Foundation](https://oscalfoundation.org/)
+- GitHub
+  - bsi-community [Stand-der-Technik-Viewer](https://github.com/bsi-community/Stand-der-Technik-Viewer)
+  - NTT-Data-Deutschland-SE [Grundschutz-Plus-Plus-Tools](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools)
