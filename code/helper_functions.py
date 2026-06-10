@@ -264,6 +264,13 @@ def replace_odd(pattern, repl, text):
 
     return re.sub(pattern, _repl, text)
 
+def section_only_options(config, section):
+    '''
+    There is no official public API in `configparser` that excludes DEFAULT values. 
+    Function returns only the “real” (explicit) options of section.
+    '''
+    return list(config._sections.get(section, {}).keys())
+
 def sort_dict_naturally(mydict: dict) -> dict:
     """ Sortiere mydict Schlüssel-Wert-Paare
     Schlüssel müssen vom Datentyp String sein
