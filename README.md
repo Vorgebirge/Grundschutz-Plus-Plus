@@ -56,6 +56,7 @@ BSI-Materialien im Kontext GSpp
 
 Und sonst
 - [BSI Community für Stand der Technik mit Grundschutz++](https://www.bsicommunity.de/index.html)
+- Community hub [OSCAL.io](https://oscal.io/)
 - NIST [OSCAL Leraning Resources](https://pages.nist.gov/OSCAL/learn/)
 - [OSCAL Foundation](https://oscalfoundation.org/)
 - GitHub
