@@ -54,11 +54,18 @@ BSI-Materialien im Kontext GSpp
   - BSI-Bund [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
   - BSI-Bund [Stand der Technik Bibliothek](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main)
 
+OSCAL Viewer
+- bsi-community's [Stand-der-Technik-Viewer](https://github.com/bsi-community/Stand-der-Technik-Viewer)
+- NTT-Data-Deutschland-SE's [GSpp-Viewer](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools/blob/main/One-Page-Apps/GSpp-Viewer.html)
+- OSCAL.io's [OSCAL Viewer](https://viewer.oscal.io/)  
+
 Und sonst
 - [BSI Community für Stand der Technik mit Grundschutz++](https://www.bsicommunity.de/index.html)
 - Community hub [OSCAL.io](https://oscal.io/)
 - NIST [OSCAL Leraning Resources](https://pages.nist.gov/OSCAL/learn/)
 - [OSCAL Foundation](https://oscalfoundation.org/)
+
 - GitHub
-  - bsi-community [Stand-der-Technik-Viewer](https://github.com/bsi-community/Stand-der-Technik-Viewer)
+  - [
+BSI Stand der Technik Community und Grundschutz++](https://github.com/bsi-community)
   - NTT-Data-Deutschland-SE [Grundschutz-Plus-Plus-Tools](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools)
