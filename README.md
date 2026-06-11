@@ -61,11 +61,17 @@ OSCAL Viewer
 
 Und sonst
 - [BSI Community für Stand der Technik mit Grundschutz++](https://www.bsicommunity.de/index.html)
+- CIS Critical Security Controls
+  - [Automating the CIS Controls with OSCAL](https://www.cisecurity.org/insights/blog/introducing-the-cis-controls-oscal-repository)
+  - Bitbucket [CIS Controls OSCAL Repository](https://bitbucket.org/cis-it-workspace/cis-controls-v8.1_oscal/src/main/)
 - Community hub [OSCAL.io](https://oscal.io/)
-- NIST [OSCAL Leraning Resources](https://pages.nist.gov/OSCAL/learn/)
+- NIST [OSCAL Learning Resources](https://pages.nist.gov/OSCAL/learn/)
+  - [Creating a Control Catalog](https://pages.nist.gov/OSCAL/learn/tutorials/control/basic-catalog/)
+  - [Annotated Example - NIST SP 800-53 Revision 5 Control](https://pages.nist.gov/OSCAL/learn/concepts/layer/control/catalog/sp800-53rev5-example/)
 - [OSCAL Foundation](https://oscalfoundation.org/)
 
 - GitHub
   - [
 BSI Stand der Technik Community und Grundschutz++](https://github.com/bsi-community)
   - NTT-Data-Deutschland-SE [Grundschutz-Plus-Plus-Tools](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools)
+  - usnistgov [OSCAL Examples](https://github.com/usnistgov/oscal-content/tree/main)
