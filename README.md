@@ -59,7 +59,7 @@ OSCAL Viewer
 - NTT-Data-Deutschland-SE's [GSpp-Viewer](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools/blob/main/One-Page-Apps/GSpp-Viewer.html)
 - OSCAL.io's [OSCAL Viewer](https://viewer.oscal.io/)  
 
-Und sonst
+Und auch
 - [BSI Community für Stand der Technik mit Grundschutz++](https://www.bsicommunity.de/index.html)
 - CIS Critical Security Controls
   - [Automating the CIS Controls with OSCAL](https://www.cisecurity.org/insights/blog/introducing-the-cis-controls-oscal-repository)
@@ -68,10 +68,13 @@ Und sonst
 - NIST [OSCAL Learning Resources](https://pages.nist.gov/OSCAL/learn/)
   - [Creating a Control Catalog](https://pages.nist.gov/OSCAL/learn/tutorials/control/basic-catalog/)
   - [Annotated Example - NIST SP 800-53 Revision 5 Control](https://pages.nist.gov/OSCAL/learn/concepts/layer/control/catalog/sp800-53rev5-example/)
+- [OSCAL Compass project](https://oscal-compass.dev/) (tools)
 - [OSCAL Foundation](https://oscalfoundation.org/)
 
 - GitHub
   - [
 BSI Stand der Technik Community und Grundschutz++](https://github.com/bsi-community)
-  - NTT-Data-Deutschland-SE [Grundschutz-Plus-Plus-Tools](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools)
+  - NTT-Data-Deutschland-SE [Grundschutz-Plus-Plus-Tools](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools)  
   - usnistgov [OSCAL Examples](https://github.com/usnistgov/oscal-content/tree/main)
+  - usnistgov [OSCAL Java Command Line Tool](https://github.com/usnistgov/oscal-cli) oscal-cli
+  
