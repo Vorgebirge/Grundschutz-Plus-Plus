@@ -58,7 +58,7 @@ BSI-Materialien im Kontext GSpp
   - BSI-Bund [Stand der Technik Bibliothek](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main)
 
 OSCAL Viewer
-- bsi-community's [Stand-der-Technik-Viewer](https://github.com/bsi-community/Stand-der-Technik-Viewer)
+- bsi-community's Stand-der-Technik-Viewer in [GitHub](https://github.com/bsi-community/Stand-der-Technik-Viewer) und [Online](https://bsi-community.github.io/Stand-der-Technik-Viewer/)
 - NTT-Data-Deutschland-SE's [GSpp-Viewer](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools/blob/main/One-Page-Apps/GSpp-Viewer.html)
 - OSCAL.io's [OSCAL Viewer](https://viewer.oscal.io/)  
 
