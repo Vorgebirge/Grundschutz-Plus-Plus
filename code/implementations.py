@@ -1,4 +1,4 @@
-# Stand: 29.05.2026
+# Stand: 01.07.2026
 from flatten_catalog import locators_and_their_items
 from helper_functions import read_json_file, sort_dict_naturally, today, write_json_file, ymd2dmy
 from collections import defaultdict
@@ -30,7 +30,7 @@ for component in COMPONENT:
     mydict_flattened = locators_and_their_items(mydict)
     
     for locator in mydict_flattened:        
-        implementation = dict()
+        implementation = dict()        
         if locator[-1] == 'control-id':
             control_uuid = mydict_flattened[locator] 
             
@@ -47,10 +47,10 @@ for component in COMPONENT:
                                 
             if (locator_of_remarks := locator[:-1] + ('remarks',)) in mydict_flattened:
                 implementation['remarks'] = mydict_flattened[locator_of_remarks]
-            
-            control_id = map_uuid_control_id[control_uuid]
-            dict_implementations[control_id].append(implementation) 
-            #dict_implementations[control_uuid].append(implementation) 
+                        
+            if control_id := map_uuid_control_id.get(control_uuid, ''):
+                dict_implementations[control_id].append(implementation)            
+
 dict_implementations = sort_dict_naturally(dict_implementations)
 
 excel_row = 2
