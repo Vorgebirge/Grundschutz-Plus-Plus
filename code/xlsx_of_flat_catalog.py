@@ -27,6 +27,7 @@ PATH_CATALOG_XLSX = config['orte']['path_catalog_xlsx']
 PATH_IMPLEMENTATIONS = config['orte']['path_catalog_implementations']
 PATH_GITHUB_BSI_GSPP_CATALOG = config['orte']['path_github_bsi_gspp_catalog']
 PATH_GITHUB_BSI_GSPP_IMPLEMENTIERUNGEN = config['orte']['path_github_bsi_gspp_implementierungen']
+PATH_GITHUB_BSI_GSPP_NAMESPACE_DEFINITIONEN = config['orte']['path_github_bsi_gspp_namespace_definitionen']
 PATH_GITHUB_VORGEBIRGE_GSPP = config['orte']['path_github_vorgebirge_gspp']
 try:
     PATH_LOGO = config['orte']['path_logo']
@@ -81,9 +82,9 @@ CATALOG_COLUMN['modalverb']['comment'] = 'Das Modalverb einer Anforderung gibt a
 
 CATALOG_COLUMN['alt_identifier']['cell_value_type'] = 'string'
 CATALOG_COLUMN['alt_identifier']['headline'] = 'Anforderung\nUUID'
-CATALOG_COLUMN['alt_identifier']['is_in_sheet'] = False
-CATALOG_COLUMN['alt_identifier']['width'] = 40
-CATALOG_COLUMN['alt_identifier']['hidden'] = False
+CATALOG_COLUMN['alt_identifier']['is_in_sheet'] = True
+CATALOG_COLUMN['alt_identifier']['width'] = 14
+CATALOG_COLUMN['alt_identifier']['hidden'] = True
 CATALOG_COLUMN['alt_identifier']['level'] = 3
 CATALOG_COLUMN['alt_identifier']['comment'] = 'UUID: Über alle Kataloge und Katalogversionen hinweg eindeutige Identifikationsnummer der Anforderung. Diese folgt der Bedeutung der Anforderung, bleibt also auch bei bedeutungserhaltenden Umformulierungen oder Verschiebungen von Anforderungen gleich. Andererseits wird sie ersetzt, wenn sich die Bedeutung der Anforderung wesentlich verändert, selbst wenn ihre Stellung in der Struktur bleibt.'
 
@@ -256,6 +257,15 @@ IMPLEMENTATION_COLUMN['link_anforderung_id']['hidden'] = False
 IMPLEMENTATION_COLUMN['link_anforderung_id']['level'] = 0
 IMPLEMENTATION_COLUMN['link_anforderung_id']['comment'] = 'ID: Eindeutiger Identifikator der Anforderung innerhalb der Praktik und des Themas im Format {Kürzel der Praktik}.{Nummerierung des Themas}.{Nummerierung der Anforderung}. Die ID ergibt sich also aus der Stellung der Anforderung innerhalb des Dokumentes.'
 
+IMPLEMENTATION_COLUMN['alt_identifier']['cell_value_type'] = 'string'
+IMPLEMENTATION_COLUMN['alt_identifier']['headline'] = 'Anforderung\nUUID'
+IMPLEMENTATION_COLUMN['alt_identifier']['is_in_sheet'] = True
+IMPLEMENTATION_COLUMN['alt_identifier']['width'] = 14
+IMPLEMENTATION_COLUMN['alt_identifier']['hidden'] = True
+IMPLEMENTATION_COLUMN['alt_identifier']['level'] = 0
+IMPLEMENTATION_COLUMN['alt_identifier']['comment'] = 'UUID: Über alle Kataloge und Katalogversionen hinweg eindeutige Identifikationsnummer der Anforderung. Diese folgt der Bedeutung der Anforderung, bleibt also auch bei bedeutungserhaltenden Umformulierungen oder Verschiebungen von Anforderungen gleich. Andererseits wird sie ersetzt, wenn sich die Bedeutung der Anforderung wesentlich verändert, selbst wenn ihre Stellung in der Struktur bleibt.'
+
+
 IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['cell_value_type'] = 'string'
 IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['headline'] = 'Anforderung\nTitel'
 IMPLEMENTATION_COLUMN['anforderung_titel_ohne_id']['is_in_sheet'] = True
@@ -289,7 +299,7 @@ IMPLEMENTATION_COLUMN['implementierung_remarks']['level'] = 0
 IMPLEMENTATION_COLUMN['implementierung_remarks']['comment'] = '-'
 
 IMPLEMENTATION_COLUMN['implementierung_uuid']['cell_value_type'] = 'string'
-IMPLEMENTATION_COLUMN['implementierung_uuid']['headline'] = 'Implementierung\nuuid'
+IMPLEMENTATION_COLUMN['implementierung_uuid']['headline'] = 'Implementierung\nUUID'
 IMPLEMENTATION_COLUMN['implementierung_uuid']['is_in_sheet'] = True
 IMPLEMENTATION_COLUMN['implementierung_uuid']['width'] = 20
 IMPLEMENTATION_COLUMN['implementierung_uuid']['hidden'] = True
@@ -480,6 +490,9 @@ def construct_sheet_deckblatt(sheet_deckblatt):
     
     sheet_deckblatt.write_string(row + 8,0, 'Zu Grunde liegende BSI GS++ Implementierungsbeschreibungen')
     sheet_deckblatt.write_url(row + 9,0, PATH_GITHUB_BSI_GSPP_IMPLEMENTIERUNGEN)
+
+    sheet_deckblatt.write_string(row + 11,0, 'BSI Stand der Technik — Namespace-Definitionen / Vokabular')
+    sheet_deckblatt.write_url(row + 12,0, PATH_GITHUB_BSI_GSPP_NAMESPACE_DEFINITIONEN)
     
     if KONTAKT:
         cell_value = 'Kontakt: ' + KONTAKT

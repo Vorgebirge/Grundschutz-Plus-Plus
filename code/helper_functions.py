@@ -4,6 +4,7 @@ import difflib, hashlib, json, pickle, re, string
 from collections import defaultdict, OrderedDict
 from configparser import ConfigParser
 from datetime import datetime
+from pathlib import Path
 #from Pympler import asizeof  #ModuleNotFoundError: No module named 'Pympler'
 
 #config = ConfigParser()
@@ -230,6 +231,24 @@ def mydiff(string_a:str) -> list:
     
     return wort_list_a
 '''
+
+def load_json(path: str):
+    """
+    Load a JSON file and return its contents.
+    Raises:
+        FileNotFoundError: if the file does not exist
+        json.JSONDecodeError: if the file is not valid JSON
+    by Copilot
+    """
+    file_path = Path(path)
+
+    # Check existence
+    if not file_path.is_file():
+        raise FileNotFoundError(f"file not found: {path}")
+
+    # Try to parse JSON
+    with file_path.open("r", encoding="utf-8") as f:
+        return json.load(f)
 
 
 def normalisiere(word: str) -> str:
