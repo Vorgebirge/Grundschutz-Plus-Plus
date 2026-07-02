@@ -41,9 +41,12 @@ Im Ordner `daten/diff_reports/` die Datei `diff-report-gs++-<datum a>-<datum b>.
 
 ## Link-Sammlung
 BSI-Materialien im Kontext GSpp 
+- Beteiligung / Community
+  - [Arbeitsgruppen und Editoren](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/Stand-der-Technik/AGs_und_Editoren/AGsEditoren_node.html)
+  - [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
+  - [Regionale Foren](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/Stand-der-Technik/Regionale_Foren/regionale_Foren_node.html)
 - [Grundschutz in der Informationssicherheit](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/isms_node.html)
 - [Grundschutz++](https://www.bsi.bund.de/DE/Themen/Unternehmen-und-Organisationen/Standards-und-Zertifizierung/Grundschutz-in-der-Informationssicherheit/Grundschutz-Plus-Plus/grundschutz-plus-plus_node.html) mit Meilensteinplan
-- [Handbuch für Autoren der SdT-Bibliothek](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Stand_der_Technik/Handb%C3%BCcher/Handbuch_f%C3%BCr_Autoren.html)  
 - [Leitfaden - Methodik Grundschutz++](https://www.bsi.bund.de/SharedDocs/Downloads/DE/BSI/Grundschutz/sonstiges/Methodik_Grundschutz_PlusPlus.pdf)   
 - [Mindeststandards Bund](https://www.bsi.bund.de/dok/MST)
 - [OSCAL](https://www.bsi.bund.de/dok/oscal)
@@ -55,7 +58,7 @@ BSI-Materialien im Kontext GSpp
   - BSI-Bund [Stand der Technik Bibliothek](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main)
 
 OSCAL Viewer
-- bsi-community's [Stand-der-Technik-Viewer](https://github.com/bsi-community/Stand-der-Technik-Viewer)
+- bsi-community's Stand-der-Technik-Viewer in [GitHub](https://github.com/bsi-community/Stand-der-Technik-Viewer) und [Online](https://bsi-community.github.io/Stand-der-Technik-Viewer/)
 - NTT-Data-Deutschland-SE's [GSpp-Viewer](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools/blob/main/One-Page-Apps/GSpp-Viewer.html)
 - OSCAL.io's [OSCAL Viewer](https://viewer.oscal.io/)  
 
