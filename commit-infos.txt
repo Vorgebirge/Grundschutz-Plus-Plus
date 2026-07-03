@@ -1,2 +1,0 @@
-implementations.py 01.07.26
-fix: Eine Implementierung kann sich auf eine UUID einer Anforderung beziehen, die es im aktuellen Katalog nicht mehr gibt (Bsp: UUID 3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f von PERF.6.1.1 in Anwenderkatalog vom 29.05.26. Diese UUID gibt es im Anwenderkatalog vom 01.07.26 nicht mehr)
