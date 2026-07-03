@@ -1,6 +1,6 @@
-﻿#Stand 29.05.2026
+﻿#Stand 03.07.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
-from helper_functions import read_json_file, today, ymd2dmy
+from helper_functions import read_json_file, sort_list_naturally, today, ymd2dmy
 from collections import defaultdict
 from configparser import ConfigParser, ExtendedInterpolation
 
@@ -11,7 +11,7 @@ RE_SUFFIX_PARAMETER = r'\s*}}'
 # Format Excel-Tabellen
 HEADER_FORMAT = {"text_wrap":True, "align":"left", "valign":"top", "bold":True, "border":1, 'locked':True}      
 CELL_FORMAT = {"text_wrap":True, "align":"left", "valign":"top", "border":1}
-KOMMENTAR_GROESSE = {'width': 400, 'height': 300}
+KOMMENTAR_GROESSE = {'width': 420, 'height': 320}
 
 config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
@@ -39,6 +39,15 @@ IMPLEMENTATIONS = read_json_file(PATH_IMPLEMENTATIONS)
 
 CATALOG_COLUMN = defaultdict(dict)
 IMPLEMENTATION_COLUMN = defaultdict(dict)
+
+CATALOG_COLUMN['klasse']['cell_value_type'] = 'string'
+CATALOG_COLUMN['klasse']['headline'] = 'Klasse'
+CATALOG_COLUMN['klasse']['is_in_sheet'] = True
+CATALOG_COLUMN['klasse']['width'] = 20
+CATALOG_COLUMN['klasse']['hidden'] = False
+CATALOG_COLUMN['klasse']['level'] = 3
+CATALOG_COLUMN['klasse']['comment'] = ''
+
 
 CATALOG_COLUMN['praktik']['cell_value_type'] = 'string'
 CATALOG_COLUMN['praktik']['headline'] = 'Praktik'
@@ -208,6 +217,48 @@ CATALOG_COLUMN['aufwand']['hidden'] = False
 CATALOG_COLUMN['aufwand']['level'] = 2
 CATALOG_COLUMN['aufwand']['comment'] = 'Aufwand klassifiziert den ungefähren Ressourcenbedarf, der zur Realisierung einer Anforderung erforderlich ist. Da Aufwand und Schutzwirkung verschiedene Perspektiven sind, ist der Aufwand nicht mit dem Reifegrad oder dem Sicherheitsniveau zu verwechseln. Der Aufwand ist einschließlich der Voraussetzungen angegeben, daher darf eine Anforderung keine geringere Aufwandsklasse haben als die Anforderungen, von denen sie abhängig ist oder die sie verbessert.'
 
+#Authentizität, Integrität, Verfügbarkeit, Vertraulichkeit, Elementare Gefährdung(en)
+
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['cell_value_type'] = 'string'
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['headline'] = 'Anforderung\nAuthentizität'
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['is_in_sheet'] = True
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['width'] = 14
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['hidden'] = False
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['level'] = 2
+CATALOG_COLUMN['sicherheitsziel_authentizitaet']['comment'] = 'Mit dem Begriff Authentizität (Authenticity) wird die Eigenschaft bezeichnet, die gewährleistet, dass eine Kommunikationsstelle tatsächlich diejenige ist, der sie vorgibt zu sein. Bei authentischen Informationen ist sichergestellt, dass sie von der angegebenen Quelle erstellt wurden. Der Begriff wird nicht nur verwendet, wenn die Identität von Personen geprüft wird, sondern auch bei IT-Komponenten oder Anwendungen. D.h. Die Echtheit einer Person, eines Systems oder von Daten muss nachweisbar sein.'
+
+CATALOG_COLUMN['sicherheitsziel_integritaet']['cell_value_type'] = 'string'
+CATALOG_COLUMN['sicherheitsziel_integritaet']['headline'] = 'Anforderung\nIntegrität'
+CATALOG_COLUMN['sicherheitsziel_integritaet']['is_in_sheet'] = True
+CATALOG_COLUMN['sicherheitsziel_integritaet']['width'] = 14
+CATALOG_COLUMN['sicherheitsziel_integritaet']['hidden'] = False
+CATALOG_COLUMN['sicherheitsziel_integritaet']['level'] = 2
+CATALOG_COLUMN['sicherheitsziel_integritaet']['comment'] = 'Integrität (Integrity) bezeichnet die Sicherstellung der Korrektheit (Unversehrtheit) von Daten und der korrekten Funktionsweise von Systemen. Wenn der Begriff Integrität auf "Daten" angewendet wird, drückt er aus, dass die Daten vollständig und unverändert sind. In der Informationstechnik wird er in der Regel aber weiter gefasst und auf "Informationen" angewendet. Der Begriff "Information" wird dabei für "Daten" verwendet, denen je nach Zusammenhang bestimmte Attribute wie z. B. Autorenschaft oder Zeitpunkt der Erstellung zugeordnet werden können. Der Verlust der Integrität von Informationen kann daher bedeuten, dass diese unerlaubt verändert, Angaben zur verfassenden Person verfälscht oder Zeitangaben zur Erstellung manipuliert wurden. D.h. Daten und Systeme müssen korrekt und unverändert sein. Unbefugte Änderungen dürfen nicht erfolgen.'
+
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['cell_value_type'] = 'string'
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['headline'] = 'Anforderung\nVerfügbarkeit'
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['is_in_sheet'] = True
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['width'] = 15
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['hidden'] = False
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['level'] = 2
+CATALOG_COLUMN['sicherheitsziel_verfuegbarkeit']['comment'] = 'Die Verfügbarkeit (Availability) von Dienstleistungen, Funktionen eines IT-Systems, IT-Anwendungen oder IT-Netzen oder auch von Informationen ist vorhanden, wenn diese von den Anwendenden stets wie vorgesehen genutzt werden können.D.h. Informationen, Anwendungen und IT-Systeme müssen bei Bedarf nutzbar und erreichbar sein.'
+
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['cell_value_type'] = 'string'
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['headline'] = 'Anforderung\nVertraulichkeit'
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['is_in_sheet'] = True
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['width'] = 17
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['hidden'] = False
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['level'] = 2
+CATALOG_COLUMN['sicherheitsziel_vertraulichkeit']['comment'] = 'Vertraulichkeit (Confidentiality) ist der Schutz vor unbefugter Preisgabe von Informationen. Vertrauliche Daten und Informationen dürfen ausschließlich Befugten in der zulässigen Weise zugänglich sein d.h. Informationen dürfen nur von berechtigten Personen oder Systemen eingesehen werden.'
+
+CATALOG_COLUMN['elementare_gefaehrdung']['cell_value_type'] = 'string'
+CATALOG_COLUMN['elementare_gefaehrdung']['headline'] = 'Anforderung\nElem. Gefährdung'
+CATALOG_COLUMN['elementare_gefaehrdung']['is_in_sheet'] = True
+CATALOG_COLUMN['elementare_gefaehrdung']['width'] = 20
+CATALOG_COLUMN['elementare_gefaehrdung']['hidden'] = False
+CATALOG_COLUMN['elementare_gefaehrdung']['level'] = 2
+CATALOG_COLUMN['elementare_gefaehrdung']['comment'] = 'Elementare Gefährdungen\n\nG 0.1	Feuer\nG 0.2	Ungünstige klimatische Bedingungen\nG 0.3	Wasser\nG 0.4	Verschmutzung, Staub, Korrosion\nG 0.5	Naturkatastrophen\nG 0.6	Katastrophen im Umfeld\nG 0.7	Großereignisse im Umfeld\nG 0.8	Ausfall oder Störung der Stromversorgung\nG 0.9	Ausfall oder Störung von Kommunikationsnetzen\nG 0.10	Ausfall oder Störung von Versorgungsnetzen\nG 0.11	Ausfall oder Störung von Dienstleistern\nG 0.12	Elektromagnetische Störstrahlung\nG 0.13	Abfangen kompromittierender Strahlung\nG 0.14	Ausspähen von Informationen (Spionage)\nG 0.15	Abhören\nG 0.16	Diebstahl von Geräten, Datenträgern oder Dokumenten\nG 0.17	Verlust von Geräten, Datenträgern oder Dokumenten\nG 0.18	Fehlplanung oder fehlende Anpassung\nG 0.19	Offenlegung schützenswerter Informationen\nG 0.20	Informationen oder Produkte aus unzuverlässiger Quelle\nG 0.21	Manipulation von Hard- oder Software\nG 0.22	Manipulation von Informationen\nG 0.23	Unbefugtes Eindringen in IT-Systeme\nG 0.24	Zerstörung von Geräten oder Datenträgern\nG 0.25	Ausfall von Geräten oder Systemen\nG 0.26	Fehlfunktion von Geräten oder Systemen\nG 0.27	Ressourcenmangel\nG 0.28	Software-Schwachstellen oder -Fehler\nG 0.29	Verstoß gegen Gesetze oder Regelungen\nG 0.30	Unberechtigte Nutzung oder Administration von Geräten und Systemen\nG 0.31	Fehlerhafte Nutzung oder Administration von Geräten und Systemen\nG 0.32	Missbrauch von Berechtigungen\nG 0.33	Personalausfall\nG 0.34	Anschlag\nG 0.35	Nötigung, Erpressung oder Korruption\nG 0.36	Identitätsdiebstahl\nG 0.37	Abstreiten von Handlungen\nG 0.38	Missbrauch personenbezogener Daten\nG 0.39	Schadprogramme\nG 0.40	Verhinderung von Diensten (Denial of Service)\nG 0.41	Sabotage\nG 0.42	Social Engineering\nG 0.43	Einspielen von Nachrichten\nG 0.44	Unbefugtes Eindringen in Räumlichkeiten\nG 0.45	Datenverlust\nG 0.46	Integritätsverlust schützenswerter Informationen\nG 0.47	Schädliche Seiteneffekte\nIT-gestützter Angriffe'
+
 CATALOG_COLUMN['guidance']['cell_value_type'] = 'string'
 CATALOG_COLUMN['guidance']['headline'] = 'Anforderung\nHinweis'
 CATALOG_COLUMN['guidance']['is_in_sheet'] = True
@@ -364,6 +415,11 @@ def aufwand(control_id: str) -> str:
 def dokumentation(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['documentation']
   
+def elementare_gefaehrdung(control_id: str) -> str:
+    mystr, mylist = CONTROL_ATTRIBUTES[control_id]['threats'], []        
+    mylist.extend(item.strip() for item in mystr.split(',') if item.strip())
+    return ', '.join(sort_list_naturally(mylist))    
+  
 def ergebnis(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['result']
 
@@ -392,6 +448,9 @@ def implementierung_source(control_id: str) -> str:
 def implementierung_uuid(control_id: str) -> str:
     global list_index    
     return IMPLEMENTATIONS[control_id][list_index].get('uuid', '-')
+
+def klasse(control_id: str) -> str:
+    return CONTROL_ATTRIBUTES[control_id]['class']
 
 def link_anforderung_id(control_id: str) -> str:
     global sheet_catalog_name    
@@ -431,6 +490,18 @@ def praktik_typ(control_id: str) -> str:
 
 def sicherheitsniveau(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['sec_level']
+
+def sicherheitsziel_authentizitaet(control_id: str) -> str:
+    return CONTROL_ATTRIBUTES[control_id]['authenticity']
+
+def sicherheitsziel_integritaet(control_id: str) -> str:
+    return CONTROL_ATTRIBUTES[control_id]['integrity']
+
+def sicherheitsziel_verfuegbarkeit(control_id: str) -> str:
+    return CONTROL_ATTRIBUTES[control_id]['availability']
+
+def sicherheitsziel_vertraulichkeit(control_id: str) -> str:
+    return CONTROL_ATTRIBUTES[control_id]['confidentiality']
 
 def tags(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['tags']    

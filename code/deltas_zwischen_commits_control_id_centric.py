@@ -20,7 +20,7 @@ Erzeugt die Datei diff-report-gs++-<datum a>-<datum b>.md im Markdown-Format mit
 Die Datumsangaben für commit A und commit B müssen in der config.ini Datei gesetzt werden.
 '''
 
-# Stand 08.06.2026
+# Stand 03.07.2026
 import re
 from helper_functions import inline_diff, kosinus_aehnlichkeit, read_json_file, replace_odd, sort_list_naturally, strings_broadly_similar, string_in_list_of_strings, teilstrings, ymd2dmy
 from collections import defaultdict, OrderedDict
@@ -57,10 +57,6 @@ MAP_UUID_CONTROL_ID_A = {CA_A[k]['alt-identifier']: k for k in CA_A}
 MAP_UUID_CONTROL_ID_B = {CA_B[k]['alt-identifier']: k for k in CA_B}
 
 
-SCHWELLE_AEHNLICHKEIT = 0.5
-
-# str_a = CA_A[c_id]['title'] + control_prose_mit_parameter(CA_A[c_id]['prose'], CA_A[c_id]['params'].items())
-
 def control_titel_prose_params(control_attributes, control_id, mit_titel = True):
     '''Gibt zu einer Anforderung-ID (control_id) einen String zurück: Titel der 
     Anforderung (nur wenn mit_titel == True), Text der Anforderung. Wenn der Text
@@ -95,77 +91,27 @@ def aehnliche_control(control_id_a, control_attributes_a, control_attributes_b):
             aehnlichkeit = neuer_wert
     return c_id_aehnlich, round(aehnlichkeit,2)
 
-report = []
-report.append('# GS++ control deltas github ' + COMMIT_DATE_A + ' & ' + COMMIT_DATE_B)
-report.append('## Inhalte')
-report.append('- [Entfernte Anforderungen](#entfernte-anforderungen)')
-report.append('- [Neue Anforderungen](#neue-anforderungen)')
-report.append('- [Veränderte Anforderungsattribute](#veraenderte-anforderungsattribute)')
-if (CA_A_OHNE_CA_B or CA_B_OHNE_CA_A): #es gibt entfernte oder neue Anforderungen
-    zeile = '\nAls Maß für die Ähnlichkeit zwischen Anforderungen wird die  [Kosinus-Aehnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) (cos-sim) verwendet.' 
-    report.append(zeile)
-    #report.append('\nÄhnlichkeiten zwischen Anforderungen werden mit dem Maß der [Kosinus-Aehnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) ausgedrückt, wenn diese ≥ ' + str(SCHWELLE_AEHNLICHKEIT) + ' ist. Der maximal mögliche Wert von 1 steht für Gleichheit. Unberücksichtigt bleiben dabei Interpunktion, einige [Stoppwoerter](https://de.wikipedia.org/wiki/Stoppwort), Wortreihenfolge sowie Groß- und Kleinschreibung.')
-    
+# Identifiziere entfernte Anforderungen IDs mit entfernten und mit verbleibenden UUID
+anforderung_a_entfernt_uuid_verbleibt, anforderung_a_entfernt_uuid_entfernt = [], []
+for c_id in CA_A_OHNE_CA_B:       
+    if (c_id_uuid := CA_A[c_id]['alt-identifier']) in MAP_UUID_CONTROL_ID_B: 
+        anforderung_a_entfernt_uuid_verbleibt.append(c_id)
+    else:
+        anforderung_a_entfernt_uuid_entfernt.append(c_id)
 
-# --------------- Entfernte Anforderungen --------------------------------
-report.append('## Entfernte Anforderungen')
-report.append('[Zurück zu Inhalte](#inhalte)')
-report.append('Anzahl entfernter Anforderungen: ' + str(len(CA_A_OHNE_CA_B)))
-for c_id in CA_A_OHNE_CA_B:        
-    zeile = '#### 🗑 ' + c_id + ' ' + CA_A[c_id]['title']
-    if CA_A[c_id]['sec_level']: 
-        zeile += ' (' + CA_A[c_id]['sec_level'] + ')'    
-    report.append(zeile)   
-    report.append(control_titel_prose_params(CA_A, c_id, False))
+# Identifiziere neue Anforderungen IDs mit neuen und mit übernommenen UUID
+anforderung_b_neu_uuid_neu, anforderung_b_neu_uuid_uebernommen = [], []
+for c_id in CA_B_OHNE_CA_A:       
+    if (c_id_uuid := CA_B[c_id]['alt-identifier']) in MAP_UUID_CONTROL_ID_A: 
+        anforderung_b_neu_uuid_uebernommen.append(c_id)
+    else:
+        anforderung_b_neu_uuid_neu.append(c_id)
         
-    if (c_id_uuid := CA_A[c_id]['alt-identifier']) in MAP_UUID_CONTROL_ID_B:     
-        c_id_b = MAP_UUID_CONTROL_ID_B[c_id_uuid]
-        
-        zeile = '\n' + c_id + ' UUID vom ' + COMMIT_DATE_A + ' ist gleich ' + c_id_b + ' UUID vom ' + COMMIT_DATE_B       
-        str_a, str_b = control_titel_prose_params(CA_A, c_id), control_titel_prose_params(CA_B, c_id_b)
-        zeile += '; cos-sim = ' + str(round(kosinus_aehnlichkeit(str_a,str_b),2))
-        report.append(zeile)
-        
-        zeile = '\n *' + c_id_b + ' ' + CA_B[c_id_b].get('title', '') + ' (' + CA_B[c_id_b].get('sec_level', '') + ')*' ' vom ' + COMMIT_DATE_B 
-        report.append(zeile)
-        
-        zeile = '*' + control_titel_prose_params(CA_B, c_id_b, False) + '*'        
-        report.append(zeile)        
-    
-    
-# --------------- Neue Anforderungen --------------------------------
-report.append('## Neue Anforderungen')
-report.append('[Zurück zu Inhalte](#inhalte)')
-report.append('Anzahl neuer Anforderungen: ' + str(len(CA_B_OHNE_CA_A)))
-for c_id in CA_B_OHNE_CA_A:        
-    zeile = '#### ✨ ' + c_id + ' ' + CA_B[c_id]['title']
-    if CA_B[c_id]['sec_level']: 
-        zeile += ' (' + CA_B[c_id]['sec_level'] + ')'
-    report.append(zeile) 
-    report.append(control_titel_prose_params(CA_B, c_id, False))
-        
-    if (c_id_uuid := CA_B[c_id]['alt-identifier']) in MAP_UUID_CONTROL_ID_A:     
-        c_id_a = MAP_UUID_CONTROL_ID_A[c_id_uuid]
-        zeile = '\n' + c_id + ' UUID vom ' + COMMIT_DATE_B + ' ist gleich ' + c_id_a + ' UUID vom ' + COMMIT_DATE_A
-        str_a, str_b = control_titel_prose_params(CA_A, c_id_a), control_titel_prose_params(CA_B, c_id)    
-        zeile += '; cos-sim = ' + str(round(kosinus_aehnlichkeit(str_a,str_b),2))
-        report.append(zeile)     
-
-        zeile = '\n *' + c_id_a + ' ' + CA_A[c_id_a].get('title', '') + ' (' + CA_A[c_id_a].get('sec_level', '') + ')*' ' vom ' + COMMIT_DATE_A 
-        report.append(zeile)     
-
-        zeile = '*' + control_titel_prose_params(CA_A, c_id_a, False) + '*'        
-        report.append(zeile) 
-              
-    
-
-# --------------- Übersicht Veränderte Anforderungsattribute --------------------------------    
-report.append('## Veraenderte Anforderungsattribute')
-report.append('[Zurück zu Inhalt](#inhalte)')
+# identifiziere veränderte Anforderungsattribute      
 diff_attr = defaultdict(dict)
 veraenderte_anforderungsattribute = False
-veraenderte_anforderungsattribute_anzahl = 0
-
+veraenderte_anforderungsattribute_anzahl = 0   
+anforderungen_mit_veraenderten_attributen = 0
 for c_id in CA_A_UND_CA_B:
     diff_attr[c_id]['oscal_name'], diff_attr[c_id]['xlsx_name'] = [], []     
     for c_at in  CONTROL_ATTRIBUTES_DICT_OSCAL.keys():                    
@@ -175,7 +121,145 @@ for c_id in CA_A_UND_CA_B:
             diff_attr[c_id]['xlsx_name'].append(CONTROL_ATTRIBUTES_DICT_OSCAL[c_at])          
             diff_attr[c_id]['oscal_name'].append(c_at)
             veraenderte_anforderungsattribute = True
-            veraenderte_anforderungsattribute_anzahl += 1
+            veraenderte_anforderungsattribute_anzahl += 1              
+    if diff_attr[c_id]['oscal_name'] or diff_attr[c_id]['xlsx_name']:
+        anforderungen_mit_veraenderten_attributen += 1
+    
+
+
+# ---------------- Inhaltsverzeichnis -------------------------------------
+report = []
+report.append('# GS++ control deltas github ' + COMMIT_DATE_A + ' & ' + COMMIT_DATE_B)
+report.append('## Inhalte')
+
+# Inhaltsverzeichnis Teil zu entfernten Anforderungen
+report.append('- [Entfernte Anforderungen IDs](#entfernte-anforderungen-ids) (' + str(len(CA_A_OHNE_CA_B)) + '), davon')
+if anforderung_a_entfernt_uuid_entfernt:
+    report.append('    - [entfernte UUID](#entfernte-anforderungen-ids-mit-entfernter-uuid) (' + str(len(anforderung_a_entfernt_uuid_entfernt)) + ')')
+if anforderung_a_entfernt_uuid_verbleibt:
+    report.append('    - [verbleibende UUID](#entfernte-anforderungen-ids-mit-verbleibender-uuid) (' + str(len(anforderung_a_entfernt_uuid_verbleibt)) + ')')
+
+# Inhaltsverzeichnis Teil zu neuen Anforderungen
+report.append('- [Neue Anforderungen IDs](#neue-anforderungen) (' + str(len(CA_B_OHNE_CA_A)) + '), davon')
+if anforderung_b_neu_uuid_neu:
+    report.append('    - [neue UUID](#neue-anforderungen-ids-mit-neuer-uuid) (' + str(len(anforderung_b_neu_uuid_neu)) + ')')
+if anforderung_b_neu_uuid_uebernommen:
+    report.append('    - [übernommene UUID](#neue-anforderungen-ids-mit-uebernommener-uuid) (' + str(len(anforderung_b_neu_uuid_uebernommen)) + ')')
+
+# Inhaltsverzeichnis Teil zu Anforderungen mit veränderten Attributen
+zeile = '- [Anforderungen (' + str(anforderungen_mit_veraenderten_attributen) + ') mit '
+zeile += 'veränderten Attributen (' + str(veraenderte_anforderungsattribute_anzahl) + ')]'
+zeile += '(#veraenderte-anforderungsattribute)'
+report.append(zeile)
+zeile = '    - [Übersicht](#veraenderte-anforderungsattribute---uebersicht)'
+report.append(zeile)
+zeile = '    - [Details](#veraenderte-anforderungsattribute---details)'
+report.append(zeile)
+
+# Inhaltsverzeichnis Teil Information zu cos-sim
+if (CA_A_OHNE_CA_B or CA_B_OHNE_CA_A): #es gibt entfernte oder neue Anforderungen
+    zeile = '\nAls Maß für die Ähnlichkeit zwischen Anforderungen wird die  [Kosinus-Aehnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) (cos-sim) verwendet.' 
+    report.append(zeile)   
+
+
+
+# --------------- Entfernte Anforderungen IDs--------------------------------
+report.append('## Entfernte Anforderungen IDs')
+report.append('[Zurück zu Inhalte](#inhalte)')
+
+zeile = str(len(CA_A_OHNE_CA_B)) + ' entfernte Anforderungen-IDs' + '.'
+if CA_A_OHNE_CA_B:
+    zeile += ' Davon ' + str(len(anforderung_a_entfernt_uuid_entfernt)) + ' mit entfernter UUID und '
+    zeile += str(len(anforderung_a_entfernt_uuid_verbleibt)) + ' mit verbleibender UUID.'
+report.append(zeile)
+
+report.append('### Entfernte Anforderungen IDs mit entfernter UUID')
+report.append('[Zurück zu Inhalte](#inhalte)')
+for c_id in anforderung_a_entfernt_uuid_entfernt:
+    zeile = '#### 🗑 ' + c_id + ' ' + CA_A[c_id]['title']
+    if CA_A[c_id]['sec_level']: 
+        zeile += ' (' + CA_A[c_id]['sec_level'] + ')'    
+    report.append(zeile)   
+    report.append(control_titel_prose_params(CA_A, c_id, False))
+
+report.append('### Entfernte Anforderungen IDs mit verbleibender UUID')
+report.append('[Zurück zu Inhalte](#inhalte)')
+for c_id in anforderung_a_entfernt_uuid_verbleibt:
+    zeile = '#### 🗑 ' + c_id + ' ' + CA_A[c_id]['title']
+    if CA_A[c_id]['sec_level']: 
+        zeile += ' (' + CA_A[c_id]['sec_level'] + ')'    
+    report.append(zeile)   
+    report.append(control_titel_prose_params(CA_A, c_id, False))
+    
+    c_id_uuid = CA_A[c_id]['alt-identifier']
+    c_id_b = MAP_UUID_CONTROL_ID_B[c_id_uuid]        
+    zeile = '\n' + c_id + ' UUID vom ' + COMMIT_DATE_A + ' ist gleich ' + c_id_b + ' UUID vom ' + COMMIT_DATE_B       
+    str_a, str_b = control_titel_prose_params(CA_A, c_id), control_titel_prose_params(CA_B, c_id_b)
+    zeile += '; cos-sim = ' + str(round(kosinus_aehnlichkeit(str_a,str_b),2))
+    report.append(zeile)
+    
+    zeile = '\n *' + c_id_b + ' ' + CA_B[c_id_b].get('title', '') + ' (' + CA_B[c_id_b].get('sec_level', '') + ')*' ' vom ' + COMMIT_DATE_B 
+    report.append(zeile)
+    
+    zeile = '*' + control_titel_prose_params(CA_B, c_id_b, False) + '*'        
+    report.append(zeile)
+
+    
+    
+# --------------- Neue Anforderungen --------------------------------
+report.append('## Neue Anforderungen')
+report.append('[Zurück zu Inhalte](#inhalte)')
+
+zeile = str(len(CA_B_OHNE_CA_A)) + ' neue Anforderungen-IDs' + '.'
+if CA_B_OHNE_CA_A:
+    zeile += ' Davon ' + str(len(anforderung_b_neu_uuid_neu)) + ' mit neuer UUID und '
+    zeile += str(len(anforderung_b_neu_uuid_uebernommen)) + ' mit übernommener UUID.'
+report.append(zeile)
+
+#zeile = 'Anzahl neuer Anforderungen: ' + str(len(CA_B_OHNE_CA_A)) + '.'
+#if CA_B_OHNE_CA_A:
+#    zeile += ' Davon ' + str(len(anforderung_b_neu_uuid_neu)) + ' mit neuer UUID und '
+#    zeile += str(len(anforderung_b_neu_uuid_uebernommen)) + ' mit übernommener UUID.'
+#report.append(zeile)
+
+report.append('### Neue Anforderungen IDs mit neuer UUID')
+report.append('[Zurück zu Inhalte](#inhalte)')
+for c_id in anforderung_b_neu_uuid_neu:        
+    zeile = '#### ✨ ' + c_id + ' ' + CA_B[c_id]['title']
+    if CA_B[c_id]['sec_level']: 
+        zeile += ' (' + CA_B[c_id]['sec_level'] + ')'
+    report.append(zeile)
+    report.append(control_titel_prose_params(CA_B, c_id, False))
+    
+
+report.append('### Neue Anforderungen IDs mit uebernommener UUID')
+report.append('[Zurück zu Inhalte](#inhalte)')
+for c_id in anforderung_b_neu_uuid_uebernommen:        
+    zeile = '#### ✨ ' + c_id + ' ' + CA_B[c_id]['title']
+    if CA_B[c_id]['sec_level']: 
+        zeile += ' (' + CA_B[c_id]['sec_level'] + ')'
+    report.append(zeile)
+    report.append(control_titel_prose_params(CA_B, c_id, False))
+    
+    c_id_uuid = CA_B[c_id]['alt-identifier']
+    c_id_a = MAP_UUID_CONTROL_ID_A[c_id_uuid]
+    zeile = '\n' + c_id + ' UUID vom ' + COMMIT_DATE_B + ' ist gleich ' + c_id_a + ' UUID vom ' + COMMIT_DATE_A
+    str_a, str_b = control_titel_prose_params(CA_A, c_id_a), control_titel_prose_params(CA_B, c_id)    
+    zeile += '; cos-sim = ' + str(round(kosinus_aehnlichkeit(str_a,str_b),2))
+    report.append(zeile)     
+
+    zeile = '\n *' + c_id_a + ' ' + CA_A[c_id_a].get('title', '') + ' (' + CA_A[c_id_a].get('sec_level', '') + ')*' ' vom ' + COMMIT_DATE_A 
+    report.append(zeile)     
+
+    zeile = '*' + control_titel_prose_params(CA_A, c_id_a, False) + '*'        
+    report.append(zeile) 
+
+# --------------- Übersicht Veränderte Anforderungsattribute --------------------------------    
+report.append('## Veraenderte Anforderungsattribute')
+report.append('[Zurück zu Inhalt](#inhalte)')
+
+report.append('### Veraenderte Anforderungsattribute - Uebersicht')
+report.append('[Zurück zu Inhalt](#inhalte)')
 if veraenderte_anforderungsattribute:
     report.append('Anzahl geänderter Anforderungsattribute: ' + str(veraenderte_anforderungsattribute_anzahl) )
     report.append('|Anforderung|Geänderte Attribute|\n|---|---|')    
@@ -186,13 +270,16 @@ else:
     report.append('Keine')
 
 # --------------- Im Detail Veränderte Anforderungsattribute -------------------------------- 
+report.append('### Veraenderte Anforderungsattribute - Details')
+report.append('[Zurück zu Inhalt](#inhalte)')
 for c_id in diff_attr:        
     if diff_attr[c_id]['xlsx_name']:
         report.append('#### ' + c_id + ' ' + CA_B[c_id]['title'] + ' (' + CA_B[c_id]['sec_level'] + ')') 
         report.append('|Attribut|' + COMMIT_DATE_A + '|' + COMMIT_DATE_B + '|\n|---|---|---|')
         for attr_xlsx in sort_list_naturally(diff_attr[c_id]['xlsx_name']):
             attr_oscal = CONTROL_ATTRIBUTES_DICT_XLSX[attr_xlsx]
-            str_a, str_b = str(CA_A[c_id][attr_oscal]), str(CA_B[c_id][attr_oscal])
+            str_a, str_b = str(CA_A[c_id].get(attr_oscal, '')), str(CA_B[c_id].get(attr_oscal, ''))
+            #str_a, str_b = str(CA_A[c_id][attr_oscal]), str(CA_B[c_id][attr_oscal])
             if attr_oscal == 'guidance':
                 str_a, str_b = inline_diff(str_a, str_b)            
             if attr_oscal == 'alt-identifier' and (str_a in MAP_UUID_CONTROL_ID_B):

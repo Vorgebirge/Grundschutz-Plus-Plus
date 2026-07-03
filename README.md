@@ -5,11 +5,11 @@ Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht u
 Die Beschäftigung mit Grundschutz++ motiviert nachfolgende elementare Hilfsmittel.
 
 
-## Aktueller GSpp-Anwenderkatalog als Excel-Datei und Diffs
+## Aktueller GSpp-Anwenderkatalog als Excel-Datei
 
 Aktueller GSpp-Anwenderkatalog und Implementierungsbeschreibungen als Excel-Datei: `Grundschutz++-catalog.xlsx` 
 
-Unterschiede zum vorigen GSpp-Anwenderkatalog: `Diff_Report_Grundschutz++-catalog.md` und `Diff_Report_Grundschutz++-catalog.pdf` Zu Details siehe unten unter *Unterschiede zwischen zwei GSpp-Anwenderkatalog-commits*
+
 
 ## GSpp-Anwenderkatalog als flache json-Datei
 Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`

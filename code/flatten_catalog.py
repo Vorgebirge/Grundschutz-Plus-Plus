@@ -1,4 +1,4 @@
-﻿# Stand 25.05.2026
+﻿# Stand 03.07.2026
 import re
 from helper_functions import read_json_file, sort_list_naturally, write_json_file
 from collections import defaultdict
@@ -146,7 +146,7 @@ def get_attribute_of_control(control_id: str, attribute = ''):
         elif attribute in ('related', 'required') and ('links' in container_of_control.keys()):        
             ergebnis = [item['href'] for item in container_of_control['links'] if item['rel'] == attribute]            
             return ', '.join(ergebnis)
-        elif attribute in ('alt-identifier', 'effort_level', 'sec_level', 'tags'):        
+        elif attribute in ('alt-identifier', 'authenticity', 'availability', 'confidentiality', 'effort_level', 'integrity', 'sec_level', 'tags', 'threats'):        
             return next((item['value'] for item in container_of_control['props'] if item['name'] == attribute), '')     
         elif attribute in ('prose'):        
             return container_of_control_stm['prose']    
