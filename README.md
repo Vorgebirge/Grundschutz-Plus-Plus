@@ -22,22 +22,6 @@ Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `catalog_<
 
 Integration der BSI-Implementierungsbeschreibungen (ab Anwenderkatalog commit 20.04.26)
 
-## Unterschiede zwischen zwei GSpp-Anwenderkatalog-commits
-Im Ordner `daten/diff_reports/` die Datei `diff-report-gs++-<datum a>-<datum b>.md` im Markdown-Format und mit den gleichen Inhalten auch im PDF-Format.
-
-- **Entfernte Anforderungen-IDs**: Anforderungen-IDs in commit A, die es in commit B nicht mehr gibt
-   - Auch Nennung der commit B Anforderungen-IDs, deren UUID identisch zu den UUID der entfernten commit A Anforderungen-IDs sind      
-   - Auch Nennung der commit B Anforderungen, die den entfernten
-     commit A Anforderungen inhaltlich ählich sind (wenn das Maß [Kosinus-Ähnlichkeit](https://de.wikipedia.org/wiki/Kosinus-%C3%84hnlichkeit) > 0,5)
-   
-   Dies sind Indikatoren dafür, dass die Inhalte der entfernten commit A Anforderungen-IDs in commit B Anforderungen weiter vorliegen.
-- **Neue Anforderungen-IDs**: Anforderungen-IDs in commit B, die es in commit A noch nicht gegeben hat  
-   - Auch Nennung der commit A Anforderungen-IDs, deren UUID identisch zu den UUID der neuen commit B Anforderungen-IDs sind   
-   - Auch Nennung der commit A Anforderungen, die den neuen
-     commit B Anforderungen inhaltlich ähnlich sind (wenn das Maß  Kosinus-Ähnlichkeit > 0,5)
-    
-    Dies sind Indikatoren dafür, dass die Inhalte der neuen commit B Anforderungen-IDs bereits in commit A Anforderungen vorlagen.
-- **Veränderte Anforderungsattribute** als Übersicht und im Detail. Beim oft inhaltlich umfangreichen Attribut `guidance / Hinweise` werden entfernte und ergänzte Textanteile hervorgehoben. 
 
 ## Link-Sammlung
 BSI-Materialien im Kontext GSpp 
