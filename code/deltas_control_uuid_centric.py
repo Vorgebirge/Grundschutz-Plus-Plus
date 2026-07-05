@@ -174,7 +174,7 @@ for c_id_a in CA_A:
                 str_a, str_b = inline_diff(str_a, str_b)
             report.append('|' + attr_xlsx + '|' + str_a + '|' + str_b + '|')
 
-report.append('[Zurück zu Inhalte](#inhalte)') 
+report.append('\n[Zurück zu Inhalte](#inhalte)') 
 
 # --------------- Scheibe Datei -----------------------------------------        
 with open(PATH_DIFF_REPORT_UUID_CENTRIC, "w", encoding='utf-8') as f:
