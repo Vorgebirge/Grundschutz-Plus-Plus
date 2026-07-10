@@ -181,7 +181,7 @@ for c_id_a in delta_attribute:
     else:
         report.append(COMMIT_DATE_A + ': ' + c_id_a + ' ' + title_a + ' (' + sec_level_a + ')')
         report.append(COMMIT_DATE_B + ': ' + c_id_b + ' ' + title_b + ' (' + sec_level_b + ')')        
-    report.append('||||')
+    report.append('|    |     |     |')
     report.append('|---|---|---|')
     report.append('|*Attribut*|*' + COMMIT_DATE_A + '*|*' + COMMIT_DATE_B + '*|')    
     for attr_xlsx in delta_attribute[c_id_a]['deltas']:
