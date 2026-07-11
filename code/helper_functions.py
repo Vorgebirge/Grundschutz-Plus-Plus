@@ -1,6 +1,6 @@
 ﻿# Stand 15.05.2026
 # Reguläre Ausdrücke https://regex101.com/)
-import difflib, hashlib, json, pickle, re, string
+import codecs, difflib, hashlib, json, pickle, re, string
 from collections import defaultdict, OrderedDict
 from configparser import ConfigParser
 from datetime import datetime
@@ -27,6 +27,14 @@ TEST_DATA = {
     }
 }
 
+def decode_config_escapes(value: str) -> str:
+    return (
+        value
+        .replace("\\n", "\n")
+        .replace("\\t", "\t")
+        .replace("\\r", "\r")
+        .replace("\\\\", "\\")
+    )
 
 
 def hash_object(obj):
