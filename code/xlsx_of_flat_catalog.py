@@ -1,4 +1,4 @@
-﻿#Stand 11.07.2026
+﻿#Stand 12.07.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
 from helper_functions import decode_config_escapes, read_json_file, section_only_options, sort_dict_naturally, sort_list_naturally, today, ymd2dmy
 from collections import defaultdict
@@ -122,6 +122,14 @@ def anmerkungen(control_id: str) -> str:
 def aufwand(control_id: str) -> str:    
     return CONTROL_ATTRIBUTES[control_id]['effort_level']
 
+def c_id_suffix(control_id: str) -> str:    
+    suffix = ''
+    if CONTROL_ATTRIBUTES[control_id]['sec_level'] == 'erhöht':
+        suffix += '+'
+    if (not CONTROL_ATTRIBUTES[control_id]['target_object_categories']):        
+        suffix += '*'    
+    return suffix     
+
 def dokumentation(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['documentation']
   
@@ -133,14 +141,19 @@ def elementare_gefaehrdung(control_id: str) -> str:
 def elementare_gefaehrdung_anforderungen_methodik(threat_id: str) -> str:
     if (anforderungen := anforderungen_gegen_threat.get(threat_id, '')):
         anforderungen_methodik = [c_id for c_id in anforderungen if CONTROL_ATTRIBUTES[c_id]['praktik_typ'] == 'Methodik' ]
-        if anforderungen_methodik:           
+        if anforderungen_methodik:
+            anforderungen_methodik = [c_id if CONTROL_ATTRIBUTES[c_id]['target_object_categories'] \
+            else c_id + '*' for c_id in anforderungen_methodik]
             return ', '.join(sort_list_naturally(anforderungen_methodik))        
     return '-'
 
 def elementare_gefaehrdung_anforderungen_organisatorisch(threat_id: str) -> str:
     if (anforderungen := anforderungen_gegen_threat.get(threat_id, '')):
         anforderungen_organisatorisch = [c_id for c_id in anforderungen if CONTROL_ATTRIBUTES[c_id]['praktik_typ'] == 'Organisatorisch' ]
-        if anforderungen_organisatorisch:
+        if anforderungen_organisatorisch:            
+            anforderungen_organisatorisch = [c_id + c_id_suffix(c_id) for c_id in anforderungen_organisatorisch]
+            #anforderungen_organisatorisch = [c_id if CONTROL_ATTRIBUTES[c_id]['target_object_categories'] \
+            #else c_id + '*' for c_id in anforderungen_organisatorisch]
             return ', '.join(sort_list_naturally(anforderungen_organisatorisch))
     return '-'
 
@@ -148,9 +161,11 @@ def elementare_gefaehrdung_anforderungen_technisch(threat_id: str) -> str:
     if (anforderungen := anforderungen_gegen_threat.get(threat_id, '')):
         anforderungen_technisch = [c_id for c_id in anforderungen if CONTROL_ATTRIBUTES[c_id]['praktik_typ'] == 'Technisch' ]
         if anforderungen_technisch:
+            anforderungen_technisch = [c_id + c_id_suffix(c_id) for c_id in anforderungen_technisch]
+            #anforderungen_technisch = [c_id if CONTROL_ATTRIBUTES[c_id]['target_object_categories'] \
+            #else c_id + '*' for c_id in anforderungen_technisch]
             return ', '.join(sort_list_naturally(anforderungen_technisch))    
     return '-'
-    
 
 def elementare_gefaehrdung_id(threat_id: str) -> str:
     return threat_id
