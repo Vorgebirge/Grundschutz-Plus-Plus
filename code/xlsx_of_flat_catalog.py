@@ -1,6 +1,6 @@
 ﻿#Stand 11.07.2026
 import math, re, xlsxwriter #https://xlsxwriter.readthedocs.io/
-from helper_functions import decode_config_escapes, read_json_file, sort_list_naturally, today, ymd2dmy
+from helper_functions import decode_config_escapes, read_json_file, section_only_options, sort_dict_naturally, sort_list_naturally, today, ymd2dmy
 from collections import defaultdict
 from configparser import ConfigParser, ExtendedInterpolation
 
@@ -17,6 +17,9 @@ config = ConfigParser(interpolation = ExtendedInterpolation())
 config.read('config.ini')
 
 DATUM_CATALOG_GITHUB_COMMIT = config['DEFAULT']['commit']
+
+THREATS = {re.sub(r"\s+", "", threat).upper(): config['elementare_gefaehrdungen'][threat] \
+for threat in section_only_options(config, 'elementare_gefaehrdungen')}
 
 try:
     KONTAKT = config['DEFAULT']['kontakt']
@@ -39,6 +42,7 @@ IMPLEMENTATIONS = read_json_file(PATH_IMPLEMENTATIONS)
 
 CATALOG_COLUMN = defaultdict(dict)
 IMPLEMENTATION_COLUMN = defaultdict(dict)
+THREATS_COLUMN = defaultdict(dict)
 
 for section in config.sections():    
     if (config[section].get('section_type', '') == 'xlsx') and (config[section].get('sheet', '') == 'katalog'):            
@@ -61,6 +65,24 @@ for section in config.sections():
         IMPLEMENTATION_COLUMN[function]['level'] = config.getint(section, 'level')
         IMPLEMENTATION_COLUMN[function]['sheet'] = config[section].get('sheet', '')
         IMPLEMENTATION_COLUMN[function]['width'] = config.getint(section, 'width')
+    elif (config[section].get('section_type', '') == 'xlsx') and (config[section].get('sheet', '') == 'threats'):                
+        function = config[section].get('function', '')        
+        THREATS_COLUMN[function]['cell_value_type'] = config[section].get('cell_value_type', '')
+        THREATS_COLUMN[function]['comment'] = decode_config_escapes(config[section].get('comment', ''))        
+        THREATS_COLUMN[function]['headline'] = decode_config_escapes(config[section].get('headline', ''))
+        THREATS_COLUMN[function]['hidden'] = config.getboolean(section, 'hidden')
+        THREATS_COLUMN[function]['is_in_sheet'] = config.getboolean(section, 'is_in_sheet')
+        THREATS_COLUMN[function]['level'] = config.getint(section, 'level')
+        THREATS_COLUMN[function]['sheet'] = config[section].get('sheet', '')
+        THREATS_COLUMN[function]['width'] = config.getint(section, 'width')
+
+anforderungen_gegen_threat = defaultdict(list)
+for c_id in CONTROL_ATTRIBUTES:
+    if threats := CONTROL_ATTRIBUTES[c_id].get('threats', ''):
+        threats = [re.sub(r"\s+", "", threat) for threat in threats.split(',')]        
+        for threat in threats:            
+            anforderungen_gegen_threat[threat].append(c_id)
+anforderungen_gegen_threat = sort_dict_naturally(anforderungen_gegen_threat)
 
 def control_text_with_parameter(control_id: str) -> str:
     result = CONTROL_ATTRIBUTES[control_id].get('prose', '')
@@ -107,6 +129,34 @@ def elementare_gefaehrdung(control_id: str) -> str:
     mystr, mylist = CONTROL_ATTRIBUTES[control_id]['threats'], []        
     mylist.extend(item.strip() for item in mystr.split(',') if item.strip())
     return ', '.join(sort_list_naturally(mylist))    
+
+def elementare_gefaehrdung_anforderungen_methodik(threat_id: str) -> str:
+    if (anforderungen := anforderungen_gegen_threat.get(threat_id, '')):
+        anforderungen_methodik = [c_id for c_id in anforderungen if CONTROL_ATTRIBUTES[c_id]['praktik_typ'] == 'Methodik' ]
+        if anforderungen_methodik:           
+            return ', '.join(sort_list_naturally(anforderungen_methodik))        
+    return '-'
+
+def elementare_gefaehrdung_anforderungen_organisatorisch(threat_id: str) -> str:
+    if (anforderungen := anforderungen_gegen_threat.get(threat_id, '')):
+        anforderungen_organisatorisch = [c_id for c_id in anforderungen if CONTROL_ATTRIBUTES[c_id]['praktik_typ'] == 'Organisatorisch' ]
+        if anforderungen_organisatorisch:
+            return ', '.join(sort_list_naturally(anforderungen_organisatorisch))
+    return '-'
+
+def elementare_gefaehrdung_anforderungen_technisch(threat_id: str) -> str:
+    if (anforderungen := anforderungen_gegen_threat.get(threat_id, '')):
+        anforderungen_technisch = [c_id for c_id in anforderungen if CONTROL_ATTRIBUTES[c_id]['praktik_typ'] == 'Technisch' ]
+        if anforderungen_technisch:
+            return ', '.join(sort_list_naturally(anforderungen_technisch))    
+    return '-'
+    
+
+def elementare_gefaehrdung_id(threat_id: str) -> str:
+    return threat_id
+    
+def elementare_gefaehrdung_titel(threat_id: str) -> str:
+    return THREATS[threat_id]    
   
 def ergebnis(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['result']
@@ -209,7 +259,7 @@ def verwandte(control_id: str) -> str:
 def zielobjekte(control_id: str) -> str:
     return CONTROL_ATTRIBUTES[control_id]['target_object_categories']
 
-def construct_sheet_rows(workbook, sheet_catalog, column_defintions):    
+def construct_sheet_columns(workbook, sheet_catalog, column_defintions):    
     header_format = workbook.add_format(HEADER_FORMAT)
            
     column = 0
@@ -305,14 +355,21 @@ def main():
     sheet_implementation = workbook.add_worksheet(sheet_implementation_name)
     sheet_implementation.freeze_panes(1,0)
     
+    sheet_threats_name = 'Elementare Gefährdungen'
+    sheet_threats = workbook.add_worksheet(sheet_threats_name)
+    sheet_threats.freeze_panes(1,0)
+        
     # Gestalte Deckblatt
     construct_sheet_deckblatt(sheet_deckblatt)
         
     #Gestalte Spalten im Tabellenblatt mit den controls
-    construct_sheet_rows(workbook, sheet_catalog, CATALOG_COLUMN)    
+    construct_sheet_columns(workbook, sheet_catalog, CATALOG_COLUMN)    
     
     #Gestalte Spalten im Tabellenblatt mit den Implementierungen
-    construct_sheet_rows(workbook, sheet_implementation, IMPLEMENTATION_COLUMN)    
+    construct_sheet_columns(workbook, sheet_implementation, IMPLEMENTATION_COLUMN)    
+    
+    #Gestalte Spalten im Tabellenblatt mit den elementaren Gefährdungen
+    construct_sheet_columns(workbook, sheet_threats, THREATS_COLUMN) 
         
     #gestalte Zeilen im Tabellenblatt mit den controls
     row = 0
@@ -333,6 +390,14 @@ def main():
                 list_index += 1                
     # setze in jeder Spalte Autofilter
     set_sheet_autofilter(row, sheet_implementation, IMPLEMENTATION_COLUMN)
+    
+    #gestalte Zeilen im Tabellenblatt mit den Threats
+    row = 0 
+    for threat_id in THREATS.keys():
+        row +=1
+        construct_sheet_row(workbook, sheet_threats, THREATS_COLUMN, row, threat_id)           
+    # setze in jeder Spalte Autofilter
+    set_sheet_autofilter(row, sheet_threats, THREATS_COLUMN) 
     
     # Schließe Datei
     workbook.close()
