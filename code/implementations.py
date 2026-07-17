@@ -24,6 +24,7 @@ map_uuid_control_id = dict()
 for control_id in CONTROL_ATTRIBUTES:    
     map_uuid_control_id['_' + CONTROL_ATTRIBUTES[control_id]['alt-identifier']] = control_id
 
+ 
 
 for component in COMPONENT:    
     mydict = read_json_file(COMPONENT[component]['path'])
@@ -41,7 +42,8 @@ for component in COMPONENT:
             implementation['source'] = COMPONENT[component]['source']
             implementation['commit_source'] = ymd2dmy(COMPONENT[component]['commit'])
             implementation['excel_row'] = 0
-                        
+            
+            
             if (locator_of_description := locator[:-1] + ('description',)) in mydict_flattened:
                 implementation['description'] = mydict_flattened[locator_of_description]
                                 
@@ -54,8 +56,8 @@ for component in COMPONENT:
 dict_implementations = sort_dict_naturally(dict_implementations)
 
 excel_row = 2
-for control_id in dict_implementations:
-    for implementation in dict_implementations[control_id]:
+for control_id in dict_implementations:    
+    for implementation in dict_implementations[control_id]:        
         implementation['excel_row'] = excel_row        
         excel_row += 1                 
 
