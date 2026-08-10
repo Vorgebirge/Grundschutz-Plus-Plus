@@ -1,6 +1,6 @@
 ﻿# Grundschutz++ (GSpp) - elementare Hilfsmittel
 
-Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert sukzessive (via commits) in GitHub die GSpp-Anwenderkataloge als OSCAL-Datei ([NIST](https://pages.nist.gov/OSCAL/learn/), [OSCAL Foundation](https://oscalfoundation.org/)) im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [grundschutz++-catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/Anwenderkataloge/Grundschutz%2B%2B).
+Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert sukzessive (via commits) in GitHub die GSpp-Anwenderkataloge als OSCAL-Datei ([NIST](https://pages.nist.gov/OSCAL/learn/), [OSCAL Foundation](https://oscalfoundation.org/)) im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [Grundschutz++-resolved_catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/control_layer/Grundschutz%2B%2B).
 
 Die Beschäftigung mit Grundschutz++ motiviert nachfolgende elementare Hilfsmittel.
 
@@ -41,9 +41,10 @@ BSI-Materialien im Kontext GSpp
   - BSI-Bund [OSCAL FAQ](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/blob/main/Dokumentation/OSCAL.md)
   - BSI-Bund [Stand der Technik Bibliothek](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main)
 
-OSCAL Viewer
+OSCAL & Grundschutz++Viewer
 - bsi-community's Stand-der-Technik-Viewer in [GitHub](https://github.com/bsi-community/Stand-der-Technik-Viewer) und [Online](https://bsi-community.github.io/Stand-der-Technik-Viewer/)
-- NTT-Data-Deutschland-SE's [GSpp-Viewer](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools/blob/main/One-Page-Apps/GSpp-Viewer.html)
+- ndaal's [Grundschutz++ Viewer](https://gspp.ndaal.eu/)
+- NTT-Data-Deutschland-SE's [GSpp-Viewer](https://github.com/NTT-Data-Deutschland-SE/Grundschutz-Plus-Plus-Tools/tree/main/GS%2B%2B-oscal-app)
 - OSCAL.io's [OSCAL Viewer](https://viewer.oscal.io/)  
 
 Und auch
