@@ -1,0 +1,242 @@
+{
+    "SYS.4.5.A1-UA.1": {
+        "titel": "Sensibilisierung zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Alle Benutzenden MÜSSEN für den sicheren Umgang mit Wechseldatenträgern sensibilisiert werden.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A1-UA.2": {
+        "titel": "Sensibilisierung zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Die Institution MUSS insbesondere darauf hinweisen, wie die Benutzenden mit Wechseldatenträgern umgehen sollten, um einem Verlust oder Diebstahl vorzubeugen und eine lange Lebensdauer zu gewährleisten.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A1-UA.3": {
+        "titel": "Sensibilisierung zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Die Institution MUSS die Benutzenden darüber informieren, dass sie keine Wechseldatenträger, die aus unbekannten Quellen stammen, an ihre IT-Systeme anschließen dürfen.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A2-UA.1": {
+        "titel": "Verlust- und Manipulationsmeldung",
+        "inhalt": "Die Benutzenden MÜSSEN umgehend melden, wenn ein Wechseldatenträger gestohlen oder verloren wurde oder der Verdacht einer Manipulation besteht.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A2-UA.2": {
+        "titel": "Verlust- und Manipulationsmeldung",
+        "inhalt": "Die Benutzenden MÜSSEN bei ihrer Meldung angeben, welche Informationen auf dem Wechseldatenträger gespeichert sind.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A2-UA.3": {
+        "titel": "Verlust- und Manipulationsmeldung",
+        "inhalt": "Hierfür MUSS es in der Institution klare Meldewege und Zuständigkeiten geben.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A2-UA.4": {
+        "titel": "Verlust- und Manipulationsmeldung",
+        "inhalt": "Die Institution MUSS festlegen, wie Wechseldatenträger behandelt werden sollen, die nach einem Verlust wiedergefunden wurden.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A2-UA.5": {
+        "titel": "Verlust- und Manipulationsmeldung",
+        "inhalt": "Wiedergefundene Wechseldatenträger DÜRFEN NICHT ohne vorherige Überprüfung auf Manipulation und Schadsoftware verwendet werden.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A3-UA.1": {
+        "titel": "ENTFALLEN",
+        "inhalt": "Diese Anforderung ist entfallen.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A10-UA.1": {
+        "titel": "Datenträgerverschlüsselung",
+        "inhalt": "Wenn Wechseldatenträger außerhalb eines sicheren Bereiches verwendet oder transportiert werden und dabei schutzbedürftige Daten enthalten, MÜSSEN die Daten mit einem sicheren Verfahren verschlüsselt werden.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A12-UA.1": {
+        "titel": "Schutz vor Schadsoftware",
+        "inhalt": "Die Institution MUSS sicherstellen, dass nur Daten auf Wechseldatenträger übertragen werden, die auf Schadsoftware überprüft wurden.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A12-UA.2": {
+        "titel": "Schutz vor Schadsoftware",
+        "inhalt": "Bevor Daten von Wechseldatenträgern verarbeitet werden, MÜSSEN sie auf Schadsoftware überprüft werden.",
+        "typ": "Basis"
+    },
+    "SYS.4.5.A4-UA.1": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Es SOLLTE eine Richtlinie für den richtigen Umgang mit Wechseldatenträgern erstellt werden.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.2": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Folgende grundlegenden Aspekte SOLLTEN dabei berücksichtigt werden:",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.3": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "welche Wechseldatenträger genutzt werden und wer diese einsetzen darf,",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.4": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "welche Daten auf Wechseldatenträgern gespeichert werden dürfen und welche nicht,",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.5": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "wie die auf Wechseldatenträgern gespeicherten Daten vor unbefugtem Zugriff, Manipulation und Verlust geschützt werden,",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.6": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "wie die Daten auf den Wechseldatenträgern gelöscht werden sollen,",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.7": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "mit welchen externen Institutionen Wechseldatenträger ausgetauscht werden dürfen und welche Sicherheitsregelungen dabei zu beachten sind,",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.8": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "ob Wechseldatenträger an fremde IT-Systeme angeschlossen werden dürfen und was dabei zu beachten ist,",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.9": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "wie Wechseldatenträger zu versenden sind sowie",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.10": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "wie der Verbreitung von Schadsoftware über Wechseldatenträger vorgebeugt wird.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.11": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Die Institution SOLLTE in der Sicherheitsrichtlinie festlegen, unter welchen Bedingungen Wechseldatenträger gelagert werden sollen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.12": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Insbesondere SOLLTE die Institution vorgeben, dass nur berechtigte Benutzende Zugang zu beschriebenen Wechseldatenträgern haben.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.13": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Die Institution SOLLTE festlegen, dass Angaben des herstellenden Unternehmens zum Umgang mit Datenträgern berücksichtigt werden müssen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.14": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Die Institution SOLLTE die Verwendung von privaten Wechseldatenträgern untersagen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A4-UA.15": {
+        "titel": "Erstellung einer Richtlinie zum sicheren Umgang mit Wechseldatenträgern",
+        "inhalt": "Es SOLLTE regelmäßig überprüft werden, ob die Sicherheitsvorgaben für den Umgang mit Wechseldatenträgern aktuell sind.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A5-UA.1": {
+        "titel": "Regelung zur Mitnahme von Wechseldatenträgern",
+        "inhalt": "Es SOLLTE klare schriftliche Regeln dazu geben, ob, wie und zu welchen Anlässen Wechseldatenträger mitgenommen werden dürfen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A5-UA.2": {
+        "titel": "Regelung zur Mitnahme von Wechseldatenträgern",
+        "inhalt": "Insbesondere SOLLTE festgelegt sein, welche Wechseldatenträger von wem außer Haus transportiert werden dürfen und welche Sicherheitsmaßnahmen dabei zu beachten sind.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A6-UA.1": {
+        "titel": "Datenträgerverwaltung",
+        "inhalt": "Es SOLLTE eine Verwaltung für Wechseldatenträger geben.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A6-UA.2": {
+        "titel": "Datenträgerverwaltung",
+        "inhalt": "Die Wechseldatenträger SOLLTEN einheitlich gekennzeichnet werden.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A6-UA.3": {
+        "titel": "Datenträgerverwaltung",
+        "inhalt": "Die Verwaltung für Wechseldatenträger SOLLTE gewährleisten, dass Wechseldatenträger sachgerecht behandelt und aufbewahrt sowie ordnungsgemäß eingesetzt und transportiert werden.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A7-UA.1": {
+        "titel": "Sicheres Löschen der Wechseldatenträger vor und nach der Verwendung",
+        "inhalt": "Bevor Wechseldatenträger weitergegeben, wiederverwendet oder ausgesondert werden, SOLLTEN sie in geeigneter Weise sicher gelöscht werden.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A8-UA.1": {
+        "titel": "ENTFALLEN",
+        "inhalt": "Diese Anforderung ist entfallen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A13-UA.1": {
+        "titel": "Kennzeichnung der Wechseldatenträger beim Versand",
+        "inhalt": "Wechseldatenträger, die versendet werden sollen, SOLLTEN so gekennzeichnet werden, dass die Absendenden und die Empfangenden sie sofort identifizieren können.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A13-UA.2": {
+        "titel": "Kennzeichnung der Wechseldatenträger beim Versand",
+        "inhalt": "Die Kennzeichnung der Wechseldatenträger oder deren Verpackung SOLLTE für die Empfangenden eindeutig sein.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A13-UA.3": {
+        "titel": "Kennzeichnung der Wechseldatenträger beim Versand",
+        "inhalt": "Die Kennzeichnung von Wechseldatenträgern mit schützenswerten Informationen SOLLTE für Außenstehende keine Rückschlüsse auf Art und Inhalte der Informationen zulassen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A17-UA.1": {
+        "titel": "Gewährleistung der Integrität und Verfügbarkeit bei Langzeitspeichern",
+        "inhalt": "Falls Wechseldatenträger verwendet werden, um Daten für lange Zeiträume zu speichern, SOLLTE die Institution sicherstellen, dass die verwendeten Wechseldatenträger geeignet sind, um die Integrität und Verfügbarkeit der Daten während des gesamten Nutzungszeitraums sicherzustellen.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A17-UA.2": {
+        "titel": "Gewährleistung der Integrität und Verfügbarkeit bei Langzeitspeichern",
+        "inhalt": "Die Integrität der Daten SOLLTE regelmäßig überprüft werden.",
+        "typ": "Standard"
+    },
+    "SYS.4.5.A9-UA.1": {
+        "titel": "ENTFALLEN",
+        "inhalt": "Diese Anforderung ist entfallen.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A11-UA.1": {
+        "titel": "Integritätsschutz durch Checksummen oder digitale Signaturen",
+        "inhalt": "Es SOLLTE ein Verfahren zum Schutz gegen zufällige oder vorsätzliche Veränderungen eingesetzt werden, mit dem die Integrität von vertraulichen Informationen sichergestellt wird.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A11-UA.2": {
+        "titel": "Integritätsschutz durch Checksummen oder digitale Signaturen",
+        "inhalt": "Die Verfahren zum Schutz vor Veränderungen SOLLTEN dem aktuellen Stand der Technik entsprechen.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A14-UA.1": {
+        "titel": "Sichere Versandart und Verpackung",
+        "inhalt": "Die Institution SOLLTE überprüfen, wie vertrauliche Informationen bei einem Versand angemessen geschützt werden können.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A14-UA.2": {
+        "titel": "Sichere Versandart und Verpackung",
+        "inhalt": "Es SOLLTE eine sichere Versandverpackung für Wechseldatenträger verwendet werden, bei der Manipulationen sofort zu erkennen sind.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A14-UA.3": {
+        "titel": "Sichere Versandart und Verpackung",
+        "inhalt": "Die Institution SOLLTE alle Beteiligten auf notwendige Versand- und Verpackungsarten hinweisen.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A15-UA.1": {
+        "titel": "Verwendung zertifizierter Wechseldatenträger",
+        "inhalt": "Die Institution SOLLTE nur Wechseldatenträger verwenden, die zertifiziert sind.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A15-UA.2": {
+        "titel": "Verwendung zertifizierter Wechseldatenträger",
+        "inhalt": "Die Zertifizierung SOLLTE insbesondere eine integere Datenerhaltung sowie möglicherweise vorhandene Verschlüsselungsverfahren umfassen.",
+        "typ": "Hoch"
+    },
+    "SYS.4.5.A16-UA.1": {
+        "titel": "Nutzung dedizierter IT-Systeme zur Datenprüfung",
+        "inhalt": "Die Institution SOLLTE dedizierte IT-Systeme als Datenschleuse verwenden, bei denen Daten von einem Wechseldatenträger auf einen anderen übertragen werden und dabei auf Schadsoftware untersucht werden.",
+        "typ": "Hoch"
+    }
+}
