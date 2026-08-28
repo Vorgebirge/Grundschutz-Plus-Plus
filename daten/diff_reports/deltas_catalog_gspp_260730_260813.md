@@ -3,7 +3,7 @@
 - [0 entfernte Anforderungen-UUID](#entfernte-anforderungen-uuid)        
 - [0 neue Anforderungen-UUID](#neue-anforderungen-uuid)        
 - [0 entfallene und 0 neue Attribute der Anforderungen](#entfallene-und-neue-attribute-der-anforderungen)    
-- [11 Anforderungen-UUID mit 12 geaenderten Attributen](#anforderungen-uuid-mit-geaenderten-attributen)        
+- [14 Anforderungen-UUID mit 16 geaenderten Attributen](#anforderungen-uuid-mit-geaenderten-attributen)        
     - [Übersicht](#anforderungen-uuid-mit-geaenderten-attributen---uebersicht)        
     - [Details](#anforderungen-uuid-mit-geaenderten-attributen---details)        
 ## Entfernte Anforderungen-UUID    
@@ -30,7 +30,10 @@ Neue Attribute: -
 |fc2115c2-43fe-4b22-88c5-b28784174936|GC.3.1.3|Tags|    
 |6874056a-4f01-497d-8ef4-0411a55671e7|GC.3.1.4|Tags|    
 |491ec81c-443b-4792-83f3-c9f4363c64ce|GC.4.2|Hinweis|    
-|bdbc4d9b-c0d7-4f5a-8e07-ba12b4049625|GC.7.1|Titel|    
+|bdbc4d9b-c0d7-4f5a-8e07-ba12b4049625|GC.7.1|Thema, Titel|    
+|b75cea5b-dc1e-4b96-b34a-5053242dabc1|GC.7.1.1|Thema|    
+|7a951196-bf44-463f-91b6-8cf140c97e4c|GC.7.1.2|Thema|    
+|c86010f0-6e07-429a-a203-529ebdc6c99a|GC.7.2|Thema|    
 |9cfedbf2-6dc8-4ca5-8d93-26610884e3b7|NOT.1.1.4|Parameter|    
 |c179a2e9-4e6e-4115-a85e-d66ac93b00e8|UMS.2.1|Hinweis|    
 |03f6a09f-5be8-405f-a7b5-4f4fd7034413|UMS.2.2|Text|    
@@ -80,7 +83,26 @@ Neue Attribute: -
 |    |     |     |    
 |---|---|---|    
 |*Attribut*|*30.07.26*|*13.08.26*|    
+|Thema|GC.7 Infomationssicherheitseinstufung|GC.7 Informationssicherheitseinstufung|    
 |Titel|Vorgehen bei der Infomationssicherheitseinstufung|Vorgehen bei der Informationssicherheitseinstufung|    
+#### Δ b75cea5b-dc1e-4b96-b34a-5053242dabc1    
+30.07.26, 13.08.26: GC.7.1.1 Festlegung der Geschäftsprozesse (normal-SdT)    
+|    |     |     |    
+|---|---|---|    
+|*Attribut*|*30.07.26*|*13.08.26*|    
+|Thema|GC.7 Infomationssicherheitseinstufung|GC.7 Informationssicherheitseinstufung|    
+#### Δ 7a951196-bf44-463f-91b6-8cf140c97e4c    
+30.07.26, 13.08.26: GC.7.1.2 Festlegung des Schutzbedarfs (normal-SdT)    
+|    |     |     |    
+|---|---|---|    
+|*Attribut*|*30.07.26*|*13.08.26*|    
+|Thema|GC.7 Infomationssicherheitseinstufung|GC.7 Informationssicherheitseinstufung|    
+#### Δ c86010f0-6e07-429a-a203-529ebdc6c99a    
+30.07.26, 13.08.26: GC.7.2 Geschäftsprozesse mit hohem Schutzbedarf (normal-SdT)    
+|    |     |     |    
+|---|---|---|    
+|*Attribut*|*30.07.26*|*13.08.26*|    
+|Thema|GC.7 Infomationssicherheitseinstufung|GC.7 Informationssicherheitseinstufung|    
 #### Δ 9cfedbf2-6dc8-4ca5-8d93-26610884e3b7    
 30.07.26, 13.08.26: NOT.1.1.4 Business Continuity Management System (erhöht)    
 |    |     |     |    
