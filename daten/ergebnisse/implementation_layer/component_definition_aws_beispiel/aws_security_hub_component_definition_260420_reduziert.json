@@ -1,0 +1,218 @@
+{
+    "metadata": {
+        "uuid": "497071e3-5281-48fa-83ec-a255ecf4f238",
+        "source": "AWS Security Hub-component_definition.json",
+        "commit_source": "20.04.26",
+        "title": "AWS Security Hub Komponenten für Grundschutz++",
+        "published": null,
+        "last-modified": "2026-04-16T07:42:27Z",
+        "version": "0.2.0-review",
+        "remarks": "Diese Komponentendefinition beschreibt wiederverwendbare AWS-Security-Hub-Umsetzungsmuster für Grundschutz++-Anforderungen. Die Fassung wurde fachlich nachgeschärft: Die Control-Zuordnungen wurden erneut gegen den hochgeladenen Katalog geprüft, die technischen Umsetzungsbeschreibungen wurden mit konkreten Konsolenpfaden, AWS-CLI-Befehlen, Event-Mustern und Konfigurationshinweisen verdichtet, und jede technische Komponente verweist nun auf möglichst direkte AWS-Quellen. Die Komponenten beschreiben Soll-Umsetzungen für Security Hub in Mehrkonten-/Mehrregionen-Umgebungen und nicht bloß einen lokalen Ist-Zustand."
+    },
+    "implementation": {
+        "540e33f0-1434-4b8a-8a0c-366d4b6ddb77": {
+            "control_alt-identifier": "17e221bd-3b74-453a-ad4e-e2cb346b6af5",
+            "control_id": "",
+            "description": "Für die institutionsweite Überwachung der Informationssicherheit wird Security Hub als zentrales Monitoring- und Aggregationswerkzeug organisationsweit eingeführt und technisch konsistent betrieben.",
+            "remarks": ""
+        },
+        "136ef21c-60d2-457c-91ee-cb25dca1d075": {
+            "control_alt-identifier": "3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f",
+            "control_id": "",
+            "description": "Sicherheitsvorfälle und sicherheitsrelevante Befunde werden zentral statt fragmentiert überwacht; Findings aus Mitgliedskonten und verknüpften Regionen laufen in einem gemeinsamen Lagebild zusammen.",
+            "remarks": ""
+        },
+        "5f407edb-cd6e-4cd1-b123-8a2a98a6a118": {
+            "control_alt-identifier": "4b2b03f6-103d-4435-9edc-27cd961e2361",
+            "control_id": "",
+            "description": "Die Verfahrensweise für Aktivierung, zentrale Verwaltung, Onboarding neuer Konten, Ziel-Regionen und Zuständigkeiten wird dokumentiert und verbindlich festgelegt.",
+            "remarks": ""
+        },
+        "966f66d9-7c91-491d-9083-0b2f66a6b325": {
+            "control_alt-identifier": "3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f",
+            "control_id": "",
+            "description": "Die Institution stellt sicher, dass relevante Sicherheitsvorfälle und Fehlkonfigurationen in Security Hub tatsächlich ankommen und nicht durch fehlende Integrationen unsichtbar bleiben.",
+            "remarks": ""
+        },
+        "a25efb64-c4ad-4c53-bf65-fbfd2b442316": {
+            "control_alt-identifier": "4f185314-4f6f-4539-b14e-d230c84ecd4d",
+            "control_id": "",
+            "description": "Schwachstellen- und Kontroll-Findings werden nur dann verlässlich überwacht, wenn die technischen Voraussetzungen wie AWS Config in allen erforderlichen Regionen aktiv sind.",
+            "remarks": ""
+        },
+        "082cec63-12a6-446b-9f3f-418eca3406d9": {
+            "control_alt-identifier": "4599c41b-8c08-46cc-a88d-3a2ab141994c",
+            "control_id": "",
+            "description": "Neue oder geänderte Bedrohungslagen können nur angemessen erkannt werden, wenn neue relevante Findings-Quellen und Produktintegrationen bewertet und bei Bedarf eingebunden werden.",
+            "remarks": ""
+        },
+        "9852e6a9-3e53-4605-9a67-9da11aa80354": {
+            "control_alt-identifier": "9bb16672-4394-4ce9-bd14-12a080233f7a",
+            "control_id": "",
+            "description": "Die Aktivierung und Parametrisierung von Standards und Controls wird an Verpflichtungen, Geltungsbereich und Compliance-Ziele der Institution ausgerichtet und regelmäßig überprüft.",
+            "remarks": ""
+        },
+        "8ffc701b-1441-44c4-bc78-68ab8b22c4cc": {
+            "control_alt-identifier": "1d6e2d9d-a9b9-46cb-9079-a2587c90c661",
+            "control_id": "",
+            "description": "Aktive Controls, Deaktivierungen, Ausnahmen und Parameterwerte werden regelmäßig auf Aktualität und weitere Eignung überprüft.",
+            "remarks": ""
+        },
+        "ba8df59a-70a2-4ae5-bd73-91626850b838": {
+            "control_alt-identifier": "1aa8319f-93fb-4236-991a-d799ab69e0c2",
+            "control_id": "",
+            "description": "Kritische Änderungen an Standards, Control-Parametern und Ausnahme- oder Suppressionsregeln dürfen nur autorisiert erfolgen.",
+            "remarks": ""
+        },
+        "51b42adc-9dff-4d47-b6a1-e43c314dbe57": {
+            "control_alt-identifier": "0e1f4190-44ad-48f0-9504-781aef585ba0",
+            "control_id": "",
+            "description": "Berechtigungen für Security Hub werden nach dem Prinzip der geringsten Berechtigungen beschränkt.",
+            "remarks": ""
+        },
+        "c0874706-e287-4d53-b789-9f7d4581fb4d": {
+            "control_alt-identifier": "a9aa521b-e610-40ae-80d0-f1dd3b4ec47f",
+            "control_id": "",
+            "description": "Security-Hub-Berechtigungen werden rollenbasiert statt direkt an Einzelkonten vergeben.",
+            "remarks": ""
+        },
+        "d997f4c0-1563-4826-bfca-9e225329ddfb": {
+            "control_alt-identifier": "4791c533-f811-48cf-9957-6e1d438028f5",
+            "control_id": "",
+            "description": "Privilegierte Tätigkeiten an Security Hub erfolgen über separate Administrationskonten oder -rollen.",
+            "remarks": ""
+        },
+        "9f938ffc-b3e1-4630-821c-3d99efa36b28": {
+            "control_alt-identifier": "55b70084-f446-42af-908b-0f514a72f380",
+            "control_id": "",
+            "description": "Weitreichende Security-Hub-Berechtigungen werden mit Mehr-Faktor-Authentisierung abgesichert.",
+            "remarks": ""
+        },
+        "c14cd344-c57f-4db9-bc81-3e895c0474b7": {
+            "control_alt-identifier": "e549f464-b2fb-42a1-83b9-21bd3bb0f3cf",
+            "control_id": "",
+            "description": "Privilegierte Security-Hub-Berechtigungen werden nach Möglichkeit nur just-in-time und zeitlich begrenzt aktiviert.",
+            "remarks": ""
+        },
+        "454df96a-8797-433d-9d92-821c2e1d84e7": {
+            "control_alt-identifier": "d1646dc3-5cdb-44a5-999a-d41785bdd34b",
+            "control_id": "",
+            "description": "Für Findings aus Security Hub existiert ein geregeltes Melde- und Routingverfahren mit klaren Kriterien, Zielsystemen und Zuständigkeiten.",
+            "remarks": ""
+        },
+        "7569ae99-ab82-405e-ab60-f6debc01d233": {
+            "control_alt-identifier": "1af88c3b-a13c-4d74-a099-f230c9f71f55",
+            "control_id": "",
+            "description": "Falls ein SOC zuständig ist, werden Erkennung, Erstbeurteilung und initiale Behandlung passender Findings an das SOC bzw. eine äquivalente Betriebsfunktion angebunden.",
+            "remarks": ""
+        },
+        "34e8b262-386d-43a1-bf99-c057d439194b": {
+            "control_alt-identifier": "988a898a-f7c3-4e6c-9746-8b20e2e85ecd",
+            "control_id": "",
+            "description": "Security-Hub-Meldungen erhalten eine strukturierte Triage mit Priorisierung und definierten Sofortmaßnahmen.",
+            "remarks": ""
+        },
+        "ee7e7002-f417-4179-8c69-e2f6260d9af3": {
+            "control_alt-identifier": "3c124fd5-bd24-4864-a931-b3a226177f2e",
+            "control_id": "",
+            "description": "Für ausgewählte Finding-Klassen können automatische Erstreaktionen ausgelöst werden.",
+            "remarks": ""
+        },
+        "1e2be1e1-7309-4f3d-916c-91047f98b8e6": {
+            "control_alt-identifier": "3c76f9bf-7a52-4ba4-a9dd-f351e543ca9f",
+            "control_id": "",
+            "description": "Sicherheitsvorfälle werden nicht nur angezeigt, sondern in überwachbare und bearbeitbare Reaktionspfade überführt.",
+            "remarks": ""
+        },
+        "20b39df4-94b7-443d-ac53-6a72f655e00c": {
+            "control_alt-identifier": "744a1a50-616b-4092-91f6-b2b4b1b0aa01",
+            "control_id": "",
+            "description": "Aktionen an Zugangskonten und sicherheitsrelevanten Verwaltungsobjekten von Security Hub werden revisionsfähig protokolliert.",
+            "remarks": ""
+        },
+        "1e6e598e-16ad-495f-a4a1-4744a80046a8": {
+            "control_alt-identifier": "dc58d353-86e1-4070-9f86-b7f0e0f93305",
+            "control_id": "",
+            "description": "Sicherheitsrelevante Security-Hub-Ereignisse werden mindestens für eine definierte Frist protokolliert.",
+            "remarks": ""
+        },
+        "e317ed64-a1f6-40cf-8d69-aca43a492d00": {
+            "control_alt-identifier": "e7d500ff-393c-4c14-baed-c87b676efe5c",
+            "control_id": "",
+            "description": "Privilegierte oder sicherheitskritische Ereignisse an Security Hub werden besonders überwacht.",
+            "remarks": ""
+        },
+        "1921fdf4-0599-41f5-bfb0-3df9f583dcbd": {
+            "control_alt-identifier": "681494bd-8d1d-4b34-84f6-abab2f4ea751",
+            "control_id": "",
+            "description": "Cloud-Ereignisse aus Security Hub werden in das institutionsweite Audit-Log bzw. SIEM integriert.",
+            "remarks": ""
+        },
+        "ebc3f00d-dd72-4ee6-8d3c-48c9be18d9fa": {
+            "control_alt-identifier": "2edf4a68-0d86-4da9-ada4-9939c2508f2c",
+            "control_id": "",
+            "description": "Vor wesentlichen Änderungen an der Security-Hub-Konfiguration werden Sicherheitstests und Konsistenzprüfungen durchgeführt.",
+            "remarks": ""
+        },
+        "6aea1af1-ab0a-4219-b236-664f1680be26": {
+            "control_alt-identifier": "b7a747d3-cb11-46ce-8d0c-c57cc31d5ad5",
+            "control_id": "",
+            "description": "Prüfschritte, Ergebnisse und Korrekturen zu Änderungen an Security Hub werden dokumentiert.",
+            "remarks": ""
+        },
+        "df8027d4-aa18-4f8b-b942-5eec95cbe604": {
+            "control_alt-identifier": "1aa8319f-93fb-4236-991a-d799ab69e0c2",
+            "control_id": "",
+            "description": "Kritische Änderungen an der Security-Hub-Konfiguration werden autorisiert.",
+            "remarks": ""
+        },
+        "048e2218-662c-4841-8302-bc0bfa78f0b0": {
+            "control_alt-identifier": "a0cd7536-0e8f-4658-99d4-c04f93dad878",
+            "control_id": "",
+            "description": "Die Freigabe kritischer Änderungen erfolgt durch eine von der Implementierung unabhängige Person.",
+            "remarks": ""
+        },
+        "cbdb322d-f741-407e-8b8e-b5a758b408bb": {
+            "control_alt-identifier": "5d8dccb2-5fea-43c1-a804-0b49f481a1ca",
+            "control_id": "",
+            "description": "Die Institutionsleitung wird regelmäßig über den Stand der Security-Hub-basierten Sicherheitslage informiert.",
+            "remarks": ""
+        },
+        "22ccdb33-336d-4031-9473-e97671ba4c97": {
+            "control_alt-identifier": "3111f074-e762-4bf0-b0b4-3d548e27cef5",
+            "control_id": "",
+            "description": "Berichte berücksichtigen sowohl Erfolge als auch Probleme, etwa persistente High-Findings, Ausfälle von Integrationen oder überfällige Bearbeitungen.",
+            "remarks": ""
+        },
+        "04f4caa7-2f64-4530-b925-bc9812f35086": {
+            "control_alt-identifier": "c6ecb13d-2c6a-495d-89fd-8d9e699b3ff9",
+            "control_id": "",
+            "description": "Aus Dashboards und Auswertungen werden priorisierte Maßnahmenvorschläge mit realistischem Umsetzungsaufwand abgeleitet.",
+            "remarks": ""
+        },
+        "fe8d2cd5-7a81-4f6b-8011-a4036bc4199f": {
+            "control_alt-identifier": "17e221bd-3b74-453a-ad4e-e2cb346b6af5",
+            "control_id": "",
+            "description": "Dashboards und Insights sind Teil eines effektiven Monitoring-Ansatzes und nicht bloß ad-hoc genutzte Einzelansichten.",
+            "remarks": ""
+        },
+        "ab6dc13e-f6ee-4315-91c6-bdb5cd082978": {
+            "control_alt-identifier": "17e221bd-3b74-453a-ad4e-e2cb346b6af5",
+            "control_id": "",
+            "description": "Eigene technische Monitoring- oder Exportmechanismen für Security Hub werden robust und betrieblich beherrschbar umgesetzt.",
+            "remarks": ""
+        },
+        "e98cc601-116e-43b1-b1ab-b89d3872068e": {
+            "control_alt-identifier": "2edf4a68-0d86-4da9-ada4-9939c2508f2c",
+            "control_id": "",
+            "description": "Vor wesentlichen Änderungen an eigenen Export- oder Pollingmechanismen werden Last- und Fehlerszenarien getestet.",
+            "remarks": ""
+        },
+        "168e488e-6a27-4bd6-a0aa-c61b40a6f9bf": {
+            "control_alt-identifier": "dc58d353-86e1-4070-9f86-b7f0e0f93305",
+            "control_id": "",
+            "description": "Fehler, Throttling und andere sicherheitsrelevante Betriebsereignisse in eigenen Zusatzintegrationen werden protokolliert.",
+            "remarks": ""
+        }
+    }
+}
