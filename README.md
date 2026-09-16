@@ -2,25 +2,11 @@
 
 Das Bundesamt für Sicherheit in der Informationstechnik (BSI) veröffentlicht und aktualisiert sukzessive (via commits) in GitHub die GSpp-Anwenderkataloge als OSCAL-Datei ([NIST](https://pages.nist.gov/OSCAL/learn/), [OSCAL Foundation](https://oscalfoundation.org/)) im [JSON](https://de.wikipedia.org/wiki/JSON)-Format: [Grundschutz++-resolved_catalog.json](https://github.com/BSI-Bund/Stand-der-Technik-Bibliothek/tree/main/control_layer/Grundschutz%2B%2B).
 
-Die Beschäftigung mit Grundschutz++ motiviert nachfolgende elementare Hilfsmittel.
+## GSpp-Anwenderkatalog als Excel-Datei & Δ-Infos 
 
+- `GSpp-Anwenderkatalog.xlsx` 
+- `GSpp-Anwenderkatalog-Deltas_<Datum 1>_<Datum 2>.md`
 
-## Aktueller GSpp-Anwenderkatalog als Excel-Datei
-
-Aktueller GSpp-Anwenderkatalog und Implementierungsbeschreibungen als Excel-Datei: `Grundschutz++-catalog.xlsx` 
-
-
-
-## GSpp-Anwenderkatalog als flache json-Datei
-Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Dateien `catalog_<datum>_flattened.json` und `catalog_<datum>_reversed.json`
-
-## GSpp-Anwenderkatalog als control orientierte json-Datei
-Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `control_<datum>_attributes.json`
-
-## GSpp-Anwenderkatalog als Excel-Datei
-Im Ordner `daten/catalog_github_commit_<datum>/ergebnisse/` die Datei `catalog_<datum>.xlsx`
-
-Integration der BSI-Implementierungsbeschreibungen (ab Anwenderkatalog commit 20.04.26)
 
 
 ## Link-Sammlung
